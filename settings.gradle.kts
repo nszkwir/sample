@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "sample"
 include(":app")
 include(":ui")
+include(":data")
