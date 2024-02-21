@@ -17,3 +17,4 @@ rootProject.name = "sample"
 include(":app")
 include(":ui")
 include(":data")
+include(":database")
