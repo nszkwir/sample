@@ -4,13 +4,18 @@ import android.content.Context
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.util.DebugLogger
+import com.spitzer.common.network.AppDispatchers
+import com.spitzer.common.network.Dispatcher
 import com.spitzer.network.BuildConfig
+import com.spitzer.network.CountriesNetworkDatasource
 import com.spitzer.network.fake.FakeAssetManager
+import com.spitzer.network.fake.FakeCountriesNetworkDatasource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.OkHttpClient
@@ -20,6 +25,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideCountriesNetworkDatasource(
+        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
+        networkJson: Json,
+        assets: FakeAssetManager
+    ): CountriesNetworkDatasource {
+        return FakeCountriesNetworkDatasource(ioDispatcher, networkJson, assets)
+    }
 
     @Provides
     @Singleton

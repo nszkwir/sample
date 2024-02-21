@@ -34,6 +34,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":network"))
+
     // Arch Components
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
