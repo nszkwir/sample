@@ -1,0 +1,266 @@
+[
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/cu.png",
+      "svg": "https://flagcdn.com/cu.svg"
+    },
+    "name": "Cuba",
+    "cca3": "CUB",
+    "capital": "Havana",
+    "area": 109884.0,
+    "population": 11326616
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/cr.png",
+      "svg": "https://flagcdn.com/cr.svg"
+    },
+    "name": "Costa Rica",
+    "cca3": "CRI",
+    "capital": "San José",
+    "area": 51100.0,
+    "population": 5094114
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/ni.png",
+      "svg": "https://flagcdn.com/ni.svg"
+    },
+    "name": "Nicaragua",
+    "cca3": "NIC",
+    "capital": "Managua",
+    "area": 130373.0,
+    "population": 6624554
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/do.png",
+      "svg": "https://flagcdn.com/do.svg"
+    },
+    "name": "República Dominicana",
+    "cca3": "DOM",
+    "capital": "Santo Domingo",
+    "area": 48671.0,
+    "population": 10847904
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/eh.png",
+      "svg": "https://flagcdn.com/eh.svg"
+    },
+    "name": "Sahara Occidental",
+    "cca3": "ESH",
+    "capital": "El Aaiún",
+    "area": 266000.0,
+    "population": 510713
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/pr.png",
+      "svg": "https://flagcdn.com/pr.svg"
+    },
+    "name": "Puerto Rico",
+    "cca3": "PRI",
+    "capital": "San Juan",
+    "area": 8870.0,
+    "population": 3194034
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/gq.png",
+      "svg": "https://flagcdn.com/gq.svg"
+    },
+    "name": "Guinea Equatorial",
+    "cca3": "GNQ",
+    "capital": "Malabo",
+    "area": 28051.0,
+    "population": 1402985
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/gt.png",
+      "svg": "https://flagcdn.com/gt.svg"
+    },
+    "name": "Guatemala",
+    "cca3": "GTM",
+    "capital": "Guatemala",
+    "area": 108889.0,
+    "population": 16858333
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/pe.png",
+      "svg": "https://flagcdn.com/pe.svg"
+    },
+    "name": "Peru",
+    "cca3": "PER",
+    "capital": "Lima",
+    "area": 1285216.0,
+    "population": 32971846
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/co.png",
+      "svg": "https://flagcdn.com/co.svg"
+    },
+    "name": "Colombia",
+    "cca3": "COL",
+    "capital": "Bogotá",
+    "area": 1141748.0,
+    "population": 50882884
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/ec.png",
+      "svg": "https://flagcdn.com/ec.svg"
+    },
+    "name": "Ecuador",
+    "cca3": "ECU",
+    "capital": "Quito",
+    "area": 276841.0,
+    "population": 17643060
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/ve.png",
+      "svg": "https://flagcdn.com/ve.svg"
+    },
+    "name": "Venezuela",
+    "cca3": "VEN",
+    "capital": "Caracas",
+    "area": 916445.0,
+    "population": 28435943
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/bz.png",
+      "svg": "https://flagcdn.com/bz.svg"
+    },
+    "name": "Belice",
+    "cca3": "BLZ",
+    "capital": "Belmopan",
+    "area": 22966.0,
+    "population": 397621
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/bo.png",
+      "svg": "https://flagcdn.com/bo.svg"
+    },
+    "name": "Bolivia",
+    "cca3": "BOL",
+    "capital": "Sucre",
+    "area": 1098581.0,
+    "population": 11673029
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/gu.png",
+      "svg": "https://flagcdn.com/gu.svg"
+    },
+    "name": "Guam",
+    "cca3": "GUM",
+    "capital": "Hagåtña",
+    "area": 549.0,
+    "population": 168783
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/es.png",
+      "svg": "https://flagcdn.com/es.svg"
+    },
+    "name": "España",
+    "cca3": "ESP",
+    "capital": "Madrid",
+    "area": 505992.0,
+    "population": 47351567
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/py.png",
+      "svg": "https://flagcdn.com/py.svg"
+    },
+    "name": "Paraguay",
+    "cca3": "PRY",
+    "capital": "Asunción",
+    "area": 406752.0,
+    "population": 7132530
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/uy.png",
+      "svg": "https://flagcdn.com/uy.svg"
+    },
+    "name": "Uruguay",
+    "cca3": "URY",
+    "capital": "Montevideo",
+    "area": 181034.0,
+    "population": 3473727
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/pa.png",
+      "svg": "https://flagcdn.com/pa.svg"
+    },
+    "name": "Panama",
+    "cca3": "PAN",
+    "capital": "Ciudad de Panama",
+    "area": 75417.0,
+    "population": 4314768
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/mx.png",
+      "svg": "https://flagcdn.com/mx.svg"
+    },
+    "name": "México",
+    "cca3": "MEX",
+    "capital": "Ciudad de Mexico",
+    "area": 1964375.0,
+    "population": 128932753
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/hn.png",
+      "svg": "https://flagcdn.com/hn.svg"
+    },
+    "name": "Honduras",
+    "cca3": "HND",
+    "capital": "Tegucigalpa",
+    "area": 112492.0,
+    "population": 9904608
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/sv.png",
+      "svg": "https://flagcdn.com/sv.svg"
+    },
+    "name": "El Salvador",
+    "cca3": "SLV",
+    "capital": "San Salvador",
+    "area": 21041.0,
+    "population": 6486201
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/cl.png",
+      "svg": "https://flagcdn.com/cl.svg"
+    },
+    "name": "Chile",
+    "cca3": "CHL",
+    "capital": "Santiago",
+    "area": 756102.0,
+    "population": 19116209
+  },
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/ar.png",
+      "svg": "https://flagcdn.com/ar.svg"
+    },
+    "name": "Argentina",
+    "cca3": "ARG",
+    "capital": "Buenos Aires",
+    "area": 2780400.0,
+    "population": 45376763
+  }
+]
