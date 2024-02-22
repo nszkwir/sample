@@ -17,7 +17,7 @@ class CountriesViewModel @Inject constructor(
     countriesRepository: CountriesRepository
 ) : ViewModel() {
 
-    val feedState: StateFlow<CountriesUiState> =
+    val countriesState: StateFlow<CountriesUiState> =
         countriesRepository.countriesData
             .asResult()
             .map { result ->

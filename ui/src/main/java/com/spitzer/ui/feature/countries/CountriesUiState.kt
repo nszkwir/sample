@@ -7,7 +7,7 @@ sealed interface CountriesUiState {
     data object Loading : CountriesUiState
 
     data class Success(
-        val feed: List<CountryDataModel>,
+        val countries: List<CountryDataModel>,
     ) : CountriesUiState
 
     data object Error : CountriesUiState
