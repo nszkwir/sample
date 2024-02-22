@@ -37,6 +37,7 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":model"))
 
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)

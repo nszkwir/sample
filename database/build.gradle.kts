@@ -42,6 +42,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":model"))
+
     // Arch Components
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)

@@ -2,8 +2,8 @@ package com.spitzer.data.repository.fake
 
 import com.spitzer.common.network.AppDispatchers
 import com.spitzer.common.network.Dispatcher
-import com.spitzer.data.model.CountryDataModel
 import com.spitzer.data.repository.CountriesRepository
+import com.spitzer.model.data.CountryDataModel
 import com.spitzer.network.CountriesNetworkDatasource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -25,7 +25,10 @@ class FakeCountriesRemoteRepository @Inject constructor(
                         cca3 = this.cca3!!,
                         name = this.name!!,
                         capital = this.capital!!,
-                        flags = CountryDataModel.Flags(this.flags?.png, this.flags?.svg),
+                        flags = CountryDataModel.Flags(
+                            this.flags?.png,
+                            this.flags?.svg
+                        ),
                         area = this.area,
                         population = this.population
                     )

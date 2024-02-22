@@ -35,7 +35,9 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":model"))
     implementation(project(":network"))
+    implementation(project(":database"))
 
     // Arch Components
     implementation(libs.hilt.android)

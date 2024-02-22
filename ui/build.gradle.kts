@@ -40,6 +40,7 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":common"))
+    implementation(project(":model"))
 
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)

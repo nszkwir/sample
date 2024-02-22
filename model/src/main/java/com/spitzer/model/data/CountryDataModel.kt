@@ -1,4 +1,4 @@
-package com.spitzer.data.model
+package com.spitzer.model.data
 
 data class CountryDataModel(
     val cca3: String,

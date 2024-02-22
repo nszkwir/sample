@@ -34,7 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.spitzer.data.model.CountryDataModel
+import com.spitzer.model.data.CountryDataModel
 import com.spitzer.ui.R
 
 @OptIn(ExperimentalFoundationApi::class)

@@ -1,6 +1,6 @@
 package com.spitzer.data.repository
 
-import com.spitzer.data.model.CountryDataModel
+import com.spitzer.model.data.CountryDataModel
 import kotlinx.coroutines.flow.Flow
 
 interface CountriesRepository {
