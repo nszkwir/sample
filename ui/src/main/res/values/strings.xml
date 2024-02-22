@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="countries">Countries</string>
+    <string name="addCountry">Add Country</string>
+    <string name="editCountry">Edit Country</string>
+    <string name="back">Back</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="loading">Loading</string>
+    <string name="population">Population</string>
+    <string name="countryName">Country name</string>
+    <string name="capitalCity">Capital city</string>
+    <string name="populationExample">example: 45.000.000</string>
+    <string name="countryNameExample">example: El Salvador</string>
+    <string name="capitalCityExample">example: San Salvador</string>
+
+    <string name="addHispanicCountry_CD">add country</string>
+    <string name="editHispanicCountry_CD">edit country %s</string>
+    <string name="back_CD">go back</string>
+    <string name="save_CD">save</string>
+    <string name="edit_CD">edit</string>
+</resources>
