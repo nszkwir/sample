@@ -78,7 +78,7 @@ fun CountryListLayout(
                         ) {
                             Image(
                                 painter = rememberAsyncImagePainter(
-                                    country.flags.png
+                                    country.flags.svg
                                         ?: R.drawable.baseline_broken_image_24
                                 ),
                                 contentDescription = null,
