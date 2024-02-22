@@ -66,6 +66,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
