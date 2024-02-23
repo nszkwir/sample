@@ -24,6 +24,9 @@ fun countriesScreenNavigation(
             fabButtonClicked = {}, // TODO navHostController::navigateToAddCountry,
             onCountryClicked = {
                 // TODO  navHostController.navigateToEditCountry()
+            },
+            onSettingsClicked = {
+                // TODO   navHostController.navigateToSettings()
             }
         )
     }
