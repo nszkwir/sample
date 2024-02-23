@@ -2,7 +2,6 @@ package com.spitzer.ui.feature.countries
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import com.spitzer.data.model.CountryDataModel
 import com.spitzer.ui.layout.CountryListLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle

@@ -1,0 +1,270 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "45ef2a987adc0a193133a56f8a00afe6",
+    "entities": [
+      {
+        "tableName": "countries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cca3` TEXT NOT NULL, `official_name` TEXT NOT NULL, `common_name` TEXT NOT NULL, `native_official_name` TEXT NOT NULL, `native_common_name` TEXT NOT NULL, `flag_png_url` TEXT, `flag_svg_url` TEXT, `coat_of_arms_png_url` TEXT, `coat_of_arms_svg_url` TEXT, `currency_name` TEXT, `currency_symbol` TEXT, `timezones` TEXT, `google_maps` TEXT, `openstreet_maps` TEXT, `capital` TEXT NOT NULL, `area` REAL, `population` INTEGER, `publish_date` INTEGER NOT NULL, `update_date` INTEGER NOT NULL, PRIMARY KEY(`cca3`))",
+        "fields": [
+          {
+            "fieldPath": "cca3",
+            "columnName": "cca3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "officialName",
+            "columnName": "official_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commonName",
+            "columnName": "common_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nativeOfficialName",
+            "columnName": "native_official_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nativeCommonName",
+            "columnName": "native_common_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flagPngUrl",
+            "columnName": "flag_png_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flagSvgUrl",
+            "columnName": "flag_svg_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "coatOfArmsPngUrl",
+            "columnName": "coat_of_arms_png_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "coatOfArmsSvgUrl",
+            "columnName": "coat_of_arms_svg_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currencyName",
+            "columnName": "currency_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currencySymbol",
+            "columnName": "currency_symbol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timezones",
+            "columnName": "timezones",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "googleMaps",
+            "columnName": "google_maps",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "openStreetMaps",
+            "columnName": "openstreet_maps",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "capital",
+            "columnName": "capital",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "area",
+            "columnName": "area",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "population",
+            "columnName": "population",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publishDate",
+            "columnName": "publish_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "update_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "cca3"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "fake_remote_countries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cca3` TEXT NOT NULL, `official_name` TEXT NOT NULL, `common_name` TEXT NOT NULL, `native_official_name` TEXT NOT NULL, `native_common_name` TEXT NOT NULL, `flag_png_url` TEXT, `flag_svg_url` TEXT, `coat_of_arms_png_url` TEXT, `coat_of_arms_svg_url` TEXT, `currency_name` TEXT, `currency_symbol` TEXT, `timezones` TEXT, `google_maps` TEXT, `openstreet_maps` TEXT, `capital` TEXT NOT NULL, `area` REAL, `population` INTEGER, `publish_date` INTEGER NOT NULL, `update_date` INTEGER NOT NULL, PRIMARY KEY(`cca3`))",
+        "fields": [
+          {
+            "fieldPath": "cca3",
+            "columnName": "cca3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "officialName",
+            "columnName": "official_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commonName",
+            "columnName": "common_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nativeOfficialName",
+            "columnName": "native_official_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nativeCommonName",
+            "columnName": "native_common_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flagPngUrl",
+            "columnName": "flag_png_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flagSvgUrl",
+            "columnName": "flag_svg_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "coatOfArmsPngUrl",
+            "columnName": "coat_of_arms_png_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "coatOfArmsSvgUrl",
+            "columnName": "coat_of_arms_svg_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currencyName",
+            "columnName": "currency_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currencySymbol",
+            "columnName": "currency_symbol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timezones",
+            "columnName": "timezones",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "googleMaps",
+            "columnName": "google_maps",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "openStreetMaps",
+            "columnName": "openstreet_maps",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "capital",
+            "columnName": "capital",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "area",
+            "columnName": "area",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "population",
+            "columnName": "population",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publishDate",
+            "columnName": "publish_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "update_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "cca3"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '45ef2a987adc0a193133a56f8a00afe6')"
+    ]
+  }
+}

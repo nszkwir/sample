@@ -42,10 +42,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":model"))
+
     // Arch Components
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.kotlinx.datetime)
 }

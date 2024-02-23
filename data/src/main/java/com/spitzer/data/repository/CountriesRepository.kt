@@ -1,10 +1,10 @@
 package com.spitzer.data.repository
 
-import com.spitzer.data.model.CountryDataModel
+import com.spitzer.model.data.CountryModel
 import kotlinx.coroutines.flow.Flow
 
 interface CountriesRepository {
-    val countriesData: Flow<List<CountryDataModel>>
+    val countriesData: Flow<List<CountryModel>>
     suspend fun updateCountries()
-    suspend fun upsertCountry(country: CountryDataModel)
+    suspend fun upsertCountry(country: CountryModel)
 }

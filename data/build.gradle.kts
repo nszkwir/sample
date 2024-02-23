@@ -35,12 +35,14 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":model"))
     implementation(project(":network"))
+    implementation(project(":database"))
 
     // Arch Components
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
+    implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
 
     // Local tests: jUnit, coroutines, Android runner

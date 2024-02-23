@@ -37,6 +37,7 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":model"))
 
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
@@ -44,6 +45,7 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
+    implementation(libs.kotlinx.datetime)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
