@@ -34,14 +34,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.spitzer.model.data.CountryDataModel
+import com.spitzer.model.data.CountryModel
 import com.spitzer.ui.R
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CountryListLayout(
     modifier: Modifier = Modifier,
-    countries: List<CountryDataModel>
+    countries: List<CountryModel>
 ) {
     Column(
         modifier = modifier
@@ -78,7 +78,7 @@ fun CountryListLayout(
                         ) {
                             Image(
                                 painter = rememberAsyncImagePainter(
-                                    country.flags.svg
+                                    country.flag?.svg
                                         ?: R.drawable.baseline_broken_image_24
                                 ),
                                 contentDescription = null,
@@ -95,7 +95,7 @@ fun CountryListLayout(
                                 verticalArrangement = Arrangement.Top,
                             ) {
                                 Text(
-                                    text = country.name,
+                                    text = country.name.common ?: "",
                                     style = TextStyle.Default.copy(
                                         fontSize = 20.sp,
                                         color = Color.Black,

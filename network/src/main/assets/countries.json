@@ -1,266 +1,436 @@
 [
   {
-    "flags": {
-      "png": "https://flagcdn.com/w320/cu.png",
-      "svg": "https://flagcdn.com/cu.svg"
+    "flag": {
+      "png": "https://flagcdn.com/w320/br.png",
+      "svg": "https://flagcdn.com/br.svg"
     },
-    "name": "Cuba",
-    "cca3": "CUB",
-    "capital": "Havana",
-    "area": 109884.0,
-    "population": 11326616
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/br.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/br.svg"
+    },
+    "name": {
+      "common": "Brazil",
+      "official": "Federative Republic of Brazil"
+    },
+    "nativeName": {
+      "official": "República Federativa do Brasil",
+      "common": "Brasil"
+    },
+    "cca3": "BRA",
+    "currency": {
+      "name": "Brazilian real",
+      "symbol": "R$"
+    },
+    "capital": "Brasília",
+    "area": 8515767.0,
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/waCKk21HeeqFzkNC9",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/59470"
+    },
+    "population": 212559409,
+    "timezones": [
+      "UTC-05:00",
+      "UTC-04:00",
+      "UTC-03:00",
+      "UTC-02:00"
+    ]
   },
   {
-    "flags": {
-      "png": "https://flagcdn.com/w320/cr.png",
-      "svg": "https://flagcdn.com/cr.svg"
-    },
-    "name": "Costa Rica",
-    "cca3": "CRI",
-    "capital": "San José",
-    "area": 51100.0,
-    "population": 5094114
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/ni.png",
-      "svg": "https://flagcdn.com/ni.svg"
-    },
-    "name": "Nicaragua",
-    "cca3": "NIC",
-    "capital": "Managua",
-    "area": 130373.0,
-    "population": 6624554
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/do.png",
-      "svg": "https://flagcdn.com/do.svg"
-    },
-    "name": "República Dominicana",
-    "cca3": "DOM",
-    "capital": "Santo Domingo",
-    "area": 48671.0,
-    "population": 10847904
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/eh.png",
-      "svg": "https://flagcdn.com/eh.svg"
-    },
-    "name": "Sahara Occidental",
-    "cca3": "ESH",
-    "capital": "El Aaiún",
-    "area": 266000.0,
-    "population": 510713
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/pr.png",
-      "svg": "https://flagcdn.com/pr.svg"
-    },
-    "name": "Puerto Rico",
-    "cca3": "PRI",
-    "capital": "San Juan",
-    "area": 8870.0,
-    "population": 3194034
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/gq.png",
-      "svg": "https://flagcdn.com/gq.svg"
-    },
-    "name": "Guinea Equatorial",
-    "cca3": "GNQ",
-    "capital": "Malabo",
-    "area": 28051.0,
-    "population": 1402985
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/gt.png",
-      "svg": "https://flagcdn.com/gt.svg"
-    },
-    "name": "Guatemala",
-    "cca3": "GTM",
-    "capital": "Guatemala",
-    "area": 108889.0,
-    "population": 16858333
-  },
-  {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/pe.png",
       "svg": "https://flagcdn.com/pe.svg"
     },
-    "name": "Peru",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/pe.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/pe.svg"
+    },
+    "name": {
+      "common": "Peru",
+      "official": "Republic of Peru"
+    },
+    "nativeName": {
+      "official": "República del Perú",
+      "common": "Perú"
+    },
     "cca3": "PER",
+    "currency": {
+      "name": "Peruvian sol",
+      "symbol": "S/ "
+    },
     "capital": "Lima",
     "area": 1285216.0,
-    "population": 32971846
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/uDWEUaXNcZTng1fP6",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/288247"
+    },
+    "population": 32971846,
+    "timezones": [
+      "UTC-05:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/co.png",
       "svg": "https://flagcdn.com/co.svg"
     },
-    "name": "Colombia",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/co.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/co.svg"
+    },
+    "name": {
+      "common": "Colombia",
+      "official": "Republic of Colombia"
+    },
+    "nativeName": {
+      "official": "República de Colombia",
+      "common": "Colombia"
+    },
     "cca3": "COL",
+    "currency": {
+      "name": "Colombian peso",
+      "symbol": "$"
+    },
     "capital": "Bogotá",
     "area": 1141748.0,
-    "population": 50882884
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/zix9qNFX69E9yZ2M6",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/120027"
+    },
+    "population": 50882884,
+    "timezones": [
+      "UTC-05:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
+      "png": "https://flagcdn.com/w320/sr.png",
+      "svg": "https://flagcdn.com/sr.svg"
+    },
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/sr.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/sr.svg"
+    },
+    "name": {
+      "common": "Suriname",
+      "official": "Republic of Suriname"
+    },
+    "nativeName": {
+      "official": "Republiek Suriname",
+      "common": "Suriname"
+    },
+    "cca3": "SUR",
+    "currency": {
+      "name": "Surinamese dollar",
+      "symbol": "$"
+    },
+    "capital": "Paramaribo",
+    "area": 163820.0,
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/iy7TuQLSi4qgoBoG7",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/287082"
+    },
+    "population": 586634,
+    "timezones": [
+      "UTC-03:00"
+    ]
+  },
+  {
+    "flag": {
       "png": "https://flagcdn.com/w320/ec.png",
       "svg": "https://flagcdn.com/ec.svg"
     },
-    "name": "Ecuador",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/ec.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/ec.svg"
+    },
+    "name": {
+      "common": "Ecuador",
+      "official": "Republic of Ecuador"
+    },
+    "nativeName": {
+      "official": "República del Ecuador",
+      "common": "Ecuador"
+    },
     "cca3": "ECU",
+    "currency": {
+      "name": "United States dollar",
+      "symbol": "$"
+    },
     "capital": "Quito",
     "area": 276841.0,
-    "population": 17643060
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/TbX8hUW4gcbRPZiK7",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/108089"
+    },
+    "population": 17643060,
+    "timezones": [
+      "UTC-06:00",
+      "UTC-05:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/ve.png",
       "svg": "https://flagcdn.com/ve.svg"
     },
-    "name": "Venezuela",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/ve.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/ve.svg"
+    },
+    "name": {
+      "common": "Venezuela",
+      "official": "Bolivarian Republic of Venezuela"
+    },
+    "nativeName": {
+      "official": "República Bolivariana de Venezuela",
+      "common": "Venezuela"
+    },
     "cca3": "VEN",
+    "currency": {
+      "name": "Venezuelan bolívar soberano",
+      "symbol": "Bs.S."
+    },
     "capital": "Caracas",
     "area": 916445.0,
-    "population": 28435943
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/bz.png",
-      "svg": "https://flagcdn.com/bz.svg"
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/KLCwDN8sec7z2kse9",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/272644"
     },
-    "name": "Belice",
-    "cca3": "BLZ",
-    "capital": "Belmopan",
-    "area": 22966.0,
-    "population": 397621
+    "population": 28435943,
+    "timezones": [
+      "UTC-04:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/bo.png",
       "svg": "https://flagcdn.com/bo.svg"
     },
-    "name": "Bolivia",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/bo.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/bo.svg"
+    },
+    "name": {
+      "common": "Bolivia",
+      "official": "Plurinational State of Bolivia"
+    },
+    "nativeName": {
+      "official": "Estado Plurinacional de Bolivia",
+      "common": "Bolivia"
+    },
     "cca3": "BOL",
+    "currency": {
+      "name": "Bolivian boliviano",
+      "symbol": "Bs."
+    },
     "capital": "Sucre",
     "area": 1098581.0,
-    "population": 11673029
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/gu.png",
-      "svg": "https://flagcdn.com/gu.svg"
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/9DfnyfbxNM2g5U9b9",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/252645"
     },
-    "name": "Guam",
-    "cca3": "GUM",
-    "capital": "Hagåtña",
-    "area": 549.0,
-    "population": 168783
+    "population": 11673029,
+    "timezones": [
+      "UTC-04:00"
+    ]
   },
   {
-    "flags": {
-      "png": "https://flagcdn.com/w320/es.png",
-      "svg": "https://flagcdn.com/es.svg"
+    "flag": {
+      "png": "https://flagcdn.com/w320/gf.png",
+      "svg": "https://flagcdn.com/gf.svg"
     },
-    "name": "España",
-    "cca3": "ESP",
-    "capital": "Madrid",
-    "area": 505992.0,
-    "population": 47351567
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/gf.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/gf.svg"
+    },
+    "name": {
+      "common": "French Guiana",
+      "official": "Guiana"
+    },
+    "nativeName": {
+      "official": "Guyane",
+      "common": "Guyane française"
+    },
+    "cca3": "GUF",
+    "currency": {
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "capital": "Cayenne",
+    "area": 83534.0,
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/NJawFwMzG7YtCrVP7",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/2502058"
+    },
+    "population": 254541,
+    "timezones": [
+      "UTC-03:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/py.png",
       "svg": "https://flagcdn.com/py.svg"
     },
-    "name": "Paraguay",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/py.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/py.svg"
+    },
+    "name": {
+      "common": "Paraguay",
+      "official": "Republic of Paraguay"
+    },
+    "nativeName": {
+      "official": "República de Paraguay",
+      "common": "Paraguay"
+    },
     "cca3": "PRY",
+    "currency": {
+      "name": "Paraguayan guaraní",
+      "symbol": "₲"
+    },
     "capital": "Asunción",
     "area": 406752.0,
-    "population": 7132530
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/JtnqG73WJn1Gx6mz6",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/287077"
+    },
+    "population": 7132530,
+    "timezones": [
+      "UTC-04:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/uy.png",
       "svg": "https://flagcdn.com/uy.svg"
     },
-    "name": "Uruguay",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/uy.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/uy.svg"
+    },
+    "name": {
+      "common": "Uruguay",
+      "official": "Oriental Republic of Uruguay"
+    },
+    "nativeName": {
+      "official": "República Oriental del Uruguay",
+      "common": "Uruguay"
+    },
     "cca3": "URY",
+    "currency": {
+      "name": "Uruguayan peso",
+      "symbol": "$"
+    },
     "capital": "Montevideo",
     "area": 181034.0,
-    "population": 3473727
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/pa.png",
-      "svg": "https://flagcdn.com/pa.svg"
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/tiQ9Baekb1jQtDSD9",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/287072"
     },
-    "name": "Panama",
-    "cca3": "PAN",
-    "capital": "Ciudad de Panama",
-    "area": 75417.0,
-    "population": 4314768
+    "population": 3473727,
+    "timezones": [
+      "UTC-03:00"
+    ]
   },
   {
-    "flags": {
-      "png": "https://flagcdn.com/w320/mx.png",
-      "svg": "https://flagcdn.com/mx.svg"
+    "flag": {
+      "png": "https://flagcdn.com/w320/gy.png",
+      "svg": "https://flagcdn.com/gy.svg"
     },
-    "name": "México",
-    "cca3": "MEX",
-    "capital": "Ciudad de Mexico",
-    "area": 1964375.0,
-    "population": 128932753
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/hn.png",
-      "svg": "https://flagcdn.com/hn.svg"
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/gy.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/gy.svg"
     },
-    "name": "Honduras",
-    "cca3": "HND",
-    "capital": "Tegucigalpa",
-    "area": 112492.0,
-    "population": 9904608
-  },
-  {
-    "flags": {
-      "png": "https://flagcdn.com/w320/sv.png",
-      "svg": "https://flagcdn.com/sv.svg"
+    "name": {
+      "common": "Guyana",
+      "official": "Co-operative Republic of Guyana"
     },
-    "name": "El Salvador",
-    "cca3": "SLV",
-    "capital": "San Salvador",
-    "area": 21041.0,
-    "population": 6486201
+    "nativeName": {
+      "official": "Co-operative Republic of Guyana",
+      "common": "Guyana"
+    },
+    "cca3": "GUY",
+    "currency": {
+      "name": "Guyanese dollar",
+      "symbol": "$"
+    },
+    "capital": "Georgetown",
+    "area": 214969.0,
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/DFsme2xEeugUAsCx5",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/287083"
+    },
+    "population": 786559,
+    "timezones": [
+      "UTC-04:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/cl.png",
       "svg": "https://flagcdn.com/cl.svg"
     },
-    "name": "Chile",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/cl.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/cl.svg"
+    },
+    "name": {
+      "common": "Chile",
+      "official": "Republic of Chile"
+    },
+    "nativeName": {
+      "official": "República de Chile",
+      "common": "Chile"
+    },
     "cca3": "CHL",
+    "currency": {
+      "name": "Chilean peso",
+      "symbol": "$"
+    },
     "capital": "Santiago",
     "area": 756102.0,
-    "population": 19116209
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/XboxyNHh2fAjCPNn9",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/167454"
+    },
+    "population": 19116209,
+    "timezones": [
+      "UTC-06:00",
+      "UTC-04:00"
+    ]
   },
   {
-    "flags": {
+    "flag": {
       "png": "https://flagcdn.com/w320/ar.png",
       "svg": "https://flagcdn.com/ar.svg"
     },
-    "name": "Argentina",
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/ar.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/ar.svg"
+    },
+    "name": {
+      "common": "Argentina",
+      "official": "Argentine Republic"
+    },
+    "nativeName": {
+      "official": "República Argentina",
+      "common": "Argentina"
+    },
     "cca3": "ARG",
+    "currency": {
+      "name": "Argentine peso",
+      "symbol": "$"
+    },
     "capital": "Buenos Aires",
     "area": 2780400.0,
-    "population": 45376763
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/Z9DXNxhf2o93kvyc6",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/286393"
+    },
+    "population": 45376763,
+    "timezones": [
+      "UTC-03:00"
+    ]
   }
 ]
