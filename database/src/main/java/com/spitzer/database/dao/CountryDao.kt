@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
-import com.spitzer.database.model.FakeRemoteCountryEntity
+import com.spitzer.database.model.CountryEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -25,16 +25,21 @@ interface CountryDao {
     )
     fun getCountries(
         orderByPublishDate: Boolean = true
-    ): Flow<List<FakeRemoteCountryEntity>>
+    ): Flow<List<CountryEntity>>
+
+    @Upsert
+    suspend fun upsertCountry(
+        country: CountryEntity
+    )
 
     @Upsert
     suspend fun upsertCountries(
-        countries: List<FakeRemoteCountryEntity>
+        countries: List<CountryEntity>
     )
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreCountries(
-        countries: List<FakeRemoteCountryEntity>
+        countries: List<CountryEntity>
     )
 
     @Query(

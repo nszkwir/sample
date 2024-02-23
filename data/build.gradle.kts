@@ -42,7 +42,7 @@ dependencies {
     // Arch Components
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
+    implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
 
     // Local tests: jUnit, coroutines, Android runner

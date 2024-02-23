@@ -1,5 +1,8 @@
 package com.spitzer.model.data
 
+import kotlinx.datetime.Instant
+
+
 data class CountryModel(
     val cca3: String,
     val name: Name,
@@ -11,7 +14,8 @@ data class CountryModel(
     val population: Long?,
     val currency: Currency?,
     val maps: Maps?,
-    val timezones: List<String>?
+    val timezones: List<String>?,
+    val publishDate: Instant
 ) {
     data class Image(
         val png: String?,
@@ -19,8 +23,8 @@ data class CountryModel(
     )
 
     data class Name(
-        val official: String?,
-        val common: String?
+        val official: String,
+        val common: String
     )
 
     data class Currency(

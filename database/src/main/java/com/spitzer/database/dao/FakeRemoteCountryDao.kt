@@ -28,6 +28,11 @@ interface FakeRemoteCountryDao {
     ): Flow<List<FakeRemoteCountryEntity>>
 
     @Upsert
+    suspend fun upsertCountry(
+        country: FakeRemoteCountryEntity
+    )
+
+    @Upsert
     suspend fun upsertCountries(
         countries: List<FakeRemoteCountryEntity>
     )

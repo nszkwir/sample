@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.spitzer.model.data.CountryModel
+import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 
 @Entity(
@@ -38,8 +39,8 @@ data class FakeRemoteCountryEntity(
     @ColumnInfo(name = "openstreet_maps")
     val openStreetMaps: String?,
     val capital: String,
-    val area: Double,
-    val population: Long,
+    val area: Double?,
+    val population: Long?,
     @ColumnInfo(name = "publish_date")
     val publishDate: Instant,
     @ColumnInfo(name = "update_date")
@@ -60,5 +61,29 @@ fun FakeRemoteCountryEntity.asDataModel() = CountryModel(
     area = this.area,
     population = this.population,
     timezones = this.timezones,
-    maps = CountryModel.Maps(googleMaps = this.googleMaps, openStreetMaps = this.openStreetMaps)
+    maps = CountryModel.Maps(googleMaps = this.googleMaps, openStreetMaps = this.openStreetMaps),
+    publishDate = this.publishDate
+)
+
+
+fun FakeRemoteCountryEntity.asCountryEntity() = CountryEntity(
+    cca3 = this.cca3,
+    commonName = commonName,
+    officialName = officialName,
+    nativeCommonName = nativeCommonName,
+    nativeOfficialName = nativeOfficialName,
+    flagPngUrl = flagPngUrl,
+    flagSvgUrl = flagSvgUrl,
+    coatOfArmsPngUrl = coatOfArmsPngUrl,
+    coatOfArmsSvgUrl = coatOfArmsSvgUrl,
+    currencyName = currencyName,
+    currencySymbol = currencySymbol,
+    capital = this.capital,
+    area = this.area,
+    population = this.population,
+    timezones = this.timezones,
+    googleMaps = googleMaps,
+    openStreetMaps = openStreetMaps,
+    publishDate = publishDate,
+    updateDate = Clock.System.now()
 )

@@ -38,8 +38,8 @@ data class CountryEntity(
     @ColumnInfo(name = "openstreet_maps")
     val openStreetMaps: String?,
     val capital: String,
-    val area: Double,
-    val population: Long,
+    val area: Double?,
+    val population: Long?,
     @ColumnInfo(name = "publish_date")
     val publishDate: Instant,
     @ColumnInfo(name = "update_date")
@@ -60,5 +60,6 @@ fun CountryEntity.asDataModel() = CountryModel(
     area = this.area,
     population = this.population,
     timezones = this.timezones,
-    maps = CountryModel.Maps(googleMaps = this.googleMaps, openStreetMaps = this.openStreetMaps)
+    maps = CountryModel.Maps(googleMaps = this.googleMaps, openStreetMaps = this.openStreetMaps),
+    publishDate = publishDate
 )
