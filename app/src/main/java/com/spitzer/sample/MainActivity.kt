@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.spitzer.sample.ui.theme.SampleTheme
 import com.spitzer.ui.navigation.CountriesScreenNavigation
 import com.spitzer.ui.navigation.countriesScreenNavigation
+import com.spitzer.ui.navigation.settingsScreenNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier,
                     ) {
                         countriesScreenNavigation(this, navHostController)
+                        settingsScreenNavigation(this, navHostController)
                     }
                 }
             }
