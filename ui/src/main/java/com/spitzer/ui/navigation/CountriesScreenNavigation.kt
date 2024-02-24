@@ -26,7 +26,7 @@ fun countriesScreenNavigation(
                 // TODO  navHostController.navigateToEditCountry()
             },
             onSettingsClicked = {
-                // TODO   navHostController.navigateToSettings()
+                navHostController.navigateToSettingsScreen()
             }
         )
     }
