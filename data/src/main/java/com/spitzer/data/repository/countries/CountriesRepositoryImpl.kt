@@ -13,16 +13,18 @@ import com.spitzer.database.model.asDataModel
 import com.spitzer.model.data.CountryModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class CountriesRepository @Inject constructor(
+class CountriesRepositoryImpl @Inject constructor(
     @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
     private val remote: FakeRemoteCountryDao,
     private val database: CountryDao
 ) : CountriesRepository {
+
     override val countriesData: Flow<List<CountryModel>> =
         database.getCountries().map {
             it.map { entity ->
@@ -32,10 +34,9 @@ class CountriesRepository @Inject constructor(
 
     override suspend fun updateCountries() {
         withContext(ioDispatcher) {
-            remote.getCountries().map { remoteList ->
-                database.upsertCountries(
-                    remoteList.map(FakeRemoteCountryEntity::asCountryEntity)
-                )
+            val remoteCountries = remote.getCountries().firstOrNull()
+            remoteCountries?.let {
+                database.upsertCountries(it.map(FakeRemoteCountryEntity::asCountryEntity))
             }
         }
     }

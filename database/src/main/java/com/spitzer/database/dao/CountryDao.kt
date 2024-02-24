@@ -27,11 +27,13 @@ interface CountryDao {
         orderByPublishDate: Boolean = true
     ): Flow<List<CountryEntity>>
 
+    @Transaction
     @Upsert
     suspend fun upsertCountry(
         country: CountryEntity
     )
 
+    @Transaction
     @Upsert
     suspend fun upsertCountries(
         countries: List<CountryEntity>
@@ -42,6 +44,7 @@ interface CountryDao {
         countries: List<CountryEntity>
     )
 
+    @Transaction
     @Query(
         value = """
             DELETE FROM countries
@@ -50,6 +53,7 @@ interface CountryDao {
     )
     suspend fun deleteCountries(cca3Codes: List<String>)
 
+    @Transaction
     @Query(
         value = """
             DELETE FROM countries
