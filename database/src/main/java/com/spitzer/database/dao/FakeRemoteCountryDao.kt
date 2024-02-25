@@ -60,4 +60,10 @@ interface FakeRemoteCountryDao {
         """,
     )
     suspend fun deleteAllCountries()
+
+    @Transaction
+    suspend fun deleteAllAndInsert(countries: List<FakeRemoteCountryEntity>) {
+        deleteAllCountries()
+        upsertCountries(countries)
+    }
 }

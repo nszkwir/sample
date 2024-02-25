@@ -10,7 +10,6 @@ import com.spitzer.network.CountriesNetworkDatasource
 import com.spitzer.network.model.CountryInfoNetworkModel
 import com.spitzer.network.model.asDataModel
 import kotlinx.coroutines.CoroutineDispatcher
-
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -25,10 +24,12 @@ class FakeCountriesRemoteRepositoryImpl @Inject constructor(
         withContext(ioDispatcher) {
             val countries = networkDatasource.getCountriesInfo()
                 .mapNotNull(CountryInfoNetworkModel::asDataModel)
-
-            countryDao.deleteAllCountries()
-            remoteCountryDao.deleteAllCountries()
-            remoteCountryDao.upsertCountries(countries.map { it.asFakeRemoteCountryEntity() })
+            try {
+                remoteCountryDao.deleteAllAndInsert(countries.map { it.asFakeRemoteCountryEntity() })
+                countryDao.deleteAllCountries()
+            } catch (e: Exception) { // TODO: identify room's specific exception types
+                // If remote fails, we don't remove local data
+            }
         }
     }
 }

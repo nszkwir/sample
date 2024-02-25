@@ -60,4 +60,10 @@ interface CountryDao {
         """,
     )
     suspend fun deleteAllCountries()
+
+    @Transaction
+    suspend fun deleteAllAndInsert(countries: List<CountryEntity>) {
+        deleteAllCountries()
+        upsertCountries(countries)
+    }
 }
