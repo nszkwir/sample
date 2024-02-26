@@ -1,4 +1,4 @@
-package com.spitzer.ui.feature.settings
+package com.spitzer.feature.settings
 
 import com.spitzer.ui.components.loadingButton.LoadingButtonState
 
