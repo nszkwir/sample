@@ -1,12 +1,13 @@
 package com.spitzer.ui.feature.settings
 
-sealed interface SettingsUiState {
+import com.spitzer.ui.components.loadingButton.LoadingButtonState
 
-    data object Loading : SettingsUiState
+data class SettingsUiState(
 
-    data class Success(
-        val countries: List<com.spitzer.model.data.CountryModel>,
-    ) : SettingsUiState
+    val remoteCountriesAmount: Int = 0,
+    val countriesAmount: Int = 0,
+    val restoreButtonState: LoadingButtonState = LoadingButtonState.IDLE,
 
-    data object Error : SettingsUiState
-}
+    val isLoading: Boolean = false,
+    val isError: Boolean = false,
+)
