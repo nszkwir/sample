@@ -1,4 +1,4 @@
-package com.spitzer.ui.feature.settings
+package com.spitzer.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

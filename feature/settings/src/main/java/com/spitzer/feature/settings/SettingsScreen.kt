@@ -1,4 +1,4 @@
-package com.spitzer.ui.feature.settings
+package com.spitzer.feature.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +15,7 @@ import com.spitzer.ui.components.loadingButton.OutlinedLoadingButton
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
 import com.spitzer.ui.layout.scaffold.TopBarConfiguration
 import com.spitzer.ui.layout.scaffold.TopBarLayout
+
 
 @Composable
 fun SettingsScreen(
