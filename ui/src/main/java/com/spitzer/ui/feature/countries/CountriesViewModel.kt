@@ -10,11 +10,12 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CountriesViewModel @Inject constructor(
-    countriesRepository: CountriesRepository
+    private val countriesRepository: CountriesRepository
 ) : ViewModel() {
 
     val countriesState: StateFlow<CountriesUiState> =
@@ -36,4 +37,7 @@ class CountriesViewModel @Inject constructor(
                 initialValue = CountriesUiState.Loading,
             )
 
+    fun refreshCountyList() = viewModelScope.launch {
+        countriesRepository.updateCountries()
+    }
 }

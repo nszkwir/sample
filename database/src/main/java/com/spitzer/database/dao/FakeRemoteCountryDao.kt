@@ -27,11 +27,13 @@ interface FakeRemoteCountryDao {
         orderByPublishDate: Boolean = true
     ): Flow<List<FakeRemoteCountryEntity>>
 
+    @Transaction
     @Upsert
     suspend fun upsertCountry(
         country: FakeRemoteCountryEntity
     )
 
+    @Transaction
     @Upsert
     suspend fun upsertCountries(
         countries: List<FakeRemoteCountryEntity>
@@ -42,6 +44,7 @@ interface FakeRemoteCountryDao {
         countries: List<FakeRemoteCountryEntity>
     )
 
+    @Transaction
     @Query(
         value = """
             DELETE FROM fake_remote_countries
@@ -50,10 +53,17 @@ interface FakeRemoteCountryDao {
     )
     suspend fun deleteCountries(cca3Codes: List<String>)
 
+    @Transaction
     @Query(
         value = """
             DELETE FROM fake_remote_countries
         """,
     )
     suspend fun deleteAllCountries()
+
+    @Transaction
+    suspend fun deleteAllAndInsert(countries: List<FakeRemoteCountryEntity>) {
+        deleteAllCountries()
+        upsertCountries(countries)
+    }
 }

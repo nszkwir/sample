@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.spitzer.sample.ui.theme.SampleTheme
 import com.spitzer.ui.navigation.CountriesScreenNavigation
 import com.spitzer.ui.navigation.countriesScreenNavigation
+import com.spitzer.ui.navigation.settingsScreenNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color.White
                 ) {
                     NavHost(
                         navController = navHostController,
@@ -32,6 +34,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier,
                     ) {
                         countriesScreenNavigation(this, navHostController)
+                        settingsScreenNavigation(this, navHostController)
                     }
                 }
             }

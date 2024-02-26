@@ -15,8 +15,8 @@ fun ScaffoldLayout(
     backgroundColor: Color = Color.LightGray,
     isLoading: Boolean = false,
     topBarContent: @Composable () -> Unit,
-    fabContent: @Composable () -> Unit,
-    loadingContent: @Composable (Dp) -> Unit,
+    fabContent: @Composable () -> Unit = {},
+    loadingContent: @Composable (Dp) -> Unit = {},
     content: @Composable () -> Unit
 ) {
     Scaffold(

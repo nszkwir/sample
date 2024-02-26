@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.spitzer.ui.R
@@ -31,7 +32,7 @@ fun CountriesScreen(
         topBarContent = {
             TopBarLayout(
                 configuration = TopBarConfiguration(
-                    title = "Countries",
+                    title = stringResource(id = R.string.countries),
                     buttonIconId = R.drawable.baseline_settings_24,
                     onButtonClicked = onSettingsClicked
                 )
@@ -42,6 +43,9 @@ fun CountriesScreen(
             LoadingLayout(Modifier.padding(top = it))
         }
     ) {
-        CountryListLayout(countries = countries)
+        CountryListLayout(
+            countries = countries,
+            refreshCountryList = viewModel::refreshCountyList
+        )
     }
 }
