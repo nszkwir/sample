@@ -26,6 +26,7 @@ class SettingsViewModel @Inject constructor(
             fakeCountriesRepository.updateCountries()
                 .collect { state ->
                     val buttonState = state.toLoadingButtonState()
+                    // Adding delays to emulate network behavior
                     when (buttonState) {
                         LoadingButtonState.ERROR, LoadingButtonState.SUCCESS -> delay(3000)
                         LoadingButtonState.IDLE -> delay(2000)

@@ -33,6 +33,12 @@ fun LoadingButtonState.getContentDescription(contentDescription: String?) =
         else -> contentDescription
     }
 
+fun LoadingButtonState.getRotation() =
+    when (this) {
+        LoadingButtonState.IN_PROGRESS -> 360f
+        else -> 0f
+    }
+
 fun TransactionState.toLoadingButtonState() =
     when (this) {
         TransactionState.IDLE -> LoadingButtonState.IDLE
