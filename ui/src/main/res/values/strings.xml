@@ -22,4 +22,6 @@
     <string name="back_CD">go back</string>
     <string name="save_CD">save</string>
     <string name="edit_CD">edit</string>
+    <string name="loading_CD">Loading</string>
+
 </resources>

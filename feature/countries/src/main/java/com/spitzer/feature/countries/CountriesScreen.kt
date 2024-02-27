@@ -9,6 +9,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.spitzer.ui.R
 import com.spitzer.ui.layout.CountryListLayout
+import com.spitzer.ui.layout.scaffold.FABConfiguration
+import com.spitzer.ui.layout.scaffold.FABLayout
 import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
 import com.spitzer.ui.layout.scaffold.TopBarConfiguration
@@ -38,7 +40,15 @@ fun CountriesScreen(
                 )
             )
         },
-        fabContent = { /*TODO*/ },
+        fabContent = {
+            FABLayout(
+                configuration = FABConfiguration(
+                    fabIconId = R.drawable.baseline_add_24,
+                    onFABClicked = fabButtonClicked,
+                    fabContentDescription = stringResource(id = R.string.addCountry_CD)
+                )
+            )
+        },
         loadingContent = {
             LoadingLayout(Modifier.padding(top = it))
         }

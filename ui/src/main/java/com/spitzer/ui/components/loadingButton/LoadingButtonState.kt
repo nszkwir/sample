@@ -1,21 +1,24 @@
 package com.spitzer.ui.components.loadingButton
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.spitzer.common.database.TransactionState
 import com.spitzer.ui.R
+import com.spitzer.ui.theme.BlueGray300
+import com.spitzer.ui.theme.Green600
 
 enum class LoadingButtonState {
     IDLE, IN_PROGRESS, SUCCESS, ERROR
 }
 
+@Composable
 fun LoadingButtonState.getColor() =
     when (this) {
-        LoadingButtonState.IDLE -> Color.DarkGray
-        LoadingButtonState.IN_PROGRESS -> Color.Gray
-        LoadingButtonState.SUCCESS -> Color.Green
-        LoadingButtonState.ERROR -> Color.Red
+        LoadingButtonState.IDLE -> MaterialTheme.colorScheme.outline
+        LoadingButtonState.IN_PROGRESS -> BlueGray300
+        LoadingButtonState.SUCCESS -> Green600
+        LoadingButtonState.ERROR -> MaterialTheme.colorScheme.error
     }
 
 fun LoadingButtonState.getDrawableId(idleDrawableId: Int?) =
@@ -46,4 +49,3 @@ fun TransactionState.toLoadingButtonState() =
         TransactionState.SUCCESS -> LoadingButtonState.SUCCESS
         TransactionState.ERROR -> LoadingButtonState.ERROR
     }
-

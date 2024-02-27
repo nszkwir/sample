@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
@@ -39,10 +38,11 @@ fun OutlinedLoadingButton(
     onClick: () -> Unit = {},
 ) {
     // Color animation
-    val stateTransition = updateTransition(targetState = state, label = "colorTransition")
+    val stateTransition =
+        updateTransition(targetState = state, label = "colorTransition_OutlinedLoadingButton")
     val colorAnimation by stateTransition.animateColor(
         transitionSpec = { tween(durationMillis = 500) },
-        label = "colorAnimation",
+        label = "colorAnimation_OutlinedLoadingButton",
         targetValueByState = {
             it.getColor()
         }
@@ -50,18 +50,18 @@ fun OutlinedLoadingButton(
     // Icon resource
     val targetIconResource = state.getDrawableId(idleDrawable)
     // Rotation animation
-    val infiniteTransition = rememberInfiniteTransition(label = "infiniteTransition")
+    val infiniteTransition =
+        rememberInfiniteTransition(label = "infiniteTransition_OutlinedLoadingButton")
     val infiniteRotation by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = state.getRotation(),
         animationSpec = infiniteRepeatable(
             animation = tween(2000, easing = LinearEasing)
-        ), label = "infiniteRotation"
+        ), label = "infiniteRotation_OutlinedLoadingButton"
     )
 
     OutlinedButton(
         modifier = modifier.fillMaxWidth(),
-        colors = ButtonDefaults.outlinedButtonColors().copy(contentColor = Color.Red),
         border = BorderStroke(ButtonDefaults.outlinedButtonBorder.width, colorAnimation),
         onClick = {
             if (state == LoadingButtonState.IDLE) onClick()
@@ -73,7 +73,7 @@ fun OutlinedLoadingButton(
         Crossfade(
             targetState = targetIconResource,
             animationSpec = tween(durationMillis = 500),
-            label = "iconTransition"
+            label = "iconTransition_OutlinedLoadingButton"
         ) { drawableId ->
             Image(
                 modifier = Modifier.graphicsLayer(rotationZ = infiniteRotation),
