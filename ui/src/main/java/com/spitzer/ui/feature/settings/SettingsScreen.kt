@@ -29,6 +29,7 @@ fun SettingsScreen(
                 configuration = TopBarConfiguration(
                     title = stringResource(id = R.string.settings),
                     navIconId = R.drawable.baseline_arrow_back_24,
+                    navIconContentDescription = stringResource(id = R.string.back_CD),
                     onNavIconClicked = onBackClicked
                 )
             )

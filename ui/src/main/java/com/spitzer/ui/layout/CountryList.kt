@@ -48,6 +48,7 @@ import kotlinx.coroutines.delay
 fun CountryListLayout(
     modifier: Modifier = Modifier,
     countries: List<CountryModel>,
+    onCountryClicked: (CountryModel) -> Unit,
     refreshCountryList: () -> Unit
 ) {
     val pullRefreshState = rememberPullToRefreshState()
