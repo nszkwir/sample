@@ -48,9 +48,12 @@ import kotlinx.coroutines.delay
 fun CountryListLayout(
     modifier: Modifier = Modifier,
     countries: List<CountryModel>,
+    onCountryClicked: (CountryModel) -> Unit,
     refreshCountryList: () -> Unit
 ) {
-    val pullRefreshState = rememberPullToRefreshState()
+    val pullRefreshState = rememberPullToRefreshState(
+
+    )
     if (pullRefreshState.isRefreshing) {
         LaunchedEffect(true) {
             refreshCountryList()
@@ -60,104 +63,105 @@ fun CountryListLayout(
     }
     Box(
         modifier = modifier
-            .padding(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)
+            .padding(top = 0.dp, start = 20.dp, end = 20.dp, bottom = 0.dp)
             .nestedScroll(pullRefreshState.nestedScrollConnection)
     ) {
         LazyColumn(
-            modifier = Modifier,
+            modifier = Modifier.fillMaxSize(),
         ) {
             item {
                 Spacer(modifier = Modifier.height(10.dp))
             }
-            if (!pullRefreshState.isRefreshing) {
-                items(countries) { country ->
-                    Card(
-                        modifier = Modifier
-                            .padding(bottom = 20.dp)
-                            .fillMaxWidth()
-                            .height(100.dp)
+            items(countries) { country ->
+                Card(
+                    modifier = Modifier
+                        .padding(bottom = 20.dp)
+                        .fillMaxWidth()
+                        .height(100.dp)
 
+                ) {
+                    Box(
+                        modifier = Modifier.fillMaxSize()
                     ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .clipToBounds()
-                                    .combinedClickable(
-                                        onClick = {
-                                            //onCountryClicked(country)
-                                        },
-                                        onLongClick = {
-                                            //countrySelected(country, true)
-                                        }
-                                    ),
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Image(
-                                    painter = rememberAsyncImagePainter(
-                                        country.flag?.svg
-                                            ?: R.drawable.baseline_broken_image_24
-                                    ),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(100.dp)
-                                        .clipToBounds(),
-                                    contentScale = ContentScale.Fit,
-                                )
-                                Column(
-                                    modifier = Modifier
-                                        .padding(vertical = 10.dp, horizontal = 20.dp)
-                                        .weight(7f)
-                                        .align(Alignment.CenterVertically),
-                                    verticalArrangement = Arrangement.Top,
-                                ) {
-                                    Text(
-                                        text = country.name.common ?: "",
-                                        style = TextStyle.Default.copy(
-                                            fontSize = 20.sp,
-                                            color = Color.Black,
-                                            fontWeight = FontWeight(600)
-                                        )
-                                    )
-                                    Text(
-                                        text = country.capital,
-                                        style = TextStyle.Default.copy(
-                                            fontSize = 18.sp,
-                                            color = Color.DarkGray,
-                                            fontWeight = FontWeight(400),
-                                            fontStyle = FontStyle.Italic,
-                                        )
-                                    )
-                                }
-                                Column(
-                                    modifier = Modifier
-                                        .width(width = 40.dp)
-                                        .fillMaxHeight()
-                                        .weight(3f)
-                                        .align(Alignment.CenterVertically),
-                                    verticalArrangement = Arrangement.Center,
-                                ) {
-                                    Row(
-                                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                                    ) {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.baseline_chevron_right_24),
-                                            contentDescription = stringResource(R.string.edit_CD),
-                                            colorFilter = ColorFilter.tint(Color.Blue.copy(alpha = 0.7f)),
-                                            modifier = Modifier
-                                                .size(40.dp)
-                                                .padding(8.dp),
-                                            alignment = Alignment.Center
-                                        )
-                                        Spacer(modifier = Modifier.size(4.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clipToBounds()
+                                .combinedClickable(
+                                    onClick = {
+                                        //onCountryClicked(country)
+                                    },
+                                    onLongClick = {
+                                        //countrySelected(country, true)
                                     }
+                                ),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Image(
+                                painter = rememberAsyncImagePainter(
+                                    country.flag?.svg
+                                        ?: R.drawable.baseline_broken_image_24
+                                ),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(100.dp)
+                                    .clipToBounds(),
+                                contentScale = ContentScale.Fit,
+                            )
+                            Column(
+                                modifier = Modifier
+                                    .padding(vertical = 10.dp, horizontal = 20.dp)
+                                    .weight(7f)
+                                    .align(Alignment.CenterVertically),
+                                verticalArrangement = Arrangement.Top,
+                            ) {
+                                Text(
+                                    text = country.name.common ?: "",
+                                    style = TextStyle.Default.copy(
+                                        fontSize = 20.sp,
+                                        color = Color.Black,
+                                        fontWeight = FontWeight(600)
+                                    )
+                                )
+                                Text(
+                                    text = country.capital,
+                                    style = TextStyle.Default.copy(
+                                        fontSize = 18.sp,
+                                        color = Color.DarkGray,
+                                        fontWeight = FontWeight(400),
+                                        fontStyle = FontStyle.Italic,
+                                    )
+                                )
+                            }
+                            Column(
+                                modifier = Modifier
+                                    .width(width = 40.dp)
+                                    .fillMaxHeight()
+                                    .weight(3f)
+                                    .align(Alignment.CenterVertically),
+                                verticalArrangement = Arrangement.Center,
+                            ) {
+                                Row(
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.baseline_chevron_right_24),
+                                        contentDescription = stringResource(R.string.edit_CD),
+                                        colorFilter = ColorFilter.tint(Color.Blue.copy(alpha = 0.7f)),
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                            .padding(8.dp),
+                                        alignment = Alignment.Center
+                                    )
+                                    Spacer(modifier = Modifier.size(4.dp))
                                 }
                             }
                         }
                     }
                 }
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
             }
         }
 

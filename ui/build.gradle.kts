@@ -41,6 +41,9 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":common"))
     implementation(project(":model"))
+    implementation(libs.androidx.junit.ktx)
+    androidTestImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.12")
 
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
