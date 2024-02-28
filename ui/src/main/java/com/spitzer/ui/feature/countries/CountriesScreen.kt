@@ -1,4 +1,4 @@
-package com.spitzer.feature.countries
+package com.spitzer.ui.feature.countries
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable

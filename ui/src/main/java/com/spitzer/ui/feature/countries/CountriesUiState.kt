@@ -1,4 +1,4 @@
-package com.spitzer.feature.countries
+package com.spitzer.ui.feature.countries
 
 sealed interface CountriesUiState {
 
