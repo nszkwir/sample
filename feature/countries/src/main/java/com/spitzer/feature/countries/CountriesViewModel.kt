@@ -1,4 +1,4 @@
-package com.spitzer.ui.feature.countries
+package com.spitzer.feature.countries
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
