@@ -42,8 +42,7 @@ fun CountriesScreen(
         },
         fabContent = {
             FABLayout(
-                configuration =
-                FABConfiguration(
+                configuration = FABConfiguration(
                     fabIconId = R.drawable.baseline_add_24,
                     onFABClicked = fabButtonClicked,
                     fabContentDescription = stringResource(id = R.string.addCountry_CD)
