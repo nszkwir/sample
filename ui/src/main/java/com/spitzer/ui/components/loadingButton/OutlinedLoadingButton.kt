@@ -18,15 +18,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.spitzer.ui.theme.SampleTheme
 import com.spitzer.ui.tooling.PhonePreview
 
 @Composable
@@ -61,13 +63,14 @@ fun OutlinedLoadingButton(
 
     OutlinedButton(
         modifier = modifier.fillMaxWidth(),
-        colors = ButtonDefaults.outlinedButtonColors().copy(contentColor = Color.Red),
         border = BorderStroke(ButtonDefaults.outlinedButtonBorder.width, colorAnimation),
         onClick = {
             if (state == LoadingButtonState.IDLE) onClick()
         }
     ) {
-        Text(text = text, color = colorAnimation)
+        ProvideTextStyle(value = TextStyle.Default.copy(color = colorAnimation)) {
+            Text(text = text)
+        }
         Spacer(modifier = Modifier.width(20.dp))
         // Icon transition
         Crossfade(
@@ -88,12 +91,14 @@ fun OutlinedLoadingButton(
 @PhonePreview
 @Composable
 fun OutlinedLoadingButtonPreview() {
-    Column(
-        modifier = Modifier.padding(20.dp)
-    ) {
-        OutlinedLoadingButton(text = "Button")
-        OutlinedLoadingButton(text = "Button", state = LoadingButtonState.IN_PROGRESS)
-        OutlinedLoadingButton(text = "Button", state = LoadingButtonState.SUCCESS)
-        OutlinedLoadingButton(text = "Button", state = LoadingButtonState.ERROR)
+    SampleTheme {
+        Column(
+            modifier = Modifier.padding(20.dp)
+        ) {
+            OutlinedLoadingButton(text = "Button")
+            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.IN_PROGRESS)
+            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.SUCCESS)
+            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.ERROR)
+        }
     }
 }

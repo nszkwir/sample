@@ -6,6 +6,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.spitzer.common.database.TransactionState
 import com.spitzer.ui.R
+import com.spitzer.ui.theme.BlueGray400
+import com.spitzer.ui.theme.Green500
+import com.spitzer.ui.theme.Green600
 
 enum class LoadingButtonState {
     IDLE, IN_PROGRESS, SUCCESS, ERROR
@@ -15,8 +18,8 @@ enum class LoadingButtonState {
 fun LoadingButtonState.getColor() =
     when (this) {
         LoadingButtonState.IDLE -> MaterialTheme.colorScheme.outline
-        LoadingButtonState.IN_PROGRESS -> Color.Gray
-        LoadingButtonState.SUCCESS -> Color.Green
+        LoadingButtonState.IN_PROGRESS -> BlueGray400
+        LoadingButtonState.SUCCESS -> Green600
         LoadingButtonState.ERROR -> MaterialTheme.colorScheme.error
     }
 
