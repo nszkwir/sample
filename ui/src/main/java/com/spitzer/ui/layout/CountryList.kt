@@ -104,7 +104,7 @@ fun CountryListLayout(
                                     .fillMaxHeight()
                                     .weight(6f)
                                     .clipToBounds(),
-                                contentScale = ContentScale.FillHeight,
+                                contentScale = ContentScale.FillBounds,
                             )
                             Column(
                                 modifier = Modifier
