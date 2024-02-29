@@ -4,23 +4,23 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.spitzer.ui.feature.dashboard.DashboardScreen
+import com.spitzer.ui.feature.settings.SettingsScreen
 
-object DashboardScreenNavigation : NavRoute(
-    route = "DashboardScreen"
+object SettingsScreenNavigation : NavRoute(
+    route = "SettingsScreen"
 )
 
-fun NavHostController.navigateToDashboardScreen(navOptions: NavOptions? = null) =
-    navigate(DashboardScreenNavigation.route, navOptions)
+fun NavHostController.navigateToSettingsScreen(navOptions: NavOptions? = null) =
+    navigate(SettingsScreenNavigation.route, navOptions)
 
-fun dashboardScreenNavigation(
+fun settingsScreenNavigation(
     navGraphBuilder: NavGraphBuilder,
     navHostController: NavHostController
 ) {
     navGraphBuilder.composable(
-        route = DashboardScreenNavigation.route, arguments = DashboardScreenNavigation.arguments
+        route = SettingsScreenNavigation.route, arguments = SettingsScreenNavigation.arguments
     ) {
-        DashboardScreen(
+        SettingsScreen(
             onBackClicked = {
                 navHostController.navigateUp()
             }

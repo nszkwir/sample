@@ -13,8 +13,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.spitzer.ui.R
 import com.spitzer.ui.components.loadingButton.OutlinedLoadingButton
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.TopBarConfiguration
-import com.spitzer.ui.layout.scaffold.TopBarLayout
+import com.spitzer.ui.layout.scaffold.topbar.TopBarConfiguration
+import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
 
 @Composable
 fun SettingsScreen(

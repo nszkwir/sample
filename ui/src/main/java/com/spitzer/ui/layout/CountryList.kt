@@ -19,6 +19,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -27,17 +30,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.spitzer.model.data.CountryModel
 import com.spitzer.ui.R
@@ -73,7 +70,8 @@ fun CountryListLayout(
                 Spacer(modifier = Modifier.height(10.dp))
             }
             items(countries) { country ->
-                Card(
+
+                OutlinedCard(
                     modifier = Modifier
                         .padding(bottom = 20.dp)
                         .fillMaxWidth()
@@ -99,14 +97,14 @@ fun CountryListLayout(
                         ) {
                             Image(
                                 painter = rememberAsyncImagePainter(
-                                    country.flag?.svg
-                                        ?: R.drawable.baseline_broken_image_24
+                                    country.flag?.svg ?: R.drawable.baseline_broken_image_24
                                 ),
                                 contentDescription = null,
                                 modifier = Modifier
-                                    .size(100.dp)
+                                    .fillMaxHeight()
+                                    .weight(6f)
                                     .clipToBounds(),
-                                contentScale = ContentScale.Fit,
+                                contentScale = ContentScale.FillBounds,
                             )
                             Column(
                                 modifier = Modifier
@@ -116,42 +114,32 @@ fun CountryListLayout(
                                 verticalArrangement = Arrangement.Top,
                             ) {
                                 Text(
-                                    text = country.name.common ?: "",
-                                    style = TextStyle.Default.copy(
-                                        fontSize = 20.sp,
-                                        color = Color.Black,
-                                        fontWeight = FontWeight(600)
-                                    )
+                                    text = country.name.common,
+                                    style = MaterialTheme.typography.titleLarge
                                 )
                                 Text(
                                     text = country.capital,
-                                    style = TextStyle.Default.copy(
-                                        fontSize = 18.sp,
-                                        color = Color.DarkGray,
-                                        fontWeight = FontWeight(400),
-                                        fontStyle = FontStyle.Italic,
-                                    )
+                                    style = MaterialTheme.typography.bodyMedium
                                 )
                             }
                             Column(
                                 modifier = Modifier
                                     .width(width = 40.dp)
                                     .fillMaxHeight()
-                                    .weight(3f)
+                                    .weight(2f)
                                     .align(Alignment.CenterVertically),
                                 verticalArrangement = Arrangement.Center,
                             ) {
                                 Row(
                                     modifier = Modifier.align(Alignment.CenterHorizontally)
                                 ) {
-                                    Image(
+                                    Icon(
                                         painter = painterResource(id = R.drawable.baseline_chevron_right_24),
                                         contentDescription = stringResource(R.string.edit_CD),
-                                        colorFilter = ColorFilter.tint(Color.Blue.copy(alpha = 0.7f)),
                                         modifier = Modifier
                                             .size(40.dp)
-                                            .padding(8.dp),
-                                        alignment = Alignment.Center
+                                            .padding(8.dp)
+                                            .align(Alignment.CenterVertically),
                                     )
                                     Spacer(modifier = Modifier.size(4.dp))
                                 }

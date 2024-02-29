@@ -22,7 +22,7 @@ fun FABLayout(
     if (configuration.fabIconId != null && configuration.onFABClicked != null) {
         FloatingActionButton(
             modifier = modifier,
-            shape = CircleShape,
+            //shape = CircleShape,
             onClick = { configuration.onFABClicked.invoke() }
         ) {
             Icon(

@@ -42,8 +42,6 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":model"))
     implementation(libs.androidx.junit.ktx)
-    androidTestImplementation("junit:junit:4.12")
-    testImplementation("junit:junit:4.12")
 
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
@@ -61,13 +59,18 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     implementation(libs.coil.kt.svg)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    testImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.junit)
 
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
