@@ -31,6 +31,16 @@ fun createThemePrimaryColorGradient(): Brush {
     )
 }
 
+@Composable
+fun createPrimaryToTransparentGradient(): Brush {
+    return createGradientBrush(
+        listOf(
+            MaterialTheme.colorScheme.primary,
+            Color.Transparent
+        )
+    )
+}
+
 fun createGradientBrush(
     colors: List<Color>,
     isVertical: Boolean = true

@@ -6,10 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.spitzer.ui.graphics.setDecorFitsSystemWindows
 import com.spitzer.ui.navigation.CountriesScreenNavigation
 import com.spitzer.ui.navigation.countriesScreenNavigation
+import com.spitzer.ui.navigation.dashboardScreenNavigation
 import com.spitzer.ui.navigation.settingsScreenNavigation
 import com.spitzer.ui.theme.SampleTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navHostController = rememberNavController()
             SampleTheme {
+                LocalContext.current.setDecorFitsSystemWindows(false)
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                 ) {
@@ -31,6 +35,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         countriesScreenNavigation(this, navHostController)
                         settingsScreenNavigation(this, navHostController)
+                        dashboardScreenNavigation(this, navHostController)
                     }
                 }
             }
