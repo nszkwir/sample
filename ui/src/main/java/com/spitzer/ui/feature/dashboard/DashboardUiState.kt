@@ -4,10 +4,13 @@ import com.spitzer.model.data.CountryModel
 
 data class DashboardUiState(
     val searchText: String? = null,
-    val countries: List<DashboardCountryModel> = emptyList(),
-    val countriesUiState: DashboardCountriesUiState = DashboardCountriesUiState.Success(emptyList()),
-    val showDashboardCards: Boolean = true,
+    val countries: List<DashboardCountryModel>? = null,
+    val searchingCountriesProgress: Boolean = false,
+    val searchingCountriesError: Boolean = false,
+    //val countriesUiState: DashboardCountriesUiState = DashboardCountriesUiState.Success(emptyList()),
     val searchIsActive: Boolean = false,
+
+    // TODO this is related to the main loading phase
     val isLoading: Boolean = false,
     val isError: Boolean = false,
 )

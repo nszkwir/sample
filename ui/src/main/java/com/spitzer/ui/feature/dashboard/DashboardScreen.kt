@@ -23,9 +23,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -59,24 +57,11 @@ fun DashboardScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    val isCountrySearchActive by remember(uiState) {
-        derivedStateOf { (uiState.searchText?.length ?: 0) > 1 }
-    }
-
-    val showCountriesError by remember(uiState) {
-        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Error }
-    }
-
-    val showCountriesLoading by remember(uiState) {
-        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Loading }
-    }
-
-    val showCountries by remember(uiState) {
-        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Success }
-    }
-
-    // We only show the dashboard cards when there are no countries to show
-    val showDashboardCards = !showCountries
+    val showCountriesError = uiState.searchIsActive && uiState.searchingCountriesError
+    val showCountriesLoading = uiState.searchIsActive && uiState.searchingCountriesProgress
+    val showCountries = uiState.searchIsActive && !showCountriesError && !showCountriesLoading
+//    // We only show the dashboard cards when there are no countries to show
+    val showDashboardCards = !uiState.searchIsActive
 
     // Windows configuration
     val systemUiController = rememberSystemUiController()
@@ -221,7 +206,7 @@ fun DashboardScreen(
                 }
 
                 if (showCountries) {
-                    with((uiState.countriesUiState as DashboardCountriesUiState.Success).countries) {
+                    with(uiState.countries) {
                         if (this.isNullOrEmpty()) {
                             item {
                                 DashboardCard(
@@ -233,6 +218,9 @@ fun DashboardScreen(
                                 )
                             }
                         } else {
+                            item {
+                                Spacer(Modifier.size(80.dp))
+                            }
                             items(this) { country ->
                                 Row(
                                     modifier = Modifier.padding(10.dp),

@@ -36,25 +36,28 @@ class DashboardViewModel @Inject constructor(
             searchJob = viewModelScope.launch {
                 try {
                     countriesRepository.countriesData.asResult().collect { result ->
-                        val countriesUiState = when (result) {
+                        val (loading, error, countries) = when (result) {
                             is Result.Success -> {
                                 val searchTextLowercase = searchText.lowercase()
-                                DashboardCountriesUiState.Success(
-                                    result.data.mapNotNull {
-                                        if (it.capital.lowercase()
-                                                .contains(searchTextLowercase) || it.name.common.lowercase()
-                                                .contains(searchTextLowercase)
-                                        ) it.asDashboardCountryModel()
-                                        else null
-                                    }
-                                )
+                                val countries = result.data.mapNotNull {
+                                    if (it.capital.lowercase()
+                                            .contains(searchTextLowercase) || it.name.common.lowercase()
+                                            .contains(searchTextLowercase)
+                                    ) it.asDashboardCountryModel()
+                                    else null
+                                }
+                                Triple(false, false, countries)
                             }
 
-                            is Result.Loading -> DashboardCountriesUiState.Loading
-                            is Result.Error -> DashboardCountriesUiState.Error
+                            is Result.Loading -> Triple(true, false, null)
+                            is Result.Error -> Triple(false, true, null)
                         }
                         _uiState.update {
-                            it.copy(countriesUiState = countriesUiState)
+                            it.copy(
+                                searchingCountriesProgress = loading,
+                                searchingCountriesError = error,
+                                countries = countries
+                            )
                         }
                     }
                 } finally {
