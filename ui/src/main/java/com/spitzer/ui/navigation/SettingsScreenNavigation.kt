@@ -21,6 +21,9 @@ fun dashboardScreenNavigation(
         route = DashboardScreenNavigation.route, arguments = DashboardScreenNavigation.arguments
     ) {
         DashboardScreen(
+            onCountryClicked = {
+
+            },
             onBackClicked = {
                 navHostController.navigateUp()
             }
