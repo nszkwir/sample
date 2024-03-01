@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -59,11 +59,24 @@ fun DashboardScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    val showCards by remember(uiState) {
-        derivedStateOf {
-            (uiState.searchText?.length ?: 0) < 3 || uiState.countries.isNullOrEmpty()
-        }
+    val isCountrySearchActive by remember(uiState) {
+        derivedStateOf { (uiState.searchText?.length ?: 0) > 1 }
     }
+
+    val showCountriesError by remember(uiState) {
+        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Error }
+    }
+
+    val showCountriesLoading by remember(uiState) {
+        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Loading }
+    }
+
+    val showCountries by remember(uiState) {
+        derivedStateOf { isCountrySearchActive && uiState.countriesUiState is DashboardCountriesUiState.Success }
+    }
+
+    // We only show the dashboard cards when there are no countries to show
+    val showDashboardCards = !showCountries
 
     // Windows configuration
     val systemUiController = rememberSystemUiController()
@@ -94,8 +107,7 @@ fun DashboardScreen(
         },
     ) {
         Column(
-            modifier = Modifier
-                .padding(top = 0.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)
+            modifier = Modifier.padding(top = 0.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
@@ -133,82 +145,117 @@ fun DashboardScreen(
 
             Spacer(modifier = Modifier.size(20.dp))
 
-            Column(
-                modifier = Modifier.verticalScroll(rememberScrollState())
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
             ) {
-                AnimateSlideFromLeft(isVisible = showCards) {
-                    Row(
-                        modifier = Modifier
-                            .padding(vertical = 5.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        DashboardCard(
-                            modifier = Modifier.padding(end = 40.dp),
-                            title = "Flags and Coat of arms",
-                            subtitle = "Explore the diverse flags and coats of arms of the countries!",
-                            imageId = R.drawable.baseline_outlined_flag_24
-                        )
-                    }
-                }
-
-                AnimateSlideFromRight(isVisible = showCards) {
-                    Row(
-                        modifier = Modifier
-                            .padding(vertical = 5.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        DashboardCard(
-                            modifier = Modifier.padding(start = 40.dp),
-                            title = "Full information",
-                            subtitle = "Learn more details about countries!",
-                            imageId = R.drawable.baseline_search_24,
-                            leftIcon = false
-                        )
-                    }
-                }
-
-
-                AnimateSlideFromLeft(isVisible = showCards) {
-                    Row(
-                        modifier = Modifier
-                            .padding(vertical = 5.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        DashboardCard(
-                            modifier = Modifier.padding(end = 40.dp),
-                            title = "Statistics",
-                            subtitle = "Compare and get insight about countries characteristics.",
-                            imageId = R.drawable.baseline_query_stats_24
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.size(10.dp))
-
-                LazyColumn(
-                   // modifier = Modifier.fillMaxSize(),
-                ) {
-                    item {
-
-                    }
-
-                    items(uiState.countries) { country ->
+                item {
+                    AnimateSlideFromLeft(isVisible = showDashboardCards) {
                         Row(
-                            modifier = Modifier.padding(10.dp),
-                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .padding(vertical = 5.dp)
+                                .fillMaxWidth(),
                             horizontalArrangement = Arrangement.Start
                         ) {
-                            Image(
-                                modifier = Modifier.size(width = 30.dp, height = 20.dp),
-                                painter = rememberAsyncImagePainter(
-                                    country.flagUrl ?: R.drawable.baseline_broken_image_24
-                                ), contentDescription = null
+                            DashboardCard(
+                                modifier = Modifier.padding(end = 40.dp),
+                                title = "Flags and Coat of arms",
+                                subtitle = "Explore the diverse flags and coats of arms of the countries!",
+                                imageId = R.drawable.baseline_outlined_flag_24
                             )
-                            Spacer(modifier = Modifier.size(20.dp))
-                            Text(text = country.name, style = MaterialTheme.typography.labelSmall)
+                        }
+                    }
+
+                    AnimateSlideFromRight(isVisible = showDashboardCards) {
+                        Row(
+                            modifier = Modifier
+                                .padding(vertical = 5.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            DashboardCard(
+                                modifier = Modifier.padding(start = 40.dp),
+                                title = "Full information",
+                                subtitle = "Learn more details about countries!",
+                                imageId = R.drawable.baseline_search_24,
+                                leftIcon = false
+                            )
+                        }
+                    }
+
+
+                    AnimateSlideFromLeft(isVisible = showDashboardCards) {
+                        Row(
+                            modifier = Modifier
+                                .padding(vertical = 5.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Start
+                        ) {
+                            DashboardCard(
+                                modifier = Modifier.padding(end = 40.dp),
+                                title = "Statistics",
+                                subtitle = "Compare and get insight about countries characteristics.",
+                                imageId = R.drawable.baseline_query_stats_24
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.size(10.dp))
+                }
+
+                if (showCountriesError) {
+                    item {
+                        DashboardCard(
+                            modifier = Modifier.padding(end = 40.dp),
+                            title = "Ooops!",
+                            subtitle = "An error occurred while searching for countries. Please try again.",
+                            imageId = R.drawable.baseline_sync_problem_24,
+                            isCompactMode = false
+                        )
+                    }
+                }
+
+                if (showCountriesLoading) {
+                    item {
+                        CircularProgressIndicator()
+                    }
+                }
+
+                if (showCountries) {
+                    with((uiState.countriesUiState as DashboardCountriesUiState.Success).countries) {
+                        if (this.isNullOrEmpty()) {
+                            item {
+                                DashboardCard(
+                                    modifier = Modifier.padding(end = 40.dp),
+                                    title = "Sorry!",
+                                    subtitle = "We haven't found any country with those parameters. Please try again.",
+                                    imageId = R.drawable.baseline_search_off_24,
+                                    isCompactMode = false
+                                )
+                            }
+                        } else {
+                            items(this) { country ->
+                                Row(
+                                    modifier = Modifier.padding(10.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Start
+                                ) {
+                                    Image(
+                                        modifier = Modifier.size(
+                                            width = 30.dp,
+                                            height = 20.dp
+                                        ),
+                                        painter = rememberAsyncImagePainter(
+                                            country.flagUrl
+                                                ?: R.drawable.baseline_broken_image_24
+                                        ), contentDescription = null
+                                    )
+                                    Spacer(modifier = Modifier.size(20.dp))
+                                    Text(
+                                        text = country.name,
+                                        style = MaterialTheme.typography.labelSmall
+                                    )
+                                }
+                            }
                         }
                     }
                 }
@@ -216,6 +263,7 @@ fun DashboardScreen(
         }
     }
 }
+
 
 @Composable
 fun DashboardCard(
@@ -270,7 +318,9 @@ fun DashboardCard(
                     )
                     Spacer(modifier = Modifier.size(2.dp))
                     Text(
-                        modifier = Modifier,
+                        modifier = Modifier.align(
+                            if (leftIcon) Alignment.Start else Alignment.End
+                        ),
                         text = subtitle,
                         style = MaterialTheme.typography.bodySmall.copy(
                             textAlign = if (leftIcon) TextAlign.Start else TextAlign.End

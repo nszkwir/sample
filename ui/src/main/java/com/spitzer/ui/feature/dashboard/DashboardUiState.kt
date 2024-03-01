@@ -5,11 +5,21 @@ import com.spitzer.model.data.CountryModel
 data class DashboardUiState(
     val searchText: String? = null,
     val countries: List<DashboardCountryModel> = emptyList(),
+    val countriesUiState: DashboardCountriesUiState = DashboardCountriesUiState.Success(emptyList()),
     val showDashboardCards: Boolean = true,
-    val showCountryList: Boolean = false,
+    val searchIsActive: Boolean = false,
     val isLoading: Boolean = false,
     val isError: Boolean = false,
 )
+
+sealed interface DashboardCountriesUiState {
+    data object Loading : DashboardCountriesUiState
+    data class Success(
+        val countries: List<DashboardCountryModel>,
+    ) : DashboardCountriesUiState
+
+    data object Error : DashboardCountriesUiState
+}
 
 data class DashboardCountryModel(
     val cca3: String,

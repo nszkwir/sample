@@ -53,3 +53,25 @@ fun AnimateSlideFromRight(
         content = content
     )
 }
+
+@Composable
+fun AnimateSlideFromBottom(
+    modifier: Modifier = Modifier,
+    isVisible: Boolean,
+    durationMillis: Int = 200,
+    content: @Composable AnimatedVisibilityScope.() -> Unit
+) {
+    AnimatedVisibility(
+        modifier = modifier,
+        visible = isVisible,
+        enter = slideIn(
+            initialOffset = { IntOffset(0, it.height) },
+            animationSpec = tween(durationMillis, 0, LinearEasing)
+        ),
+        exit = slideOut(
+            targetOffset = { IntOffset(0, it.height) },
+            animationSpec = tween(durationMillis, 0, LinearEasing)
+        ),
+        content = content
+    )
+}
