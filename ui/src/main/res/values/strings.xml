@@ -15,6 +15,19 @@
     <string name="populationExample">example: 45.000.000</string>
     <string name="countryNameExample">example: El Salvador</string>
     <string name="capitalCityExample">example: San Salvador</string>
+    <string name="ooops">Ooops</string>
+    <string name="errorSearchingCountries">An error occurred while searching for countries. Please try again.</string>
+    <string name="flagsAndCoatOfArms">Flags and Coat of arms</string>
+    <string name="exploreTheFlagsAndCoatOfArms">Explore the diverse flags and coats of arms of the countries!</string>
+    <string name="fullInformation">Full information</string>
+    <string name="learnMoreAboutCountries">Learn more details about countries!</string>
+    <string name="searchCountries">Search countries ...</string>
+    <string name="welcome">Welcome!</string>
+    <string name="sorry">Sorry!</string>
+    <string name="weHaventFoundAnyCountry">We haven\'t found any country with those parameters. Please try again.</string>
+    <string name="statistics">Statistics</string>
+    <string name="compareAndGetInsight">Compare and get insight about countries characteristics.</string>
+
 
     <string name="addCountry_CD">add country</string>
     <string name="editCountry_CD">edit country %s</string>
