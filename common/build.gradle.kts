@@ -38,5 +38,7 @@ android {
 
 dependencies {
     implementation(libs.hilt.android)
+    implementation(libs.androidx.core.ktx)
+
     kapt(libs.hilt.compiler)
 }
