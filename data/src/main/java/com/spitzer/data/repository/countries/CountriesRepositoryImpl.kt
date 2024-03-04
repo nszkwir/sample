@@ -24,6 +24,27 @@ class CountriesRepositoryImpl @Inject constructor(
     private val remote: FakeRemoteCountryDao,
     private val database: CountryDao
 ) : CountriesRepository {
+//
+//    // In-memory variable as MutableStateFlow
+//    private val _cachedData = MutableStateFlow<List<CountryModel>>(emptyList())
+//    val cachedData: StateFlow<List<CountryModel>> get() = _cachedData
+//
+//
+//    var countriesDatax: Flow<List<CountryModel>> = flow {
+//        emit(emptyList())
+//    }
+//
+//    init {
+//
+//        database.getCountries().collect()
+//
+//
+//        countriesDatax = flow {
+//            database.getCountries().collect {
+//                emit(it.map { entity -> entity.asDataModel() })
+//            }
+//        }.flowOn(ioDispatcher)
+//    }
 
     override val countriesData: Flow<List<CountryModel>> =
         database.getCountries().map {
@@ -47,5 +68,4 @@ class CountriesRepositoryImpl @Inject constructor(
             database.upsertCountry(country.asCountryEntity())
         }
     }
-
 }

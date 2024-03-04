@@ -8,6 +8,8 @@ import com.spitzer.common.network.AppDispatchers
 import com.spitzer.common.network.Dispatcher
 import com.spitzer.network.BuildConfig
 import com.spitzer.network.CountriesNetworkDatasource
+import com.spitzer.network.com.spitzer.network.LanguagesNetworkDatasource
+import com.spitzer.network.com.spitzer.network.fake.FakeLanguagesNetworkDatasource
 import com.spitzer.network.fake.FakeAssetManager
 import com.spitzer.network.fake.FakeCountriesNetworkDatasource
 import dagger.Module
@@ -34,6 +36,16 @@ internal object NetworkModule {
         assets: FakeAssetManager
     ): CountriesNetworkDatasource {
         return FakeCountriesNetworkDatasource(ioDispatcher, networkJson, assets)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLanguagesNetworkDatasource(
+        @Dispatcher(AppDispatchers.IO) ioDispatcher: CoroutineDispatcher,
+        networkJson: Json,
+        assets: FakeAssetManager
+    ): LanguagesNetworkDatasource {
+        return FakeLanguagesNetworkDatasource(ioDispatcher, networkJson, assets)
     }
 
     @Provides

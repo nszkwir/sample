@@ -40,10 +40,7 @@ class DashboardViewModel @Inject constructor(
                             is Result.Success -> {
                                 val searchTextLowercase = searchText.lowercase()
                                 val countries = result.data.mapNotNull {
-                                    if (it.capital.lowercase()
-                                            .contains(searchTextLowercase) || it.name.common.lowercase()
-                                            .contains(searchTextLowercase)
-                                    ) it.asDashboardCountryModel()
+                                    if (it.tags.contains(searchTextLowercase)) it.asDashboardCountryModel()
                                     else null
                                 }
                                 Triple(false, false, countries)

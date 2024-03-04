@@ -21,13 +21,14 @@ fun countriesScreenNavigation(
         route = CountriesScreenNavigation.route, arguments = CountriesScreenNavigation.arguments
     ) {
         CountriesScreen(
-            fabButtonClicked = {}, // TODO navHostController::navigateToAddCountry,
+            fabButtonClicked = {
+                navHostController.navigateToDashboardScreen()
+            }, // TODO navHostController::navigateToAddCountry,
             onCountryClicked = {
                 // TODO  navHostController.navigateToEditCountry()
             },
             onSettingsClicked = {
-                //navHostController.navigateToSettingsScreen()
-                navHostController.navigateToDashboardScreen()
+                navHostController.navigateToSettingsScreen()
             }
         )
     }

@@ -1,15 +1,14 @@
 package com.spitzer.data.repository.fake
 
+import com.spitzer.common.database.TransactionState
 import com.spitzer.common.network.AppDispatchers
 import com.spitzer.common.network.Dispatcher
 import com.spitzer.data.mapper.asFakeRemoteCountryEntity
 import com.spitzer.data.repository.FakeCountriesRemoteRepository
 import com.spitzer.database.dao.CountryDao
 import com.spitzer.database.dao.FakeRemoteCountryDao
-import com.spitzer.common.database.TransactionState
 import com.spitzer.network.CountriesNetworkDatasource
-import com.spitzer.network.model.CountryInfoNetworkModel
-import com.spitzer.network.model.asDataModel
+import com.spitzer.network.com.spitzer.network.mapper.CountryNetworkModelMapper
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -20,13 +19,14 @@ class FakeCountriesRemoteRepositoryImpl @Inject constructor(
     @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
     private val networkDatasource: CountriesNetworkDatasource,
     private val remoteCountryDao: FakeRemoteCountryDao,
-    private val countryDao: CountryDao
+    private val countryDao: CountryDao,
+    private val countryNetworkModelMapper: CountryNetworkModelMapper
 ) : FakeCountriesRemoteRepository {
 
     override suspend fun updateCountries() = callbackFlow {
         trySend(TransactionState.IN_PROGRESS)
-        val countries = networkDatasource.getCountriesInfo()
-            .mapNotNull(CountryInfoNetworkModel::asDataModel)
+        val countries = networkDatasource.getCountries()
+            .mapNotNull(countryNetworkModelMapper::mapToModel)
         try {
             remoteCountryDao.deleteAllAndInsert(countries.map { it.asFakeRemoteCountryEntity() })
             countryDao.deleteAllCountries()

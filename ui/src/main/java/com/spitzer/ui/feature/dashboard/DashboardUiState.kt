@@ -32,9 +32,14 @@ data class DashboardCountryModel(
 )
 
 fun CountryModel.asDashboardCountryModel(): DashboardCountryModel? {
-    return if (this.cca3.isNullOrEmpty() || this.name.common.isNullOrEmpty() || this.capital.isNullOrEmpty()) {
+    return if (this.cca3.isEmpty() || this.name.common.isEmpty() || this.capital.isEmpty()) {
         null
     } else {
-        DashboardCountryModel(this.cca3, this.name.common, this.capital, this.flag?.svg)
+        DashboardCountryModel(
+            this.cca3,
+            this.name.common,
+            this.capital.firstOrNull() ?: "",
+            this.flags.svg
+        )
     }
 }

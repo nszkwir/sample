@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -97,7 +96,7 @@ fun CountryListLayout(
                         ) {
                             Image(
                                 painter = rememberAsyncImagePainter(
-                                    country.flag?.svg ?: R.drawable.baseline_broken_image_24
+                                    country.flags.svg ?: R.drawable.baseline_broken_image_24
                                 ),
                                 contentDescription = null,
                                 modifier = Modifier
@@ -118,7 +117,7 @@ fun CountryListLayout(
                                     style = MaterialTheme.typography.titleLarge
                                 )
                                 Text(
-                                    text = country.capital,
+                                    text = country.capital.firstOrNull() ?: "Unknown",
                                     style = MaterialTheme.typography.bodyMedium
                                 )
                             }

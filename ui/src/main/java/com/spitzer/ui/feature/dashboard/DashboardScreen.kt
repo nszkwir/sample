@@ -52,7 +52,7 @@ fun DashboardScreen(
     val showCountriesError = uiState.searchIsActive && uiState.searchingCountriesError
     val showCountriesLoading = uiState.searchIsActive && uiState.searchingCountriesProgress
     val showCountries = uiState.searchIsActive && !showCountriesError && !showCountriesLoading
-//    // We only show the dashboard cards when there are no countries to show
+    // We only show the dashboard cards when there are no countries to show
     val showDashboardCards = !uiState.searchIsActive
 
     // Windows configuration
