@@ -42,7 +42,7 @@ fun CountriesScreen(
 
     val countries = when (uiState) {
         is CountriesUiState.Success -> (uiState as CountriesUiState.Success).countries
-        else -> emptyList()
+        else -> emptyMap()
     }
 
     ScaffoldLayout(
@@ -70,7 +70,7 @@ fun CountriesScreen(
     ) {
         CountryListLayout(
             modifier = Modifier,//.background(createThemePrimaryColorGradient()),
-            countries = countries,
+            countries = countries.values.toList(),
             onCountryClicked = {
                 onCountryClicked.invoke()
             },

@@ -19,7 +19,7 @@ class CountriesViewModel @Inject constructor(
 ) : ViewModel() {
 
     val countriesState: StateFlow<CountriesUiState> =
-        countriesRepository.countriesData
+        countriesRepository.countries
             .asResult()
             .map { result ->
                 when (result) {
@@ -38,6 +38,6 @@ class CountriesViewModel @Inject constructor(
             )
 
     fun refreshCountyList() = viewModelScope.launch {
-        countriesRepository.updateCountries()
+        countriesRepository.fetchCountriesFromRemote()
     }
 }
