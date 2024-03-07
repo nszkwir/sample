@@ -2,7 +2,7 @@ package com.spitzer.ui.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.spitzer.data.repository.FakeCountriesRemoteRepository
+import com.spitzer.data.repository.CountriesRepository
 import com.spitzer.ui.components.loadingButton.LoadingButtonState
 import com.spitzer.ui.components.loadingButton.toLoadingButtonState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val fakeCountriesRepository: FakeCountriesRemoteRepository
+    private val countriesRepository: CountriesRepository
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<SettingsUiState> = MutableStateFlow(SettingsUiState())
@@ -23,7 +23,7 @@ class SettingsViewModel @Inject constructor(
 
     fun updateCountries() = viewModelScope.launch {
         if (_uiState.value.restoreButtonState == LoadingButtonState.IDLE)
-            fakeCountriesRepository.updateCountries()
+            countriesRepository.restoreCountries()
                 .collect { state ->
                     val buttonState = state.toLoadingButtonState()
                     // Adding delays to emulate network behavior

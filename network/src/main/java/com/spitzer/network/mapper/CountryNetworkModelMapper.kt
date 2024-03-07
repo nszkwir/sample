@@ -40,7 +40,7 @@ class CountryNetworkModelMapper @Inject constructor(
                 landlocked = this.landlocked,
                 borders = this.borders ?: emptyList(),
                 area = this.area,
-                demonyms = mapDemonys(this.demonyms),
+                demonyms = mapDemonyms(this.demonyms),
                 flag = this.flag,
                 maps = mapMaps(this.maps),
                 population = this.population,
@@ -120,7 +120,7 @@ class CountryNetworkModelMapper @Inject constructor(
             }
         )
 
-    private fun mapDemonys(networkData: Map<String, CountryNetworkModel.Demonym>?) =
+    private fun mapDemonyms(networkData: Map<String, CountryNetworkModel.Demonym>?) =
         networkData?.mapValues { demonym ->
             CountryModel.Demonym(f = demonym.value.f, m = demonym.value.m)
         } ?: emptyMap()

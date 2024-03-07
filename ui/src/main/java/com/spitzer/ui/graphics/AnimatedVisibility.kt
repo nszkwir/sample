@@ -1,4 +1,4 @@
-package com.spitzer.ui.animations
+package com.spitzer.ui.graphics
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope

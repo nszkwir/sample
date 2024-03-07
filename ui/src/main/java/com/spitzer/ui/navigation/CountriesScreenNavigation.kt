@@ -22,13 +22,16 @@ fun countriesScreenNavigation(
     ) {
         CountriesScreen(
             fabButtonClicked = {
-                navHostController.navigateToDashboardScreen()
-            }, // TODO navHostController::navigateToAddCountry,
-            onCountryClicked = {
-                // TODO  navHostController.navigateToEditCountry()
+                // TODO navHostController::navigateToAddCountry,
             },
-            onSettingsClicked = {
-                navHostController.navigateToSettingsScreen()
+            onCountryClicked = {
+                // TODO  navHostController.navigateToCountryDetails()
+            },
+            onTopAppBarIconClicked = {
+                // not used
+            },
+            onTopAppBarNavIconClicked = {
+                navHostController.navigateUp()
             }
         )
     }

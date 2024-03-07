@@ -1,6 +1,5 @@
 package com.spitzer.ui.feature.dashboard
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -10,12 +9,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -30,12 +29,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.spitzer.ui.R
-import com.spitzer.ui.animations.AnimateSlideFromLeft
-import com.spitzer.ui.animations.AnimateSlideFromRight
 import com.spitzer.ui.components.dashboardCard.DashboardCard
+import com.spitzer.ui.components.dashboardCard.DashboardCountryCard
+import com.spitzer.ui.graphics.AnimateSlideFromLeft
+import com.spitzer.ui.graphics.AnimateSlideFromRight
 import com.spitzer.ui.graphics.AnimatedBackground
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
 import com.spitzer.ui.layout.scaffold.topbar.LargeTopAppBar
@@ -44,8 +43,10 @@ import com.spitzer.ui.layout.scaffold.topbar.SampleTopAppBarConfiguration
 @Composable
 fun DashboardScreen(
     viewModel: DashboardViewModel = hiltViewModel(),
+    onTopAppBarNavIconClicked: () -> Unit,
+    onTopAppBarIconClicked: () -> Unit,
+    onNavigateToFullCountryList: () -> Unit,
     onCountryClicked: (String) -> Unit,
-    onBackClicked: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -76,18 +77,18 @@ fun DashboardScreen(
                     title = stringResource(id = R.string.welcome),
                     backgroundColor = Color.Transparent,
                     elementsColor = Color.White,
-                    navIconId = R.drawable.baseline_arrow_back_24,
-                    navIconContentDescription = stringResource(id = R.string.back_CD),
-                    onNavIconClicked = onBackClicked
+                    buttonIconId = R.drawable.baseline_settings_24,
+                    buttonContentDescription = stringResource(id = R.string.settings),
+                    onButtonClicked = onTopAppBarIconClicked
                 ),
             )
         },
     ) {
-        Column(
-            modifier = Modifier.padding(top = 0.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)
-        ) {
+        Column {
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
             ) {
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
@@ -119,11 +120,11 @@ fun DashboardScreen(
                     onValueChange = viewModel::onSearchTextChange
                 )
             }
-
             Spacer(modifier = Modifier.size(20.dp))
-
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .safeContentPadding(),
             ) {
                 item {
                     AnimateSlideFromLeft(isVisible = showDashboardCards) {
@@ -137,7 +138,9 @@ fun DashboardScreen(
                                 modifier = Modifier.padding(end = 40.dp),
                                 title = stringResource(id = R.string.flagsAndCoatOfArms),
                                 subtitle = stringResource(id = R.string.exploreTheFlagsAndCoatOfArms),
-                                imageId = R.drawable.baseline_outlined_flag_24
+                                imageId = R.drawable.baseline_outlined_flag_24,
+                                onClickActionDescription = stringResource(id = R.string.exploreTheFlagsAndCoatOfArms_CD),
+                                onCardClicked = onNavigateToFullCountryList
                             )
                         }
                     }
@@ -154,7 +157,9 @@ fun DashboardScreen(
                                 title = stringResource(id = R.string.fullInformation),
                                 subtitle = stringResource(id = R.string.learnMoreAboutCountries),
                                 imageId = R.drawable.baseline_search_24,
-                                leftIcon = false
+                                onClickActionDescription = stringResource(id = R.string.exploreTheFlagsAndCoatOfArms_CD),
+                                leftIcon = false,
+                                onCardClicked = {} // TODO
                             )
                         }
                     }
@@ -170,7 +175,9 @@ fun DashboardScreen(
                                 modifier = Modifier.padding(end = 40.dp),
                                 title = stringResource(id = R.string.statistics),
                                 subtitle = stringResource(id = R.string.compareAndGetInsight),
-                                imageId = R.drawable.baseline_query_stats_24
+                                imageId = R.drawable.baseline_query_stats_24,
+                                onClickActionDescription = stringResource(id = R.string.compareAndGetInsight_CD),
+                                onCardClicked = {} // TODO
                             )
                         }
                     }
@@ -185,14 +192,16 @@ fun DashboardScreen(
                             title = stringResource(id = R.string.ooops),
                             subtitle = stringResource(id = R.string.errorSearchingCountries),
                             imageId = R.drawable.baseline_sync_problem_24,
-                            isCompactMode = false
+                            isCompactMode = false,
                         )
                     }
                 }
 
                 if (showCountriesLoading) {
                     item {
-                        CircularProgressIndicator()
+                        CircularProgressIndicator(
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                        )
                     }
                 }
 
@@ -201,7 +210,7 @@ fun DashboardScreen(
                         if (this.isNullOrEmpty()) {
                             item {
                                 DashboardCard(
-                                    modifier = Modifier.padding(end = 40.dp),
+                                    modifier = Modifier.align(Alignment.CenterHorizontally),
                                     title = stringResource(id = R.string.sorry),
                                     subtitle = stringResource(id = R.string.weHaventFoundAnyCountry),
                                     imageId = R.drawable.baseline_search_off_24,
@@ -209,31 +218,13 @@ fun DashboardScreen(
                                 )
                             }
                         } else {
-                            item {
-                                Spacer(Modifier.size(80.dp))
-                            }
                             items(this) { country ->
-                                Row(
-                                    modifier = Modifier.padding(10.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.Start
-                                ) {
-                                    Image(
-                                        modifier = Modifier.size(
-                                            width = 30.dp,
-                                            height = 20.dp
-                                        ),
-                                        painter = rememberAsyncImagePainter(
-                                            country.flagUrl
-                                                ?: R.drawable.baseline_broken_image_24
-                                        ), contentDescription = null
-                                    )
-                                    Spacer(modifier = Modifier.size(20.dp))
-                                    Text(
-                                        text = country.name,
-                                        style = MaterialTheme.typography.labelSmall
-                                    )
-                                }
+                                DashboardCountryCard(
+                                    country = country,
+                                    onClick = {
+                                        onCountryClicked(it.cca3)
+                                    }
+                                )
                             }
                         }
                     }

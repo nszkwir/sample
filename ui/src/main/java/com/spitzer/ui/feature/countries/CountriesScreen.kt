@@ -23,9 +23,10 @@ import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
 @Composable
 fun CountriesScreen(
     viewModel: CountriesViewModel = hiltViewModel(),
+    onTopAppBarNavIconClicked: () -> Unit,
+    onTopAppBarIconClicked: () -> Unit,
     fabButtonClicked: () -> Unit,
     onCountryClicked: () -> Unit,
-    onSettingsClicked: () -> Unit
 ) {
     val uiState by viewModel.countriesState.collectAsStateWithLifecycle()
 
@@ -50,8 +51,9 @@ fun CountriesScreen(
             TopBarLayout(
                 configuration = TopBarConfiguration(
                     title = stringResource(id = R.string.countries),
-                    buttonIconId = R.drawable.baseline_settings_24,
-                    onButtonClicked = onSettingsClicked
+                    navIconId = R.drawable.baseline_arrow_back_24,
+                    navIconContentDescription = stringResource(id = R.string.back_CD),
+                    onNavIconClicked = onTopAppBarNavIconClicked
                 )
             )
         },

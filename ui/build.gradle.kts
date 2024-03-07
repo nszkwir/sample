@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.coil.kt.compose)
     implementation(libs.coil.kt.svg)
 
+    implementation(libs.kotlinx.datetime)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 

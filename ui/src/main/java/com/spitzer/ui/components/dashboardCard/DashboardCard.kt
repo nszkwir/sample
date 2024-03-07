@@ -18,6 +18,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,15 +37,30 @@ fun DashboardCard(
     imageUrl: String? = null,
     @DrawableRes imageId: Int = R.drawable.baseline_broken_image_24,
     painter: Painter = rememberAsyncImagePainter(imageUrl ?: imageId),
-    contentDescription: String? = null,
+    contentDescription: String = title,
     isCompactMode: Boolean = true,
     leftIcon: Boolean = true,
-    onCardClicked: () -> Unit = {}
+    onCardClicked: (() -> Unit)? = null,
+    onClickActionDescription: String? = null,
 ) {
+    val newModifier = if (onCardClicked != null && onClickActionDescription?.isNotEmpty() == true) {
+        modifier
+            .semantics(mergeDescendants = true) {
+                this.contentDescription = contentDescription
+                this.customActions = listOf(
+                    CustomAccessibilityAction(onClickActionDescription) {
+                        onCardClicked()
+                        true
+                    },
+                )
+            }
+            .clickable { onCardClicked() }
+    } else {
+        modifier
+    }
+
     OutlinedCard(
-        modifier = modifier
-            .semantics(mergeDescendants = true) {}
-            .clickable { onCardClicked() },
+        modifier = newModifier,
     ) {
         if (isCompactMode) {
             if (leftIcon) {
@@ -187,6 +205,8 @@ fun DashboardCardPreview() {
                 title = "Statistics",
                 subtitle = "Compare and get insight about countries characteristics.",
                 painter = painterResource(id = R.drawable.baseline_query_stats_24),
+                contentDescription = "",
+                onClickActionDescription = "",
             )
             Spacer(modifier = Modifier.size(20.dp))
             DashboardCard(
@@ -194,6 +214,8 @@ fun DashboardCardPreview() {
                 subtitle = "Compare and get insight about countries characteristics.",
                 painter = painterResource(id = R.drawable.baseline_query_stats_24),
                 leftIcon = false,
+                contentDescription = "",
+                onClickActionDescription = "",
             )
             Spacer(modifier = Modifier.size(20.dp))
             DashboardCard(
@@ -201,6 +223,8 @@ fun DashboardCardPreview() {
                 subtitle = "Compare and get insight about countries characteristics.",
                 painter = painterResource(id = R.drawable.baseline_query_stats_24),
                 isCompactMode = false,
+                contentDescription = "",
+                onClickActionDescription = "",
             )
         }
     }

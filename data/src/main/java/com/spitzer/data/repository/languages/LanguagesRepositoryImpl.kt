@@ -1,4 +1,4 @@
-package com.spitzer.data.repository.fake
+package com.spitzer.data.repository.languages
 
 import com.spitzer.common.network.AppDispatchers
 import com.spitzer.common.network.Dispatcher
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class FakeLanguagesRepositoryImpl @Inject constructor(
+class LanguagesRepositoryImpl @Inject constructor(
     @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
     private val languagesNetworkDatasource: LanguagesNetworkDatasource
 ) : LanguagesRepository {
