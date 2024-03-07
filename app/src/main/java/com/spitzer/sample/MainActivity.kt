@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.spitzer.ui.graphics.setDecorFitsSystemWindows
 import com.spitzer.ui.navigation.CountriesScreenNavigation
+import com.spitzer.ui.navigation.DashboardScreenNavigation
 import com.spitzer.ui.navigation.countriesScreenNavigation
 import com.spitzer.ui.navigation.dashboardScreenNavigation
 import com.spitzer.ui.navigation.settingsScreenNavigation
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(
                         navController = navHostController,
-                        startDestination = CountriesScreenNavigation.route,
+                        startDestination = DashboardScreenNavigation.route,
                         modifier = Modifier,
                     ) {
                         countriesScreenNavigation(this, navHostController)

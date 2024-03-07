@@ -1,0 +1,917 @@
+[
+  {
+    "language": "Abkhazian",
+    "2code": "ab",
+    "3code": "abk"
+  },
+  {
+    "language": "Afar",
+    "2code": "aa",
+    "3code": "aar"
+  },
+  {
+    "language": "Afrikaans",
+    "2code": "af",
+    "3code": "afr"
+  },
+  {
+    "language": "Akan",
+    "2code": "ak",
+    "3code": "aka"
+  },
+  {
+    "language": "Albanian",
+    "2code": "sq",
+    "3code": "sqi"
+  },
+  {
+    "language": "Amharic",
+    "2code": "am",
+    "3code": "amh"
+  },
+  {
+    "language": "Arabic",
+    "2code": "ar",
+    "3code": "ara"
+  },
+  {
+    "language": "Aragonese",
+    "2code": "an",
+    "3code": "arg"
+  },
+  {
+    "language": "Armenian",
+    "2code": "hy",
+    "3code": "hye"
+  },
+  {
+    "language": "Assamese",
+    "2code": "as",
+    "3code": "asm"
+  },
+  {
+    "language": "Avaric",
+    "2code": "av",
+    "3code": "ava"
+  },
+  {
+    "language": "Avestan",
+    "2code": "ae",
+    "3code": "ave"
+  },
+  {
+    "language": "Aymara",
+    "2code": "ay",
+    "3code": "aym"
+  },
+  {
+    "language": "Azerbaijani",
+    "2code": "az",
+    "3code": "aze"
+  },
+  {
+    "language": "Bambara",
+    "2code": "bm",
+    "3code": "bam"
+  },
+  {
+    "language": "Bashkir",
+    "2code": "ba",
+    "3code": "bak"
+  },
+  {
+    "language": "Basque",
+    "2code": "eu",
+    "3code": "eus"
+  },
+  {
+    "language": "Belarusian",
+    "2code": "be",
+    "3code": "bel"
+  },
+  {
+    "language": "Bengali",
+    "2code": "bn",
+    "3code": "ben"
+  },
+  {
+    "language": "Bislama",
+    "2code": "bi",
+    "3code": "bis"
+  },
+  {
+    "language": "Bosnian",
+    "2code": "bs",
+    "3code": "bos"
+  },
+  {
+    "language": "Breton",
+    "2code": "br",
+    "3code": "bre"
+  },
+  {
+    "language": "Bulgarian",
+    "2code": "bg",
+    "3code": "bul"
+  },
+  {
+    "language": "Burmese",
+    "2code": "my",
+    "3code": "mya"
+  },
+  {
+    "language": "Catalan",
+    "2code": "ca",
+    "3code": "cat"
+  },
+  {
+    "language": "Chamorro",
+    "2code": "ch",
+    "3code": "cha"
+  },
+  {
+    "language": "Chechen",
+    "2code": "ce",
+    "3code": "che"
+  },
+  {
+    "language": "Chichewa",
+    "2code": "ny",
+    "3code": "nya"
+  },
+  {
+    "language": "Chinese",
+    "2code": "zh",
+    "3code": "zho"
+  },
+  {
+    "language": "Old Slavonic",
+    "2code": "cu",
+    "3code": "chu"
+  },
+  {
+    "language": "Chuvash",
+    "2code": "cv",
+    "3code": "chv"
+  },
+  {
+    "language": "Cornish",
+    "2code": "kw",
+    "3code": "cor"
+  },
+  {
+    "language": "Corsican",
+    "2code": "co",
+    "3code": "cos"
+  },
+  {
+    "language": "Cree",
+    "2code": "cr",
+    "3code": "cre"
+  },
+  {
+    "language": "Croatian",
+    "2code": "hr",
+    "3code": "hrv"
+  },
+  {
+    "language": "Czech",
+    "2code": "cs",
+    "3code": "ces"
+  },
+  {
+    "language": "Danish",
+    "2code": "da",
+    "3code": "dan"
+  },
+  {
+    "language": "Maldivian",
+    "2code": "dv",
+    "3code": "div"
+  },
+  {
+    "language": "Dutch",
+    "2code": "nl",
+    "3code": "nld"
+  },
+  {
+    "language": "Dzongkha",
+    "2code": "dz",
+    "3code": "dzo"
+  },
+  {
+    "language": "English",
+    "2code": "en",
+    "3code": "eng"
+  },
+  {
+    "language": "Esperanto",
+    "2code": "eo",
+    "3code": "epo"
+  },
+  {
+    "language": "Estonian",
+    "2code": "et",
+    "3code": "est"
+  },
+  {
+    "language": "Ewe",
+    "2code": "ee",
+    "3code": "ewe"
+  },
+  {
+    "language": "Faroese",
+    "2code": "fo",
+    "3code": "fao"
+  },
+  {
+    "language": "Fijian",
+    "2code": "fj",
+    "3code": "fij"
+  },
+  {
+    "language": "Finnish",
+    "2code": "fi",
+    "3code": "fin"
+  },
+  {
+    "language": "French",
+    "2code": "fr",
+    "3code": "fra"
+  },
+  {
+    "language": "Western Frisian",
+    "2code": "fy",
+    "3code": "fry"
+  },
+  {
+    "language": "Fulah",
+    "2code": "ff",
+    "3code": "ful"
+  },
+  {
+    "language": "Gaelic",
+    "2code": "gd",
+    "3code": "gla"
+  },
+  {
+    "language": "Galician",
+    "2code": "gl",
+    "3code": "glg"
+  },
+  {
+    "language": "Ganda",
+    "2code": "lg",
+    "3code": "lug"
+  },
+  {
+    "language": "Georgian",
+    "2code": "ka",
+    "3code": "kat"
+  },
+  {
+    "language": "German",
+    "2code": "de",
+    "3code": "deu"
+  },
+  {
+    "language": "Greek",
+    "2code": "el",
+    "3code": "ell"
+  },
+  {
+    "language": "Greenlandic",
+    "2code": "kl",
+    "3code": "kal"
+  },
+  {
+    "language": "Guarani",
+    "2code": "gn",
+    "3code": "grn"
+  },
+  {
+    "language": "Gujarati",
+    "2code": "gu",
+    "3code": "guj"
+  },
+  {
+    "language": "Haitian",
+    "2code": "ht",
+    "3code": "hat"
+  },
+  {
+    "language": "Hausa",
+    "2code": "ha",
+    "3code": "hau"
+  },
+  {
+    "language": "Hebrew",
+    "2code": "he",
+    "3code": "heb"
+  },
+  {
+    "language": "Herero",
+    "2code": "hz",
+    "3code": "her"
+  },
+  {
+    "language": "Hindi",
+    "2code": "hi",
+    "3code": "hin"
+  },
+  {
+    "language": "Hiri Motu",
+    "2code": "ho",
+    "3code": "hmo"
+  },
+  {
+    "language": "Hungarian",
+    "2code": "hu",
+    "3code": "hun"
+  },
+  {
+    "language": "Icelandic",
+    "2code": "is",
+    "3code": "isl"
+  },
+  {
+    "language": "Ido",
+    "2code": "io",
+    "3code": "ido"
+  },
+  {
+    "language": "Igbo",
+    "2code": "ig",
+    "3code": "ibo"
+  },
+  {
+    "language": "Indonesian",
+    "2code": "id",
+    "3code": "ind"
+  },
+  {
+    "language": "Interlingua",
+    "2code": "ia",
+    "3code": "ina"
+  },
+  {
+    "language": "Interlingue Occidental",
+    "2code": "ie",
+    "3code": "ile"
+  },
+  {
+    "language": "Inuktitut",
+    "2code": "iu",
+    "3code": "iku"
+  },
+  {
+    "language": "Inupiaq",
+    "2code": "ik",
+    "3code": "ipk"
+  },
+  {
+    "language": "Irish",
+    "2code": "ga",
+    "3code": "gle"
+  },
+  {
+    "language": "Italian",
+    "2code": "it",
+    "3code": "ita"
+  },
+  {
+    "language": "Japanese",
+    "2code": "ja",
+    "3code": "jpn"
+  },
+  {
+    "language": "Javanese",
+    "2code": "jv",
+    "3code": "jav"
+  },
+  {
+    "language": "Kannada",
+    "2code": "kn",
+    "3code": "kan"
+  },
+  {
+    "language": "Kanuri",
+    "2code": "kr",
+    "3code": "kau"
+  },
+  {
+    "language": "Kashmiri",
+    "2code": "ks",
+    "3code": "kas"
+  },
+  {
+    "language": "Kazakh",
+    "2code": "kk",
+    "3code": "kaz"
+  },
+  {
+    "language": "Central Khmer",
+    "2code": "km",
+    "3code": "khm"
+  },
+  {
+    "language": "Kikuyu",
+    "2code": "ki",
+    "3code": "kik"
+  },
+  {
+    "language": "Kinyarwanda",
+    "2code": "rw",
+    "3code": "kin"
+  },
+  {
+    "language": "Kirghiz",
+    "2code": "ky",
+    "3code": "kir"
+  },
+  {
+    "language": "Komi",
+    "2code": "kv",
+    "3code": "kom"
+  },
+  {
+    "language": "Kongo",
+    "2code": "kg",
+    "3code": "kon"
+  },
+  {
+    "language": "Korean",
+    "2code": "ko",
+    "3code": "kor"
+  },
+  {
+    "language": "Kuanyama",
+    "2code": "kj",
+    "3code": "kua"
+  },
+  {
+    "language": "Kurdish",
+    "2code": "ku",
+    "3code": "kur"
+  },
+  {
+    "language": "Lao",
+    "2code": "lo",
+    "3code": "lao"
+  },
+  {
+    "language": "Latin",
+    "2code": "la",
+    "3code": "lat"
+  },
+  {
+    "language": "Latvian",
+    "2code": "lv",
+    "3code": "lav"
+  },
+  {
+    "language": "Limburgish",
+    "2code": "li",
+    "3code": "lim"
+  },
+  {
+    "language": "Lingala",
+    "2code": "ln",
+    "3code": "lin"
+  },
+  {
+    "language": "Lithuanian",
+    "2code": "lt",
+    "3code": "lit"
+  },
+  {
+    "language": "Luba-Katanga",
+    "2code": "lu",
+    "3code": "lub"
+  },
+  {
+    "language": "Luxembourgish",
+    "2code": "lb",
+    "3code": "ltz"
+  },
+  {
+    "language": "Macedonian",
+    "2code": "mk",
+    "3code": "mkd"
+  },
+  {
+    "language": "Malagasy",
+    "2code": "mg",
+    "3code": "mlg"
+  },
+  {
+    "language": "Malay",
+    "2code": "ms",
+    "3code": "msa"
+  },
+  {
+    "language": "Malayalam",
+    "2code": "ml",
+    "3code": "mal"
+  },
+  {
+    "language": "Maltese",
+    "2code": "mt",
+    "3code": "mlt"
+  },
+  {
+    "language": "Manx",
+    "2code": "gv",
+    "3code": "glv"
+  },
+  {
+    "language": "Maori",
+    "2code": "mi",
+    "3code": "mri"
+  },
+  {
+    "language": "Marathi",
+    "2code": "mr",
+    "3code": "mar"
+  },
+  {
+    "language": "Marshallese",
+    "2code": "mh",
+    "3code": "mah"
+  },
+  {
+    "language": "Mongolian",
+    "2code": "mn",
+    "3code": "mon"
+  },
+  {
+    "language": "Nauru",
+    "2code": "na",
+    "3code": "nau"
+  },
+  {
+    "language": "Navajo",
+    "2code": "nv",
+    "3code": "nav"
+  },
+  {
+    "language": "North Ndebele",
+    "2code": "nd",
+    "3code": "nde"
+  },
+  {
+    "language": "South Ndebele",
+    "2code": "nr",
+    "3code": "nbl"
+  },
+  {
+    "language": "Ndonga",
+    "2code": "ng",
+    "3code": "ndo"
+  },
+  {
+    "language": "Nepali",
+    "2code": "ne",
+    "3code": "nep"
+  },
+  {
+    "language": "Norwegian",
+    "2code": "no",
+    "3code": "nor"
+  },
+  {
+    "language": "Norwegian Bokmål",
+    "2code": "nb",
+    "3code": "nob"
+  },
+  {
+    "language": "Norwegian Nynorsk",
+    "2code": "nn",
+    "3code": "nno"
+  },
+  {
+    "language": "Sichuan Yi",
+    "2code": "ii",
+    "3code": "iii"
+  },
+  {
+    "language": "Occitan",
+    "2code": "oc",
+    "3code": "oci"
+  },
+  {
+    "language": "Ojibwa",
+    "2code": "oj",
+    "3code": "oji"
+  },
+  {
+    "language": "Oriya",
+    "2code": "or",
+    "3code": "ori"
+  },
+  {
+    "language": "Oromo",
+    "2code": "om",
+    "3code": "orm"
+  },
+  {
+    "language": "Ossetian",
+    "2code": "os",
+    "3code": "oss"
+  },
+  {
+    "language": "Pali",
+    "2code": "pi",
+    "3code": "pli"
+  },
+  {
+    "language": "Pashto",
+    "2code": "ps",
+    "3code": "pus"
+  },
+  {
+    "language": "Persian",
+    "2code": "fa",
+    "3code": "fas"
+  },
+  {
+    "language": "Polish",
+    "2code": "pl",
+    "3code": "pol"
+  },
+  {
+    "language": "Portuguese",
+    "2code": "pt",
+    "3code": "por"
+  },
+  {
+    "language": "Punjabi",
+    "2code": "pa",
+    "3code": "pan"
+  },
+  {
+    "language": "Quechua",
+    "2code": "qu",
+    "3code": "que"
+  },
+  {
+    "language": "Romanian",
+    "2code": "ro",
+    "3code": "ron"
+  },
+  {
+    "language": "Romansh",
+    "2code": "rm",
+    "3code": "roh"
+  },
+  {
+    "language": "Rundi",
+    "2code": "rn",
+    "3code": "run"
+  },
+  {
+    "language": "Russian",
+    "2code": "ru",
+    "3code": "rus"
+  },
+  {
+    "language": "Northern Sami",
+    "2code": "se",
+    "3code": "sme"
+  },
+  {
+    "language": "Samoan",
+    "2code": "sm",
+    "3code": "smo"
+  },
+  {
+    "language": "Sango",
+    "2code": "sg",
+    "3code": "sag"
+  },
+  {
+    "language": "Sanskrit",
+    "2code": "sa",
+    "3code": "san"
+  },
+  {
+    "language": "Sardinian",
+    "2code": "sc",
+    "3code": "srd"
+  },
+  {
+    "language": "Serbian",
+    "2code": "sr",
+    "3code": "srp"
+  },
+  {
+    "language": "Shona",
+    "2code": "sn",
+    "3code": "sna"
+  },
+  {
+    "language": "Sindhi",
+    "2code": "sd",
+    "3code": "snd"
+  },
+  {
+    "language": "Sinhala",
+    "2code": "si",
+    "3code": "sin"
+  },
+  {
+    "language": "Slovak",
+    "2code": "sk",
+    "3code": "slk"
+  },
+  {
+    "language": "Slovenian",
+    "2code": "sl",
+    "3code": "slv"
+  },
+  {
+    "language": "Somali",
+    "2code": "so",
+    "3code": "som"
+  },
+  {
+    "language": "Southern Sotho",
+    "2code": "st",
+    "3code": "sot"
+  },
+  {
+    "language": "Spanish",
+    "2code": "es",
+    "3code": "spa"
+  },
+  {
+    "language": "Sundanese",
+    "2code": "su",
+    "3code": "sun"
+  },
+  {
+    "language": "Swahili",
+    "2code": "sw",
+    "3code": "swa"
+  },
+  {
+    "language": "Swati",
+    "2code": "ss",
+    "3code": "ssw"
+  },
+  {
+    "language": "Swedish",
+    "2code": "sv",
+    "3code": "swe"
+  },
+  {
+    "language": "Tagalog",
+    "2code": "tl",
+    "3code": "tgl"
+  },
+  {
+    "language": "Tahitian",
+    "2code": "ty",
+    "3code": "tah"
+  },
+  {
+    "language": "Tajik",
+    "2code": "tg",
+    "3code": "tgk"
+  },
+  {
+    "language": "Tamil",
+    "2code": "ta",
+    "3code": "tam"
+  },
+  {
+    "language": "Tatar",
+    "2code": "tt",
+    "3code": "tat"
+  },
+  {
+    "language": "Telugu",
+    "2code": "te",
+    "3code": "tel"
+  },
+  {
+    "language": "Thai",
+    "2code": "th",
+    "3code": "tha"
+  },
+  {
+    "language": "Tibetan",
+    "2code": "bo",
+    "3code": "bod"
+  },
+  {
+    "language": "Tigrinya",
+    "2code": "ti",
+    "3code": "tir"
+  },
+  {
+    "language": "Tonga",
+    "2code": "to",
+    "3code": "ton"
+  },
+  {
+    "language": "Tsonga",
+    "2code": "ts",
+    "3code": "tso"
+  },
+  {
+    "language": "Tswana",
+    "2code": "tn",
+    "3code": "tsn"
+  },
+  {
+    "language": "Turkish",
+    "2code": "tr",
+    "3code": "tur"
+  },
+  {
+    "language": "Turkmen",
+    "2code": "tk",
+    "3code": "tuk"
+  },
+  {
+    "language": "Twi",
+    "2code": "tw",
+    "3code": "twi"
+  },
+  {
+    "language": "Uighur",
+    "2code": "ug",
+    "3code": "uig"
+  },
+  {
+    "language": "Ukrainian",
+    "2code": "uk",
+    "3code": "ukr"
+  },
+  {
+    "language": "Urdu",
+    "2code": "ur",
+    "3code": "urd"
+  },
+  {
+    "language": "Uzbek",
+    "2code": "uz",
+    "3code": "uzb"
+  },
+  {
+    "language": "Venda",
+    "2code": "ve",
+    "3code": "ven"
+  },
+  {
+    "language": "Vietnamese",
+    "2code": "vi",
+    "3code": "vie"
+  },
+  {
+    "language": "Volapük",
+    "2code": "vo",
+    "3code": "vol"
+  },
+  {
+    "language": "Walloon",
+    "2code": "wa",
+    "3code": "wln"
+  },
+  {
+    "language": "Welsh",
+    "2code": "cy",
+    "3code": "cym"
+  },
+  {
+    "language": "Wolof",
+    "2code": "wo",
+    "3code": "wol"
+  },
+  {
+    "language": "Xhosa",
+    "2code": "xh",
+    "3code": "xho"
+  },
+  {
+    "language": "Yiddish",
+    "2code": "yi",
+    "3code": "yid"
+  },
+  {
+    "language": "Yoruba",
+    "2code": "yo",
+    "3code": "yor"
+  },
+  {
+    "language": "Zhuang",
+    "2code": "za",
+    "3code": "zha"
+  },
+  {
+    "language": "Zulu",
+    "2code": "zu",
+    "3code": "zul"
+  }
+]

@@ -35,15 +35,12 @@ class DashboardViewModel @Inject constructor(
             searchJob?.cancel()
             searchJob = viewModelScope.launch {
                 try {
-                    countriesRepository.countriesData.asResult().collect { result ->
+                    countriesRepository.countries.asResult().collect { result ->
                         val (loading, error, countries) = when (result) {
                             is Result.Success -> {
                                 val searchTextLowercase = searchText.lowercase()
                                 val countries = result.data.mapNotNull {
-                                    if (it.capital.lowercase()
-                                            .contains(searchTextLowercase) || it.name.common.lowercase()
-                                            .contains(searchTextLowercase)
-                                    ) it.asDashboardCountryModel()
+                                    if (it.value.tags.contains(searchTextLowercase)) it.value.asDashboardCountryModel()
                                     else null
                                 }
                                 Triple(false, false, countries)

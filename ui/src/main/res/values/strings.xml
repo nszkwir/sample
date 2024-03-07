@@ -27,12 +27,19 @@
     <string name="weHaventFoundAnyCountry">We haven\'t found any country with those parameters. Please try again.</string>
     <string name="statistics">Statistics</string>
     <string name="compareAndGetInsight">Compare and get insight about countries characteristics.</string>
+    <string name="unknown">Unknown</string>
 
-
+    <!-- Strings for content description / Accessibility-->
     <string name="addCountry_CD">add country</string>
     <string name="editCountry_CD">edit country %s</string>
     <string name="restoreCountriesData_CD">restore countries data</string>
     <string name="back_CD">go back</string>
     <string name="save_CD">save</string>
     <string name="edit_CD">edit</string>
+    <string name="details_CD">%s details</string>
+    <string name="edit_details_CD">edit %s details</string>
+    <string name="exploreTheFlagsAndCoatOfArms_CD">Explore the diverse flags and coats of arms of the countries</string>
+    <string name="learnMoreAboutCountries_CD">Learn more details about countries</string>
+    <string name="compareAndGetInsight_CD">Compare and get insight about countries characteristics.</string>
+
 </resources>

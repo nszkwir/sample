@@ -19,7 +19,8 @@ import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
-    onBackClicked: () -> Unit
+    onTopAppBarNavIconClicked: () -> Unit,
+    onTopAppBarIconClicked: () -> Unit,
 ) {
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -30,7 +31,7 @@ fun SettingsScreen(
                     title = stringResource(id = R.string.settings),
                     navIconId = R.drawable.baseline_arrow_back_24,
                     navIconContentDescription = stringResource(id = R.string.back_CD),
-                    onNavIconClicked = onBackClicked
+                    onNavIconClicked = onTopAppBarNavIconClicked
                 )
             )
         },

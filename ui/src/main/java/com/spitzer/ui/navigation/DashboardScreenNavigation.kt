@@ -4,26 +4,35 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.spitzer.ui.feature.settings.SettingsScreen
+import com.spitzer.ui.feature.dashboard.DashboardScreen
 
-object SettingsScreenNavigation : NavRoute(
-    route = "SettingsScreen"
+object DashboardScreenNavigation : NavRoute(
+    route = "DashboardScreen"
 )
 
-fun NavHostController.navigateToSettingsScreen(navOptions: NavOptions? = null) =
-    navigate(SettingsScreenNavigation.route, navOptions)
+fun NavHostController.navigateToDashboardScreen(navOptions: NavOptions? = null) =
+    navigate(DashboardScreenNavigation.route, navOptions)
 
-fun settingsScreenNavigation(
+fun dashboardScreenNavigation(
     navGraphBuilder: NavGraphBuilder,
     navHostController: NavHostController
 ) {
     navGraphBuilder.composable(
-        route = SettingsScreenNavigation.route, arguments = SettingsScreenNavigation.arguments
+        route = DashboardScreenNavigation.route, arguments = DashboardScreenNavigation.arguments
     ) {
-        SettingsScreen(
-            onBackClicked = {
+        DashboardScreen(
+            onTopAppBarIconClicked = {
+                navHostController.navigateToSettingsScreen()
+            },
+            onTopAppBarNavIconClicked = {
                 navHostController.navigateUp()
-            }
+            },
+            onNavigateToFullCountryList = {
+                navHostController.navigateToCountriesScreen()
+            },
+            onCountryClicked = {
+                // TODO navHostController.navigateToCountryDetails(it)
+            },
         )
     }
 }
