@@ -25,7 +25,7 @@ fun countriesScreenNavigation(
                 // TODO navHostController::navigateToAddCountry,
             },
             onCountryClicked = {
-                // TODO  navHostController.navigateToCountryDetails()
+                navHostController.navigateToCountryDetailsScreen(it)
             },
             onTopAppBarIconClicked = {
                 // not used

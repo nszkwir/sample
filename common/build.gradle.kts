@@ -41,4 +41,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     kapt(libs.hilt.compiler)
+
+    testImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.junit)
+
 }

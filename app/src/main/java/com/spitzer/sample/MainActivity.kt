@@ -10,9 +10,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.spitzer.ui.graphics.setDecorFitsSystemWindows
-import com.spitzer.ui.navigation.CountriesScreenNavigation
 import com.spitzer.ui.navigation.DashboardScreenNavigation
 import com.spitzer.ui.navigation.countriesScreenNavigation
+import com.spitzer.ui.navigation.countryDetailsScreenNavigation
 import com.spitzer.ui.navigation.dashboardScreenNavigation
 import com.spitzer.ui.navigation.settingsScreenNavigation
 import com.spitzer.ui.theme.SampleTheme
@@ -37,6 +37,7 @@ class MainActivity : ComponentActivity() {
                         countriesScreenNavigation(this, navHostController)
                         settingsScreenNavigation(this, navHostController)
                         dashboardScreenNavigation(this, navHostController)
+                        countryDetailsScreenNavigation(this, navHostController)
                     }
                 }
             }

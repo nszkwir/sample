@@ -49,6 +49,10 @@ class CountriesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCountry(cca3: String): CountryModel? {
+        return _countries.value[cca3]
+    }
+
     override suspend fun fetchCountriesFromRemote() {
         withContext(ioDispatcher) {
             remote.getCountries().collect { remoteList ->
@@ -70,7 +74,7 @@ class CountriesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun restoreCountries()= callbackFlow {
+    override suspend fun restoreCountries() = callbackFlow {
         trySend(TransactionState.IN_PROGRESS)
         val countries = restoreDatasource.getCountries()
             .mapNotNull(restoreDatasourceModelMapper::mapToModel)

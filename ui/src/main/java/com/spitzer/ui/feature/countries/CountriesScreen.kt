@@ -26,7 +26,7 @@ fun CountriesScreen(
     onTopAppBarNavIconClicked: () -> Unit,
     onTopAppBarIconClicked: () -> Unit,
     fabButtonClicked: () -> Unit,
-    onCountryClicked: () -> Unit,
+    onCountryClicked: (String) -> Unit,
 ) {
     val uiState by viewModel.countriesState.collectAsStateWithLifecycle()
 
@@ -74,7 +74,7 @@ fun CountriesScreen(
             modifier = Modifier,//.background(createThemePrimaryColorGradient()),
             countries = countries.values.toList(),
             onCountryClicked = {
-                onCountryClicked.invoke()
+                onCountryClicked.invoke(it.cca3)
             },
             refreshCountryList = viewModel::refreshCountyList
         )

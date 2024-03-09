@@ -47,7 +47,7 @@ fun DashboardCountryCard(
         id = R.string.details_CD, country.name
     ),
     painter: Painter = rememberAsyncImagePainter(
-        country.flagUrl ?: R.drawable.baseline_broken_image_24
+        country.flagUrl ?: R.drawable.baseline_broken_image_no_padding
     ),
     iconPainter: Painter = painterResource(id = R.drawable.baseline_chevron_right_24),
     contentDescription: String = country.name
@@ -137,7 +137,7 @@ private fun prev1() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!
             .copy(name = "Provincias Unidas del Rio de la Plata, Republica Argentina"),
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
     )
 }
@@ -147,7 +147,7 @@ private fun prev1() {
 private fun prev11() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
     )
 }
@@ -157,7 +157,7 @@ private fun prev11() {
 private fun prev2() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
     )
 }
@@ -167,7 +167,7 @@ private fun prev2() {
 private fun prev3() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
     )
 }

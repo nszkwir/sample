@@ -1,6 +1,5 @@
 package com.spitzer.ui.feature.dashboard
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,17 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,6 +27,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.spitzer.ui.R
 import com.spitzer.ui.components.dashboardCard.DashboardCard
 import com.spitzer.ui.components.dashboardCard.DashboardCountryCard
+import com.spitzer.ui.components.transparentSearchField.TransparentSearchField
 import com.spitzer.ui.graphics.AnimateSlideFromLeft
 import com.spitzer.ui.graphics.AnimateSlideFromRight
 import com.spitzer.ui.graphics.AnimatedBackground
@@ -88,36 +83,14 @@ fun DashboardScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
+                    .padding(end = 20.dp, start = 10.dp)
             ) {
-                OutlinedTextField(
+                TransparentSearchField(
                     modifier = Modifier.fillMaxWidth(),
-                    value = uiState.searchText ?: "",
-                    placeholder = {
-                        Text(stringResource(id = R.string.searchCountries))
-                    },
-                    trailingIcon = {
-                        if (uiState.searchText.isNullOrEmpty()) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_search_24),
-                                contentDescription = null
-                            )
-                        } else {
-                            Icon(
-                                modifier = Modifier.clickable { viewModel.clearSearchText() },
-                                painter = painterResource(id = R.drawable.baseline_close_24),
-                                contentDescription = null
-                            )
-                        }
-                    },
-                    singleLine = true,
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedContainerColor = Color.White,
-                        unfocusedContainerColor = Color.White,
-                        errorContainerColor = Color.White,
-                        disabledContainerColor = Color.White
-                    ),
-                    onValueChange = viewModel::onSearchTextChange
+                    searchText = uiState.searchText ?: "",
+                    placeholder = stringResource(id = R.string.searchCountries),
+                    onSearchTextChange = viewModel::onSearchTextChange,
+                    onClearSearchText = viewModel::clearSearchText
                 )
             }
             Spacer(modifier = Modifier.size(20.dp))
@@ -126,7 +99,7 @@ fun DashboardScreen(
                     .fillMaxSize()
                     .safeContentPadding(),
             ) {
-                item {
+                item(key = "dashboardCards") {
                     AnimateSlideFromLeft(isVisible = showDashboardCards) {
                         Row(
                             modifier = Modifier
@@ -186,7 +159,7 @@ fun DashboardScreen(
                 }
 
                 if (showCountriesError) {
-                    item {
+                    item(key = "errorDashboardCard") {
                         DashboardCard(
                             modifier = Modifier.padding(end = 40.dp),
                             title = stringResource(id = R.string.ooops),
@@ -198,7 +171,7 @@ fun DashboardScreen(
                 }
 
                 if (showCountriesLoading) {
-                    item {
+                    item(key = "countriesLoaderIndicator") {
                         CircularProgressIndicator(
                             modifier = Modifier.align(Alignment.CenterHorizontally),
                         )
@@ -208,7 +181,7 @@ fun DashboardScreen(
                 if (showCountries) {
                     with(uiState.countries) {
                         if (this.isNullOrEmpty()) {
-                            item {
+                            item(key = "emptyDashboardCard") {
                                 DashboardCard(
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     title = stringResource(id = R.string.sorry),
@@ -218,7 +191,7 @@ fun DashboardScreen(
                                 )
                             }
                         } else {
-                            items(this) { country ->
+                            items(this, key = { it.cca3 }) { country ->
                                 DashboardCountryCard(
                                     country = country,
                                     onClick = {
