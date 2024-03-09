@@ -53,7 +53,7 @@ fun FlagCountryCard(
         id = R.string.edit_details_CD, country.name.common
     ),
     painter: Painter = rememberAsyncImagePainter(
-        country.flags.svg ?: R.drawable.baseline_broken_image_24
+        country.flags.svg ?: R.drawable.baseline_broken_image_no_padding
     ),
     iconPainter: Painter = painterResource(id = R.drawable.baseline_chevron_right_24),
     contentDescription: String = country.name.common
@@ -156,7 +156,7 @@ fun FlagCountryCard(
 private fun prev1() {
     FlagCountryCard(
         country = TestCountryModelProvider.getTestCountryModel(),
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
         onLongClick = {}
     )
@@ -167,7 +167,7 @@ private fun prev1() {
 private fun prev2() {
     FlagCountryCard(
         country = TestCountryModelProvider.getTestCountryModel(),
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
         onLongClick = {}
     )
@@ -178,7 +178,7 @@ private fun prev2() {
 private fun prev3() {
     FlagCountryCard(
         country = TestCountryModelProvider.getTestCountryModel(),
-        painter = painterResource(R.drawable.baseline_broken_image_24),
+        painter = painterResource(R.drawable.baseline_broken_image_no_padding),
         onClick = {},
         onLongClick = {}
     )

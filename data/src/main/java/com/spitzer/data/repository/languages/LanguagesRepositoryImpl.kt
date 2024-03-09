@@ -32,6 +32,10 @@ class LanguagesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getLanguages(): Map<String,ISOLanguage> {
+        return _languages.value.associateBy({ it.code3 }, { it })
+    }
+
     override suspend fun fetchLanguagesFromRemote() {
         withContext(ioDispatcher) {
             _languages.value = languagesNetworkDatasource.getLanguages().map {

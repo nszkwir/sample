@@ -31,7 +31,7 @@ fun dashboardScreenNavigation(
                 navHostController.navigateToCountriesScreen()
             },
             onCountryClicked = {
-                // TODO navHostController.navigateToCountryDetails(it)
+                navHostController.navigateToCountryDetailsScreen(it)
             },
         )
     }
