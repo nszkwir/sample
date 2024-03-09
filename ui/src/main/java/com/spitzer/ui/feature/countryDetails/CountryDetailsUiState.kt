@@ -57,7 +57,11 @@ fun CountryModel.mapToCountryDetailsModel(languages: Map<String, ISOLanguage>) =
                     )
                 }
             )
-            this.add(CountryDetailsUiModel.Badge.Phone(this@mapToCountryDetailsModel.idd.root))
+            this.addAll(
+                this@mapToCountryDetailsModel.idd.suffixes.map {
+                    CountryDetailsUiModel.Badge.Phone("${this@mapToCountryDetailsModel.idd.root}$it")
+                }
+            )
         },
         startOfWeek = this.startOfWeek,
         coordinates = this.coordinates,

@@ -245,8 +245,8 @@ private fun Prev1() {
         CountryDetailsUiModel.Badge.Currency(code = "USD", symbol = "US$", name = "US dollar")
     val currencyBadge2 =
         CountryDetailsUiModel.Badge.Currency(code = "ARS", symbol = "AR$", name = "Peso Argentino")
-    val phoneBadge1 = CountryDetailsUiModel.Badge.Phone(code = "+")
-    val phoneBadge2 = CountryDetailsUiModel.Badge.Phone(code = "+")
+    val phoneBadge1 = CountryDetailsUiModel.Badge.Phone(code = "+34")
+    val phoneBadge2 = CountryDetailsUiModel.Badge.Phone(code = "+55")
     val continentBadge1 =
         CountryDetailsUiModel.Badge.Continent(CountryDetailsUiModel.Badge.Continent.Continent.SOUTH_AMERICA)
     val continentBadge2 =
@@ -255,7 +255,6 @@ private fun Prev1() {
     Column(
         modifier = Modifier
             .padding(20.dp)
-            .fillMaxSize()
     ) {
         Row {
             unMemberBadge.getBadgeConfiguration()?.let {
