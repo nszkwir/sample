@@ -17,8 +17,8 @@ import javax.inject.Inject
 
 class LanguagesRepositoryImpl @Inject constructor(
     @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
-    private val languagesNetworkDatasource: LanguagesNetworkDatasource,
-    private val languagesMapper: LanguageModelMapper
+    private val datasource: LanguagesNetworkDatasource,
+    private val mapper: LanguageModelMapper
 ) : LanguagesRepository {
 
     private val _languages = MutableStateFlow<List<ISOLanguage>>(emptyList())
@@ -28,8 +28,8 @@ class LanguagesRepositoryImpl @Inject constructor(
         CoroutineScope(SupervisorJob() + ioDispatcher).launch {
             //TODO implement DB and load from DB on init
             try {
-                _languages.value = languagesMapper.mapNetworkModelListToDataModels(
-                    languagesNetworkDatasource.getLanguages()
+                _languages.value = mapper.mapNetworkModelListToDataModels(
+                    datasource.getLanguages()
                 )
             } catch (e: Exception) {
                 // do nothing
@@ -44,8 +44,8 @@ class LanguagesRepositoryImpl @Inject constructor(
     override suspend fun fetchLanguagesFromRemote() {
         withContext(ioDispatcher) {
             try {
-                _languages.value = languagesMapper.mapNetworkModelListToDataModels(
-                    languagesNetworkDatasource.getLanguages()
+                _languages.value = mapper.mapNetworkModelListToDataModels(
+                    datasource.getLanguages()
                 )
             } catch (e: Exception) {
                 // do nothing
