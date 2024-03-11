@@ -8,8 +8,12 @@ import javax.inject.Inject
 
 class CountryNetworkModelMapper @Inject constructor(
 
-) : NetworkMapper<CountryNetworkModel, CountryModel> {
-    override fun mapToModel(networkModel: CountryNetworkModel): CountryModel? {
+) {
+    fun mapNetworkListToDataModelList(networkList: List<CountryNetworkModel>): List<CountryModel> {
+        return networkList.mapNotNull { mapToModel(it) }
+    }
+
+    fun mapToModel(networkModel: CountryNetworkModel): CountryModel? {
 
         return with(networkModel) {
             if (this.name.common.isNullOrEmpty() || this.name.official.isNullOrEmpty()) null

@@ -33,10 +33,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.spitzer.model.testing.TestCountryModelProvider
 import com.spitzer.ui.R
 import com.spitzer.ui.feature.dashboard.DashboardCountryModel
 import com.spitzer.ui.feature.dashboard.asDashboardCountryModel
-import com.spitzer.ui.tooling.TestCountryModelProvider
 
 @Composable
 fun DashboardCountryCard(

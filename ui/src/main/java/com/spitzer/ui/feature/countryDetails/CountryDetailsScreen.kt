@@ -40,6 +40,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.spitzer.model.testing.TestCountryModelProvider
 import com.spitzer.ui.R
 import com.spitzer.ui.components.badges.CountryBadge
 import com.spitzer.ui.components.badges.getBadgeConfiguration
@@ -47,7 +48,6 @@ import com.spitzer.ui.layout.scaffold.ScaffoldLayout
 import com.spitzer.ui.layout.scaffold.topbar.TopBarConfiguration
 import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
 import com.spitzer.ui.theme.BlueGray50
-import com.spitzer.ui.tooling.TestCountryModelProvider
 
 @Composable
 fun CountryDetailsScreen(
