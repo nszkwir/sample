@@ -2,10 +2,10 @@ package com.spitzer.data.repository.languages
 
 import com.spitzer.common.network.AppDispatchers
 import com.spitzer.common.network.Dispatcher
+import com.spitzer.data.mapper.LanguageModelMapper
 import com.spitzer.data.repository.LanguagesRepository
 import com.spitzer.model.data.ISOLanguage
 import com.spitzer.network.com.spitzer.network.LanguagesNetworkDatasource
-import com.spitzer.network.com.spitzer.network.model.asDataModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class LanguagesRepositoryImpl @Inject constructor(
     @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
-    private val languagesNetworkDatasource: LanguagesNetworkDatasource
+    private val languagesNetworkDatasource: LanguagesNetworkDatasource,
+    private val languagesMapper: LanguageModelMapper
 ) : LanguagesRepository {
 
     private val _languages = MutableStateFlow<List<ISOLanguage>>(emptyList())
@@ -26,22 +27,29 @@ class LanguagesRepositoryImpl @Inject constructor(
     init {
         CoroutineScope(SupervisorJob() + ioDispatcher).launch {
             //TODO implement DB and load from DB on init
-            _languages.value = languagesNetworkDatasource.getLanguages().map {
-                it.asDataModel()
+            try {
+                _languages.value = languagesMapper.mapNetworkModelListToDataModels(
+                    languagesNetworkDatasource.getLanguages()
+                )
+            } catch (e: Exception) {
+                // do nothing
             }
         }
     }
 
-    override suspend fun getLanguages(): Map<String,ISOLanguage> {
+    override suspend fun getLanguages(): Map<String, ISOLanguage> {
         return _languages.value.associateBy({ it.code3 }, { it })
     }
 
     override suspend fun fetchLanguagesFromRemote() {
         withContext(ioDispatcher) {
-            _languages.value = languagesNetworkDatasource.getLanguages().map {
-                it.asDataModel()
+            try {
+                _languages.value = languagesMapper.mapNetworkModelListToDataModels(
+                    languagesNetworkDatasource.getLanguages()
+                )
+            } catch (e: Exception) {
+                // do nothing
             }
         }
     }
-
 }
