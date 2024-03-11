@@ -39,13 +39,21 @@ android {
 dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.test.jvm)
 
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.junit.ktx)
+    implementation(libs.junit)
+    implementation(libs.hilt.android.testing)
 
     testImplementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.kotlinx.coroutines.guava)
+    testImplementation(libs.kotlinx.coroutines.test.jvm)
+    testImplementation(libs.hilt.android.testing)
+
     androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.junit)
     implementation(kotlin("test"))

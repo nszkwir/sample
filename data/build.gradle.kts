@@ -44,8 +44,14 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(kotlin("test"))
 
-    // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.junit.ktx)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.mockk)
+
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.junit)
 }
