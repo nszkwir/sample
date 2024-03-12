@@ -87,7 +87,7 @@ class CountriesRepositoryImpl @Inject constructor(
     /**
      *  Util function to clean local DB and set remote with the initial Data from restoreDataSource
      */
-    override suspend fun restoreCountries() = callbackFlow {
+    override suspend fun restoreCountriesFlow() = callbackFlow {
         try {
             trySend(TransactionState.IN_PROGRESS)
             val countries = restoreDatasourceModelMapper.mapNetworkListToDataModelList(

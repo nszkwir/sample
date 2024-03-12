@@ -9,5 +9,5 @@ interface CountriesRepository {
     suspend fun getCountry(cca3: String): CountryModel?
     suspend fun fetchCountriesFromRemote()
     suspend fun updateCountry(country: CountryModel)
-    suspend fun restoreCountries(): Flow<TransactionState>
+    suspend fun restoreCountriesFlow(): Flow<TransactionState>
 }

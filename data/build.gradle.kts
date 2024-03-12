@@ -51,6 +51,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
     testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
 
     androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.junit)
