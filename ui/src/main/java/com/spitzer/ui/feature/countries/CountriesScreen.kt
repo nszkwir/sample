@@ -71,7 +71,7 @@ fun CountriesScreen(
         }
     ) {
         CountryListLayout(
-            modifier = Modifier,//.background(createThemePrimaryColorGradient()),
+            modifier = Modifier,
             countries = countries.values.toList(),
             onCountryClicked = {
                 onCountryClicked.invoke(it.cca3)

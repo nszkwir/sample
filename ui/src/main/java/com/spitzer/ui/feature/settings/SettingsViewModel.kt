@@ -23,7 +23,7 @@ class SettingsViewModel @Inject constructor(
 
     fun updateCountries() = viewModelScope.launch {
         if (_uiState.value.restoreButtonState == LoadingButtonState.IDLE)
-            countriesRepository.restoreCountries()
+            countriesRepository.restoreCountriesFlow()
                 .collect { state ->
                     val buttonState = state.toLoadingButtonState()
                     // Adding delays to emulate network behavior

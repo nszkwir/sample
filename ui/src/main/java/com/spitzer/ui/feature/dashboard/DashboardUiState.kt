@@ -7,7 +7,6 @@ data class DashboardUiState(
     val countries: List<DashboardCountryModel>? = null,
     val searchingCountriesProgress: Boolean = false,
     val searchingCountriesError: Boolean = false,
-    //val countriesUiState: DashboardCountriesUiState = DashboardCountriesUiState.Success(emptyList()),
     val searchIsActive: Boolean = false,
 
     // TODO this is related to the main loading phase
