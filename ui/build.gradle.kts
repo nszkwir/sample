@@ -69,8 +69,16 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    testImplementation(libs.androidx.junit.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(kotlin("test"))
+
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+
     androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.junit)
 
