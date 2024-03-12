@@ -1,5 +1,6 @@
 package com.spitzer.data.repository
 
+import app.cash.turbine.test
 import com.spitzer.common.database.TransactionState
 import com.spitzer.data.mapper.CountryModelMapper
 import com.spitzer.data.repository.countries.CountriesRepositoryImpl
@@ -27,8 +28,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -505,9 +504,8 @@ class CountriesRepositoryTest {
             assertEquals(subject.countries.first(), initialCountiesMap)
         }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `restoreCountries should send TransactionState SUCCESS when successful`() =
+    fun `restoreCountriesFlow should emit TransactionState SUCCESS when successful`() =
         runTest {
             // Assert initial state
             assertEquals(
@@ -530,11 +528,10 @@ class CountriesRepositoryTest {
 
 
             // Call the function under test
-            val collectJob = launch(UnconfinedTestDispatcher()) {
-                val list = subject.restoreCountries().toList()
-                assertEquals(actual = list[0], expected = TransactionState.IN_PROGRESS)
-                assertEquals(actual = list[1], expected = TransactionState.SUCCESS)
-                assertEquals(actual = list[2], expected = TransactionState.IDLE)
+            subject.restoreCountriesFlow().test {
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IN_PROGRESS)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.SUCCESS)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IDLE)
             }
 
             // Verify interactions
@@ -544,7 +541,6 @@ class CountriesRepositoryTest {
             coVerify { networkModelMapper.mapNetworkListToDataModelList(any()) }
             coVerify { countryModelMapper.mapDataModelListToFakeRemoteEntities(any()) }
 
-            collectJob.cancel()
         }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -556,12 +552,6 @@ class CountriesRepositoryTest {
                 actual = subject.countries.first(),
                 expected = initialCountiesMap
             )
-
-            val networkModelList = listOf(mockCountryNetworkModel())
-            val mappedModels =
-                remoteMapper.mapNetworkListToDataModelList(networkModelList)
-            val fakeRemoteEntities =
-                modelMapper.mapDataModelListToFakeRemoteEntities(mappedModels)
             val exceptionMessage = "Test exception message"
 
             // Defining mocks behavior
@@ -570,18 +560,10 @@ class CountriesRepositoryTest {
                     exceptionMessage
                 )
             }
-            //every { mockkCountryNetworkModelMapper.mapNetworkListToDataModelList(any()) } returns mappedModels
-            //every { mockkCountryModelMapper.mapDataModelListToFakeRemoteEntities(any()) } returns fakeRemoteEntities
-            //coEvery { mockkRemote.deleteAllAndInsert(any()) } just runs
-            //coEvery { mockkDatabase.deleteAllCountries() } just runs
-
-
-            // Call the function under test
-            val collectJob = launch(UnconfinedTestDispatcher()) {
-                val list = subject.restoreCountries().toList()
-                assertEquals(actual = list[0], expected = TransactionState.IN_PROGRESS)
-                assertEquals(actual = list[1], expected = TransactionState.ERROR)
-                assertEquals(actual = list[2], expected = TransactionState.IDLE)
+            subject.restoreCountriesFlow().test {
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IN_PROGRESS)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.ERROR)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IDLE)
             }
 
             // Verify interactions
@@ -590,11 +572,8 @@ class CountriesRepositoryTest {
             coVerify(exactly = 0) { database.deleteAllCountries() }
             coVerify(exactly = 0) { networkModelMapper.mapNetworkListToDataModelList(any()) }
             coVerify(exactly = 0) { countryModelMapper.mapDataModelListToFakeRemoteEntities(any()) }
-
-            collectJob.cancel()
         }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `restoreCountries should send TransactionState ERROR when remote fails`() =
         runTest {
@@ -622,11 +601,10 @@ class CountriesRepositoryTest {
             }
 
             // Call the function under test
-            val collectJob = launch(UnconfinedTestDispatcher()) {
-                val list = subject.restoreCountries().toList()
-                assertEquals(actual = list[0], expected = TransactionState.IN_PROGRESS)
-                assertEquals(actual = list[1], expected = TransactionState.ERROR)
-                assertEquals(actual = list[2], expected = TransactionState.IDLE)
+            subject.restoreCountriesFlow().test {
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IN_PROGRESS)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.ERROR)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IDLE)
             }
 
             // Verify interactions
@@ -635,13 +613,11 @@ class CountriesRepositoryTest {
             coVerify(exactly = 0) { database.deleteAllCountries() }
             coVerify { networkModelMapper.mapNetworkListToDataModelList(any()) }
             coVerify { countryModelMapper.mapDataModelListToFakeRemoteEntities(any()) }
-
-            collectJob.cancel()
         }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `restoreCountries should send TransactionState ERRPR when database fails`() =
+    fun `restoreCountries should send TransactionState ERROR when database fails`() =
         runTest {
             // Assert initial state
             assertEquals(
@@ -667,13 +643,11 @@ class CountriesRepositoryTest {
                 )
             }
 
-
             // Call the function under test
-            val collectJob = launch(UnconfinedTestDispatcher()) {
-                val list = subject.restoreCountries().toList()
-                assertEquals(actual = list[0], expected = TransactionState.IN_PROGRESS)
-                assertEquals(actual = list[1], expected = TransactionState.ERROR)
-                assertEquals(actual = list[2], expected = TransactionState.IDLE)
+            subject.restoreCountriesFlow().test {
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IN_PROGRESS)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.ERROR)
+                assertEquals(actual = this.awaitItem(), expected = TransactionState.IDLE)
             }
 
             // Verify interactions
@@ -682,8 +656,6 @@ class CountriesRepositoryTest {
             coVerify { database.deleteAllCountries() }
             coVerify { networkModelMapper.mapNetworkListToDataModelList(any()) }
             coVerify { countryModelMapper.mapDataModelListToFakeRemoteEntities(any()) }
-
-            collectJob.cancel()
         }
 
     private fun mockCountryModel(cca3: String? = null, name: String? = null): CountryModel {
