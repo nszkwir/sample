@@ -1,8 +1,10 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.ksp)
+    id("org.jetbrains.kotlin.kapt")
+    id("io.github.takahirom.roborazzi")
 }
 
 android {
@@ -41,6 +43,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":common"))
     implementation(project(":model"))
+    testImplementation(project(":test-support"))
+
     implementation(libs.androidx.junit.ktx)
 
     val composeBom = platform(libs.androidx.compose.bom)
@@ -78,10 +82,16 @@ dependencies {
     testImplementation(libs.kotlinx.serialization.json)
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.espresso.core)
+    testImplementation(libs.roborazzi)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
 
     androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.junit)
 
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
