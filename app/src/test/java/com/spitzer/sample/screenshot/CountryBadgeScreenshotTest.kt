@@ -8,6 +8,8 @@ import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.google.accompanist.testharness.TestHarness
 import com.spitzer.sample.configuration.DefaultRoborazziOptions
+import com.spitzer.sample.configuration.FontScale
+import com.spitzer.sample.configuration.getScreenshotFilePath
 import com.spitzer.ui.components.badges.CountryBadge_ScreenshotTestFunction
 import org.junit.Assert.*
 import org.junit.Rule
@@ -28,6 +30,9 @@ class CountryBadgeScreenshotTest {
     @get:Rule
     val composeRule = createComposeRule()
 
+    private val screenshotName = "Composable/CountryBadge/allCountryBadges"
+
+
     @Test
     fun allCountryBadges() {
         composeRule.setContent {
@@ -36,19 +41,19 @@ class CountryBadgeScreenshotTest {
 
         composeRule.onRoot()
             .captureRoboImage(
-                "src/test/screenshots/CountryBadge/allCountryBadges.png",
+                getScreenshotFilePath(screenshotName, "Pixel6", false),
                 roborazziOptions = DefaultRoborazziOptions
             )
     }
 
-
     @Test
-    fun allCountryBadges_HugeFont() {
+    @Config(qualifiers = "+night")
+    fun allCountryBadges_DarkMode() {
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
-                TestHarness(fontScale = 2f) {
+                TestHarness(darkMode = true) {
                     CountryBadge_ScreenshotTestFunction()
                 }
             }
@@ -56,7 +61,49 @@ class CountryBadgeScreenshotTest {
 
         composeRule.onRoot()
             .captureRoboImage(
-                "src/test/screenshots/CountryBadge/allCountryBadges_HugeFont.png",
+                getScreenshotFilePath(screenshotName, "Pixel6", true),
+                roborazziOptions = DefaultRoborazziOptions
+            )
+    }
+
+
+    @Test
+    fun allCountryBadges_HugeFont() {
+        val fontScale = FontScale.TWO_TO_ONE
+        composeRule.setContent {
+            CompositionLocalProvider(
+                LocalInspectionMode provides true,
+            ) {
+                TestHarness(fontScale = fontScale.value) {
+                    CountryBadge_ScreenshotTestFunction()
+                }
+            }
+        }
+
+        composeRule.onRoot()
+            .captureRoboImage(
+                getScreenshotFilePath(screenshotName, "Pixel6", false, fontScale.description),
+                roborazziOptions = DefaultRoborazziOptions
+            )
+    }
+
+    @Test
+    @Config(qualifiers = "+night")
+    fun allCountryBadges_HugeFont_DarkMode() {
+        val fontScale = FontScale.TWO_TO_ONE
+        composeRule.setContent {
+            CompositionLocalProvider(
+                LocalInspectionMode provides true,
+            ) {
+                TestHarness(fontScale = 2f, darkMode = true) {
+                    CountryBadge_ScreenshotTestFunction()
+                }
+            }
+        }
+
+        composeRule.onRoot()
+            .captureRoboImage(
+                getScreenshotFilePath(screenshotName, "Pixel6", true, fontScale.description),
                 roborazziOptions = DefaultRoborazziOptions
             )
     }
