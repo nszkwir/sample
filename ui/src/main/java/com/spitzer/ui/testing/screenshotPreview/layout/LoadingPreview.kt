@@ -12,7 +12,7 @@ import com.spitzer.ui.theme.SampleTheme
 fun LoadingLayout_ScreenshotTest() {
     SampleTheme {
         Column(modifier = Modifier.padding(5.dp)){
-            LoadingLayout()
+            LoadingLayout(contentDescription = "Loading")
         }
     }
 }

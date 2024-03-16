@@ -11,12 +11,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
+import com.spitzer.ui.R
 import com.spitzer.ui.testing.screenshotPreview.layout.LoadingLayout_ScreenshotTest
 
 @Composable
 fun LoadingLayout(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentDescription: String = stringResource(id = R.string.loading)
 ) {
     // used to remove ripple effect from loading background
     val interactionSource = remember { MutableInteractionSource() }
@@ -32,8 +37,14 @@ fun LoadingLayout(
                 // do nothing, it's clickable to prevent the user to interact with
                 // the content while loading
             }
+            .semantics(mergeDescendants = true) {
+                this.contentDescription = contentDescription
+            }
     ) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        CircularProgressIndicator(
+            modifier = Modifier
+                .align(Alignment.Center)
+        )
     }
 }
 
