@@ -45,8 +45,8 @@ import com.spitzer.ui.R
 import com.spitzer.ui.components.badges.CountryBadge
 import com.spitzer.ui.components.badges.getBadgeConfiguration
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topbar.TopBarConfiguration
-import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
 import com.spitzer.ui.theme.BlueGray50
 
 @Composable
@@ -74,8 +74,8 @@ fun CountryDetailsScreen(
 
     ScaffoldLayout(
         topBarContent = {
-            TopBarLayout(
-                configuration = TopBarConfiguration(
+            TopAppBar(
+                configuration = TopAppBarConfiguration(
                     title = "",
                     navIconId = R.drawable.baseline_arrow_back_24,
                     navIconContentDescription = stringResource(id = R.string.back_CD),

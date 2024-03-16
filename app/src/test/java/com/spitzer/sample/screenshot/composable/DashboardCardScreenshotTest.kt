@@ -11,7 +11,7 @@ import com.google.accompanist.testharness.TestHarness
 import com.spitzer.sample.configuration.DefaultRoborazziOptions
 import com.spitzer.sample.configuration.FontScale
 import com.spitzer.sample.configuration.getScreenshotFilePath
-import com.spitzer.ui.components.dashboardCard.DashboardCardPreview_ScreenshotTest
+import com.spitzer.ui.testing.screenshotPreview.components.DashboardCardPreview_ScreenshotTest
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test

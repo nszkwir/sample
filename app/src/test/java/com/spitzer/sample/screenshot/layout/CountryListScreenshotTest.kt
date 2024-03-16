@@ -1,4 +1,4 @@
-package com.spitzer.sample.screenshot.composable
+package com.spitzer.sample.screenshot.layout
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -11,8 +11,7 @@ import com.google.accompanist.testharness.TestHarness
 import com.spitzer.sample.configuration.DefaultRoborazziOptions
 import com.spitzer.sample.configuration.FontScale
 import com.spitzer.sample.configuration.getScreenshotFilePath
-import com.spitzer.ui.testing.screenshotPreview.components.CountryBadge_ScreenshotTestFunction
-import org.junit.Assert.*
+import com.spitzer.ui.testing.screenshotPreview.layout.CountryListLayout_ScreenshotTest
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,17 +25,16 @@ import org.robolectric.annotation.GraphicsMode
     sdk = [33],
     qualifiers = RobolectricDeviceQualifiers.Pixel6
 )
-class CountryBadgeScreenshotTest {
+class TransparentSearchFieldScreenshotTest {
 
     @get:Rule
     val composeRule = createComposeRule()
-    private val screenshotName = "Composable/CountryBadge/allCountryBadges"
-
+    private val screenshotName = "Layout/CountryList/countryList"
 
     @Test
-    fun allCountryBadges() {
+    fun countryList() {
         composeRule.setContent {
-            ComposeBadges()
+            ComposeCountryList()
         }
 
         composeRule.onRoot()
@@ -48,13 +46,13 @@ class CountryBadgeScreenshotTest {
 
     @Test
     @Config(qualifiers = "+night")
-    fun allCountryBadges_DarkMode() {
+    fun countryList_DarkMode() {
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(darkMode = true) {
-                    ComposeBadges()
+                    ComposeCountryList()
                 }
             }
         }
@@ -68,14 +66,14 @@ class CountryBadgeScreenshotTest {
 
 
     @Test
-    fun allCountryBadges_HugeFont() {
+    fun countryList_HugeFont() {
         val fontScale = FontScale.TWO_TO_ONE
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(fontScale = fontScale.value) {
-                    ComposeBadges()
+                    ComposeCountryList()
                 }
             }
         }
@@ -89,14 +87,14 @@ class CountryBadgeScreenshotTest {
 
     @Test
     @Config(qualifiers = "+night")
-    fun allCountryBadges_HugeFont_DarkMode() {
+    fun countryList_HugeFont_DarkMode() {
         val fontScale = FontScale.TWO_TO_ONE
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(fontScale = 2f, darkMode = true) {
-                    ComposeBadges()
+                    ComposeCountryList()
                 }
             }
         }
@@ -109,7 +107,7 @@ class CountryBadgeScreenshotTest {
     }
 
     @Composable
-    private fun ComposeBadges() {
-        CountryBadge_ScreenshotTestFunction()
+    private fun ComposeCountryList() {
+        CountryListLayout_ScreenshotTest()
     }
 }

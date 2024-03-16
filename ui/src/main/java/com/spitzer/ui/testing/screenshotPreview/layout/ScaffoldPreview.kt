@@ -44,7 +44,7 @@ fun ScaffoldLayout_ScreenshotTest() {
 }
 
 @Composable
-fun ScaffoldLayout_ScreenshotTest2() {
+fun ScaffoldLayout_ScreenshotTest_LargeTAB() {
     SampleTheme {
         ScaffoldLayout(
             topBarContent = {

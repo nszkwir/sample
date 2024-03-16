@@ -17,8 +17,8 @@ import com.spitzer.ui.layout.scaffold.FABConfiguration
 import com.spitzer.ui.layout.scaffold.FABLayout
 import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topbar.TopBarConfiguration
-import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
 
 @Composable
 fun CountriesScreen(
@@ -48,8 +48,8 @@ fun CountriesScreen(
 
     ScaffoldLayout(
         topBarContent = {
-            TopBarLayout(
-                configuration = TopBarConfiguration(
+            TopAppBar(
+                configuration = TopAppBarConfiguration(
                     title = stringResource(id = R.string.countries),
                     navIconId = R.drawable.baseline_arrow_back_24,
                     navIconContentDescription = stringResource(id = R.string.back_CD),

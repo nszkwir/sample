@@ -6,7 +6,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import com.spitzer.ui.testing.screenshotPreview.layout.ScaffoldLayout_ScreenshotTest
+import com.spitzer.ui.testing.screenshotPreview.layout.ScaffoldLayout_ScreenshotTest_LargeTAB
 
 @Composable
 fun ScaffoldLayout(
@@ -33,4 +36,16 @@ fun ScaffoldLayout(
         }
         if (isLoading) loadingContent(paddingTop)
     }
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun ScaffoldLayoutPreview() {
+    ScaffoldLayout_ScreenshotTest()
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun ScaffoldLayoutPreview2() {
+    ScaffoldLayout_ScreenshotTest_LargeTAB()
 }

@@ -2,11 +2,7 @@ package com.spitzer.ui.components.transparentSearchField
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -16,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.spitzer.ui.R
+import com.spitzer.ui.testing.screenshotPreview.components.TransparentSearchFieldPreview_ScreenshotTest
 import com.spitzer.ui.theme.BlueGray100
 import com.spitzer.ui.theme.SampleTheme
 
@@ -89,34 +85,5 @@ fun prev1(
 ) {
     SampleTheme {
         TransparentSearchFieldPreview_ScreenshotTest()
-    }
-}
-
-@Composable
-fun TransparentSearchFieldPreview_ScreenshotTest() {
-    SampleTheme {
-        Column(modifier = Modifier.padding(5.dp)) {
-            TransparentSearchField(onClearSearchText = {}) {}
-            Spacer(modifier = Modifier.size(5.dp))
-            TransparentSearchField(searchText = "Arg", onClearSearchText = {}) {}
-            Spacer(modifier = Modifier.size(5.dp))
-            TransparentSearchField(placeholder = "country: ", onClearSearchText = {}) {}
-            Spacer(modifier = Modifier.size(5.dp))
-            TransparentSearchField(
-                placeholder = "country: ",
-                searchText = "Argent",
-                onClearSearchText = {}) {}
-            Spacer(modifier = Modifier.size(5.dp))
-            TransparentSearchField(
-                onClearSearchText = {},
-                searchIconDrawable = R.drawable.baseline_error_outline_24
-            ) {}
-            Spacer(modifier = Modifier.size(5.dp))
-            TransparentSearchField(
-                searchText = "Arg",
-                onClearSearchText = {},
-                clearIconDrawable = R.drawable.baseline_settings_24
-            ) {}
-        }
     }
 }
