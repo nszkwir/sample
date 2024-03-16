@@ -1,4 +1,4 @@
-package com.spitzer.ui.layout.scaffold.topbar
+package com.spitzer.ui.layout.scaffold.topappbar
 
 import androidx.annotation.DrawableRes
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.spitzer.ui.testing.screenshotPreview.layout.TABLayout_ScreenshotTest
 
-data class TopBarConfiguration(
+data class TopAppBarConfiguration(
     val title: String? = "",
     @DrawableRes val navIconId: Int? = null,
     val onNavIconClicked: (() -> Unit)? = null,
@@ -23,9 +25,9 @@ data class TopBarConfiguration(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBarLayout(
+fun TopAppBar(
     modifier: Modifier = Modifier,
-    configuration: TopBarConfiguration
+    configuration: TopAppBarConfiguration
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -54,4 +56,10 @@ fun TopBarLayout(
                 }
         },
     )
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun TABLayoutPreview() {
+    TABLayout_ScreenshotTest()
 }

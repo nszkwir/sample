@@ -11,10 +11,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
@@ -27,9 +25,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.spitzer.ui.theme.SampleTheme
-import com.spitzer.ui.tooling.PhonePreview
+import com.spitzer.ui.testing.screenshotPreview.components.OutlinedLoadingButtonPreview_ScreenshotTest
 
 @Composable
 fun OutlinedLoadingButton(
@@ -88,17 +86,8 @@ fun OutlinedLoadingButton(
     }
 }
 
-@PhonePreview
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
 @Composable
 fun OutlinedLoadingButtonPreview() {
-    SampleTheme {
-        Column(
-            modifier = Modifier.padding(20.dp)
-        ) {
-            OutlinedLoadingButton(text = "Button")
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.IN_PROGRESS)
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.SUCCESS)
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.ERROR)
-        }
-    }
+    OutlinedLoadingButtonPreview_ScreenshotTest()
 }

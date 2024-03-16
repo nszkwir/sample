@@ -1,4 +1,4 @@
-package com.spitzer.ui.layout.scaffold.topbar
+package com.spitzer.ui.layout.scaffold.topappbar
 
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -14,8 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
+import com.spitzer.ui.testing.screenshotPreview.layout.LTABLayout_ScreenshotTest
+import com.spitzer.ui.testing.screenshotPreview.layout.LTABLayout_ScreenshotTest2
 
-data class SampleTopAppBarConfiguration(
+data class LargeTopAppBarConfiguration(
     val title: String? = "",
     @ColorRes val backgroundColor: Color = Color.Unspecified,
     @ColorRes val elementsColor: Color = Color.Unspecified,
@@ -31,7 +34,7 @@ data class SampleTopAppBarConfiguration(
 @Composable
 fun LargeTopAppBar(
     modifier: Modifier = Modifier,
-    configuration: SampleTopAppBarConfiguration
+    configuration: LargeTopAppBarConfiguration
 ) {
     LargeTopAppBar(
         modifier = modifier,
@@ -64,4 +67,16 @@ fun LargeTopAppBar(
                 }
         },
     )
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun LTABLayoutPreview() {
+    LTABLayout_ScreenshotTest()
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun LTABLayoutPreview2() {
+    LTABLayout_ScreenshotTest2()
 }

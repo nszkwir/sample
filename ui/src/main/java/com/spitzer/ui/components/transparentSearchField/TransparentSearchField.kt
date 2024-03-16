@@ -13,7 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.spitzer.ui.R
+import com.spitzer.ui.testing.screenshotPreview.components.TransparentSearchFieldPreview_ScreenshotTest
 import com.spitzer.ui.theme.BlueGray100
+import com.spitzer.ui.theme.SampleTheme
 
 @Composable
 fun TransparentSearchField(
@@ -81,21 +83,7 @@ fun TransparentSearchField(
 fun prev1(
 
 ) {
-    TransparentSearchField(
-        searchText = "Argent",
-        onClearSearchText = {},
-        onSearchTextChange = {}
-    )
-}
-
-@Preview(showBackground = true, backgroundColor = 0xFF673AB7)
-@Composable
-fun prev2(
-
-) {
-    TransparentSearchField(
-        searchText = "",
-        onClearSearchText = {},
-        onSearchTextChange = {}
-    )
+    SampleTheme {
+        TransparentSearchFieldPreview_ScreenshotTest()
+    }
 }

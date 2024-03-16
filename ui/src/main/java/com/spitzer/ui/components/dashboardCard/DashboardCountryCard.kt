@@ -133,7 +133,7 @@ fun DashboardCountryCard(
 
 @Preview(showBackground = true)
 @Composable
-private fun prev1() {
+private fun preview_1() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!
             .copy(name = "Provincias Unidas del Rio de la Plata, Republica Argentina"),
@@ -144,7 +144,7 @@ private fun prev1() {
 
 @Preview(showBackground = true)
 @Composable
-private fun prev11() {
+private fun preview_1_1() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
         painter = painterResource(R.drawable.baseline_broken_image_no_padding),
@@ -154,7 +154,7 @@ private fun prev11() {
 
 @Preview(device = "spec:parent=pixel_5,orientation=landscape", showBackground = true)
 @Composable
-private fun prev2() {
+private fun preview_2() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
         painter = painterResource(R.drawable.baseline_broken_image_no_padding),
@@ -164,7 +164,7 @@ private fun prev2() {
 
 @Preview(device = "spec:width=600px,height=1200px,dpi=440", showBackground = true)
 @Composable
-private fun prev3() {
+private fun preview_3() {
     DashboardCountryCard(
         country = TestCountryModelProvider.getTestCountryModel().asDashboardCountryModel()!!,
         painter = painterResource(R.drawable.baseline_broken_image_no_padding),

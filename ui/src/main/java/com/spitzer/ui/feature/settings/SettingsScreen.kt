@@ -17,8 +17,8 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.spitzer.ui.R
 import com.spitzer.ui.components.loadingButton.OutlinedLoadingButton
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topbar.TopBarConfiguration
-import com.spitzer.ui.layout.scaffold.topbar.TopBarLayout
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
 
 @Composable
 fun SettingsScreen(
@@ -41,8 +41,8 @@ fun SettingsScreen(
 
     ScaffoldLayout(
         topBarContent = {
-            TopBarLayout(
-                configuration = TopBarConfiguration(
+            TopAppBar(
+                configuration = TopAppBarConfiguration(
                     title = stringResource(id = R.string.settings),
                     navIconId = R.drawable.baseline_arrow_back_24,
                     navIconContentDescription = stringResource(id = R.string.back_CD),

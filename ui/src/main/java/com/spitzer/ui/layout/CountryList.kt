@@ -15,9 +15,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.spitzer.model.data.CountryModel
 import com.spitzer.ui.components.countryCard.FlagCountryCard
+import com.spitzer.ui.testing.screenshotPreview.layout.CountryListLayout_ScreenshotTest
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,4 +66,10 @@ fun CountryListLayout(
             state = pullRefreshState,
         )
     }
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun CountryListLayoutPreview() {
+    CountryListLayout_ScreenshotTest()
 }

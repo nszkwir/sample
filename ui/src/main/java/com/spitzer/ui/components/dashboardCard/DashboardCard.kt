@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
@@ -27,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.spitzer.ui.R
-import com.spitzer.ui.theme.SampleTheme
+import com.spitzer.ui.testing.screenshotPreview.components.DashboardCardPreview_ScreenshotTest
 
 @Composable
 fun DashboardCard(
@@ -199,33 +198,5 @@ fun NormalDashboardCard(
 @Preview
 @Composable
 fun DashboardCardPreview() {
-    SampleTheme {
-        Column {
-            DashboardCard(
-                title = "Statistics",
-                subtitle = "Compare and get insight about countries characteristics.",
-                painter = painterResource(id = R.drawable.baseline_query_stats_24),
-                contentDescription = "",
-                onClickActionDescription = "",
-            )
-            Spacer(modifier = Modifier.size(20.dp))
-            DashboardCard(
-                title = "Statistics",
-                subtitle = "Compare and get insight about countries characteristics.",
-                painter = painterResource(id = R.drawable.baseline_query_stats_24),
-                leftIcon = false,
-                contentDescription = "",
-                onClickActionDescription = "",
-            )
-            Spacer(modifier = Modifier.size(20.dp))
-            DashboardCard(
-                title = "Statistics",
-                subtitle = "Compare and get insight about countries characteristics.",
-                painter = painterResource(id = R.drawable.baseline_query_stats_24),
-                isCompactMode = false,
-                contentDescription = "",
-                onClickActionDescription = "",
-            )
-        }
-    }
+    DashboardCardPreview_ScreenshotTest()
 }

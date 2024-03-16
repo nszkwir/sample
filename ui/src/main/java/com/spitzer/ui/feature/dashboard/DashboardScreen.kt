@@ -32,8 +32,8 @@ import com.spitzer.ui.graphics.AnimateSlideFromLeft
 import com.spitzer.ui.graphics.AnimateSlideFromRight
 import com.spitzer.ui.graphics.AnimatedBackground
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topbar.LargeTopAppBar
-import com.spitzer.ui.layout.scaffold.topbar.SampleTopAppBarConfiguration
+import com.spitzer.ui.layout.scaffold.topappbar.LargeTopAppBar
+import com.spitzer.ui.layout.scaffold.topappbar.LargeTopAppBarConfiguration
 
 @Composable
 fun DashboardScreen(
@@ -68,7 +68,7 @@ fun DashboardScreen(
         },
         topBarContent = {
             LargeTopAppBar(
-                configuration = SampleTopAppBarConfiguration(
+                configuration = LargeTopAppBarConfiguration(
                     title = stringResource(id = R.string.welcome),
                     backgroundColor = Color.Transparent,
                     elementsColor = Color.White,

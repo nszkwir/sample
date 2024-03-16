@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt.gradle)
+    id("org.jetbrains.kotlin.android")
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.kapt)
+    id("org.jetbrains.kotlin.kapt")
+    id("io.github.takahirom.roborazzi")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -57,7 +58,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
-
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -67,6 +72,8 @@ android {
 
 dependencies {
     implementation(project(":ui"))
+    testImplementation(project(":model"))
+    testImplementation(project(":test-support"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
@@ -92,6 +99,24 @@ dependencies {
 
     implementation(libs.coil.kt)
 
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.espresso.core)
+    testImplementation(libs.roborazzi)
+    testImplementation(libs.roborazzi.compose)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.accompanist.testharness)
+
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.robolectric)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.roborazzi)
+    androidTestImplementation(libs.roborazzi.compose)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.accompanist.testharness)
+
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+
 }

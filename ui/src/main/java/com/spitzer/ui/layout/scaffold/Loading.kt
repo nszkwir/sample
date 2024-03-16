@@ -11,6 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import com.spitzer.ui.testing.screenshotPreview.layout.LoadingLayout_ScreenshotTest
 
 @Composable
 fun LoadingLayout(
@@ -33,4 +35,10 @@ fun LoadingLayout(
     ) {
         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun LoadingLayoutPreview() {
+    LoadingLayout_ScreenshotTest()
 }

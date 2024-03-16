@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -35,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.spitzer.ui.R
 import com.spitzer.ui.feature.countryDetails.CountryDetailsUiModel
+import com.spitzer.ui.testing.screenshotPreview.components.CountryBadge_ScreenshotTestFunction
 import com.spitzer.ui.theme.Green500
 import com.spitzer.ui.theme.Red500
 
@@ -49,7 +49,8 @@ fun CountryBadge(
     badgeContainerColor: Color = configuration.badgeContainerColor
         ?: MaterialTheme.colorScheme.primary,
     mainIconPainter: Painter = rememberAsyncImagePainter(configuration.mainIcon),
-    mainContentColor: Color = configuration.mainContentColor ?: MaterialTheme.colorScheme.primary, // TODO setup background and content color
+    mainContentColor: Color = configuration.mainContentColor
+        ?: MaterialTheme.colorScheme.primary, // TODO setup background and content color
     mainBackgroundColor: Color = configuration.mainBackgroundColor
         ?: MaterialTheme.colorScheme.background,
     mainStrokeColor: Color = configuration.mainStrokeColor ?: Color.Gray,
@@ -239,76 +240,5 @@ fun CountryDetailsUiModel.Badge.getBadgeConfiguration(): CountryBadgeConfigurati
 @Preview(showBackground = true)
 @Composable
 private fun Prev1() {
-    val unMemberBadge = CountryDetailsUiModel.Badge.UnitedNations(true)
-    val unNotMemberBadge = CountryDetailsUiModel.Badge.UnitedNations(false)
-    val currencyBadge =
-        CountryDetailsUiModel.Badge.Currency(code = "USD", symbol = "US$", name = "US dollar")
-    val currencyBadge2 =
-        CountryDetailsUiModel.Badge.Currency(code = "ARS", symbol = "AR$", name = "Peso Argentino")
-    val phoneBadge1 = CountryDetailsUiModel.Badge.Phone(code = "+34")
-    val phoneBadge2 = CountryDetailsUiModel.Badge.Phone(code = "+55")
-    val continentBadge1 =
-        CountryDetailsUiModel.Badge.Continent(CountryDetailsUiModel.Badge.Continent.Continent.SOUTH_AMERICA)
-    val continentBadge2 =
-        CountryDetailsUiModel.Badge.Continent(CountryDetailsUiModel.Badge.Continent.Continent.ANTARCTICA)
-
-    Column(
-        modifier = Modifier
-            .padding(20.dp)
-    ) {
-        Row {
-            unMemberBadge.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    badgePainter = painterResource(R.drawable.baseline_check_24),
-                    mainIconPainter = painterResource(R.drawable.united_nations)
-                )
-            }
-            unNotMemberBadge.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    badgePainter = painterResource(R.drawable.baseline_close_24),
-                    mainIconPainter = painterResource(R.drawable.united_nations)
-                )
-            }
-        }
-        Row {
-            currencyBadge.getBadgeConfiguration()?.let {
-                CountryBadge(configuration = it)
-            }
-            currencyBadge2.getBadgeConfiguration()?.let {
-                CountryBadge(configuration = it)
-            }
-        }
-
-        Row {
-            phoneBadge1.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    mainIconPainter = painterResource(R.drawable.baseline_phone_24)
-                )
-            }
-            phoneBadge2.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    mainIconPainter = painterResource(R.drawable.baseline_phone_24)
-                )
-            }
-        }
-
-        Row {
-            continentBadge1.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    mainIconPainter = painterResource(R.drawable.south_america)
-                )
-            }
-            continentBadge2.getBadgeConfiguration()?.let {
-                CountryBadge(
-                    configuration = it,
-                    mainIconPainter = painterResource(R.drawable.world)
-                )
-            }
-        }
-    }
+    CountryBadge_ScreenshotTestFunction()
 }

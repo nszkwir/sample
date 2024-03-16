@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.spitzer.ui.testing.screenshotPreview.components.PrimaryOutlinedTexFieldPreview_ScreenshotTest
 
 @Composable
 fun PrimaryOutlinedTextField(
@@ -46,4 +48,10 @@ fun PrimaryOutlinedTextField(
         ),
         onValueChange = onTextChanged
     )
+}
+
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
+@Composable
+fun preview() {
+    PrimaryOutlinedTexFieldPreview_ScreenshotTest()
 }
