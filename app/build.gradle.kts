@@ -107,6 +107,12 @@ dependencies {
     testImplementation(libs.androidx.compose.ui.test.junit4)
     testImplementation(libs.accompanist.testharness)
 
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.robolectric)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.roborazzi)
+    androidTestImplementation(libs.roborazzi.compose)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.accompanist.testharness)
 
     // Tooling
