@@ -20,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -31,6 +33,7 @@ import com.spitzer.ui.components.transparentSearchField.TransparentSearchField
 import com.spitzer.ui.graphics.AnimateSlideFromLeft
 import com.spitzer.ui.graphics.AnimateSlideFromRight
 import com.spitzer.ui.graphics.AnimatedBackground
+import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
 import com.spitzer.ui.layout.scaffold.topappbar.LargeTopAppBar
 import com.spitzer.ui.layout.scaffold.topappbar.LargeTopAppBarConfiguration
@@ -45,12 +48,6 @@ fun DashboardScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    val showCountriesError = uiState.searchIsActive && uiState.searchingCountriesError
-    val showCountriesLoading = uiState.searchIsActive && uiState.searchingCountriesProgress
-    val showCountries = uiState.searchIsActive && !showCountriesError && !showCountriesLoading
-    // We only show the dashboard cards when there are no countries to show
-    val showDashboardCards = !uiState.searchIsActive
-
     // Windows configuration
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color.Transparent
@@ -61,6 +58,33 @@ fun DashboardScreen(
             darkIcons = useDarkIcons
         )
     }
+
+    DashboardScreen(
+        uiState = uiState,
+        onTopAppBarNavIconClicked = onTopAppBarNavIconClicked,
+        onTopAppBarIconClicked = onTopAppBarIconClicked,
+        onNavigateToFullCountryList = onNavigateToFullCountryList,
+        onCountryClicked = onCountryClicked,
+        onSearchTextChange = viewModel::onSearchTextChange,
+        clearSearchText = viewModel::clearSearchText
+    )
+}
+
+@Composable
+fun DashboardScreen(
+    uiState: DashboardUiState,
+    onTopAppBarNavIconClicked: () -> Unit = {},
+    onTopAppBarIconClicked: () -> Unit = {},
+    onNavigateToFullCountryList: () -> Unit = {},
+    onCountryClicked: (String) -> Unit = {},
+    onSearchTextChange: (String) -> Unit = {},
+    clearSearchText: () -> Unit = {}
+) {
+    val showCountriesError = uiState.searchIsActive && uiState.searchingCountriesError
+    val showCountriesLoading = uiState.searchIsActive && uiState.searchingCountriesProgress
+    val showCountries = uiState.searchIsActive && !showCountriesError && !showCountriesLoading
+    // We only show the dashboard cards when there are no countries to show
+    val showDashboardCards = !uiState.searchIsActive
 
     ScaffoldLayout(
         backgroundContent = {
@@ -78,6 +102,10 @@ fun DashboardScreen(
                 ),
             )
         },
+        isLoading = uiState.isLoading,
+        loadingContent = {
+            LoadingLayout(Modifier.padding(top = it))
+        }
     ) {
         Column {
             Row(
@@ -89,8 +117,8 @@ fun DashboardScreen(
                     modifier = Modifier.fillMaxWidth(),
                     searchText = uiState.searchText ?: "",
                     placeholder = stringResource(id = R.string.searchCountries),
-                    onSearchTextChange = viewModel::onSearchTextChange,
-                    onClearSearchText = viewModel::clearSearchText
+                    onSearchTextChange = onSearchTextChange,
+                    onClearSearchText = clearSearchText
                 )
             }
             Spacer(modifier = Modifier.size(20.dp))
@@ -164,6 +192,7 @@ fun DashboardScreen(
                             modifier = Modifier.padding(end = 40.dp),
                             title = stringResource(id = R.string.ooops),
                             subtitle = stringResource(id = R.string.errorSearchingCountries),
+                            contentDescription = stringResource(id = R.string.errorSearchingCountries),
                             imageId = R.drawable.baseline_sync_problem_24,
                             isCompactMode = false,
                         )
@@ -172,8 +201,13 @@ fun DashboardScreen(
 
                 if (showCountriesLoading) {
                     item(key = "countriesLoaderIndicator") {
+                        val loadingCd = stringResource(id = R.string.loading)
                         CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .semantics {
+                                    this.contentDescription = loadingCd
+                                },
                         )
                     }
                 }
