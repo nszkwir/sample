@@ -199,6 +199,11 @@ fun NormalDashboardCard(
 @Preview
 @Composable
 fun DashboardCardPreview() {
+    DashboardCardPreview_ScreenshotTest()
+}
+
+@Composable
+fun DashboardCardPreview_ScreenshotTest() {
     SampleTheme {
         Column {
             DashboardCard(

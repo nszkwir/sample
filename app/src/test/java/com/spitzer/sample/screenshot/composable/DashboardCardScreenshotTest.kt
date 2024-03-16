@@ -1,5 +1,6 @@
-package com.spitzer.sample.screenshot
+package com.spitzer.sample.screenshot.composable
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -10,7 +11,7 @@ import com.google.accompanist.testharness.TestHarness
 import com.spitzer.sample.configuration.DefaultRoborazziOptions
 import com.spitzer.sample.configuration.FontScale
 import com.spitzer.sample.configuration.getScreenshotFilePath
-import com.spitzer.ui.components.badges.CountryBadge_ScreenshotTestFunction
+import com.spitzer.ui.components.dashboardCard.DashboardCardPreview_ScreenshotTest
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -25,18 +26,18 @@ import org.robolectric.annotation.GraphicsMode
     sdk = [33],
     qualifiers = RobolectricDeviceQualifiers.Pixel6
 )
-class CountryBadgeScreenshotTest {
+class DashboardCardScreenshotTest {
 
     @get:Rule
     val composeRule = createComposeRule()
 
-    private val screenshotName = "Composable/CountryBadge/allCountryBadges"
+    private val screenshotName = "Composable/DashboardCard/dashboardCard"
 
 
     @Test
-    fun allCountryBadges() {
+    fun allCards() {
         composeRule.setContent {
-            CountryBadge_ScreenshotTestFunction()
+            ComposeDashboardCard()
         }
 
         composeRule.onRoot()
@@ -48,13 +49,13 @@ class CountryBadgeScreenshotTest {
 
     @Test
     @Config(qualifiers = "+night")
-    fun allCountryBadges_DarkMode() {
+    fun allCards_DarkMode() {
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(darkMode = true) {
-                    CountryBadge_ScreenshotTestFunction()
+                    ComposeDashboardCard()
                 }
             }
         }
@@ -68,14 +69,14 @@ class CountryBadgeScreenshotTest {
 
 
     @Test
-    fun allCountryBadges_HugeFont() {
+    fun allCards_HugeFont() {
         val fontScale = FontScale.TWO_TO_ONE
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(fontScale = fontScale.value) {
-                    CountryBadge_ScreenshotTestFunction()
+                    ComposeDashboardCard()
                 }
             }
         }
@@ -89,14 +90,14 @@ class CountryBadgeScreenshotTest {
 
     @Test
     @Config(qualifiers = "+night")
-    fun allCountryBadges_HugeFont_DarkMode() {
+    fun allCards_HugeFont_DarkMode() {
         val fontScale = FontScale.TWO_TO_ONE
         composeRule.setContent {
             CompositionLocalProvider(
                 LocalInspectionMode provides true,
             ) {
                 TestHarness(fontScale = 2f, darkMode = true) {
-                    CountryBadge_ScreenshotTestFunction()
+                    ComposeDashboardCard()
                 }
             }
         }
@@ -106,5 +107,10 @@ class CountryBadgeScreenshotTest {
                 getScreenshotFilePath(screenshotName, "Pixel6", true, fontScale.description),
                 roborazziOptions = DefaultRoborazziOptions
             )
+    }
+
+    @Composable
+    private fun ComposeDashboardCard() {
+        DashboardCardPreview_ScreenshotTest()
     }
 }

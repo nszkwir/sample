@@ -72,6 +72,7 @@ android {
 
 dependencies {
     implementation(project(":ui"))
+    testImplementation(project(":model"))
     testImplementation(project(":test-support"))
 
     // Core Android dependencies

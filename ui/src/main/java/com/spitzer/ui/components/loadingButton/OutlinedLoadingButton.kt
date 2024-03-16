@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.spitzer.ui.theme.SampleTheme
 import com.spitzer.ui.tooling.PhonePreview
@@ -88,9 +89,14 @@ fun OutlinedLoadingButton(
     }
 }
 
-@PhonePreview
+@Preview(device = "spec:parent=pixel_5,orientation=portrait", showBackground = true)
 @Composable
 fun OutlinedLoadingButtonPreview() {
+    OutlinedLoadingButtonPreview_ScreenshotTest()
+}
+
+@Composable
+fun OutlinedLoadingButtonPreview_ScreenshotTest() {
     SampleTheme {
         Column(
             modifier = Modifier.padding(20.dp)
