@@ -29,6 +29,17 @@ fun CountriesScreen(
     fabButtonClicked: () -> Unit,
     onCountryClicked: (String) -> Unit,
 ) {
+    // Windows configuration
+    val systemUiController = rememberSystemUiController()
+    val statusBarColor = Color.Transparent
+    val useDarkIcons = !isSystemInDarkTheme()
+    LaunchedEffect(Unit) {
+        systemUiController.setStatusBarColor(
+            color = statusBarColor,
+            darkIcons = useDarkIcons
+        )
+    }
+
     val uiState by viewModel.countriesState.collectAsStateWithLifecycle()
 
     CountriesScreen(
@@ -50,17 +61,6 @@ fun CountriesScreen(
     onCountryClicked: (String) -> Unit = {},
     refreshCountryList: () -> Unit = {}
 ) {
-    // Windows configuration
-    val systemUiController = rememberSystemUiController()
-    val statusBarColor = Color.Transparent
-    val useDarkIcons = !isSystemInDarkTheme()
-    LaunchedEffect(Unit) {
-        systemUiController.setStatusBarColor(
-            color = statusBarColor,
-            darkIcons = useDarkIcons
-        )
-    }
-
     val countries = when (uiState) {
         is CountriesUiState.Success -> (uiState as CountriesUiState.Success).countries
         else -> emptyMap()

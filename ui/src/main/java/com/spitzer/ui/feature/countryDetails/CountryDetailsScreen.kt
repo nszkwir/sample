@@ -44,10 +44,12 @@ import com.spitzer.model.testing.TestCountryModelProvider
 import com.spitzer.ui.R
 import com.spitzer.ui.components.badges.CountryBadge
 import com.spitzer.ui.components.badges.getBadgeConfiguration
+import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
 import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
 import com.spitzer.ui.theme.BlueGray50
+
 
 @Composable
 fun CountryDetailsScreen(
@@ -72,6 +74,16 @@ fun CountryDetailsScreen(
         viewModel.getCountryData(cca3)
     }
 
+    CountryDetailsScreen(uiState, onTopAppBarNavIconClicked, onTopAppBarIconClicked)
+}
+
+
+@Composable
+fun CountryDetailsScreen(
+    uiState: CountryDetailsUiState,
+    onTopAppBarNavIconClicked: () -> Unit = {},
+    onTopAppBarIconClicked: () -> Unit = {},
+) {
     ScaffoldLayout(
         topBarContent = {
             TopAppBar(
@@ -89,7 +101,10 @@ fun CountryDetailsScreen(
                 )
             )
         },
-        isLoading = uiState.isLoading
+        isLoading = uiState.isLoading,
+        loadingContent = {
+            LoadingLayout(Modifier.padding(top = it))
+        }
     ) {
         with(uiState.country) {
             if (this != null)
@@ -97,7 +112,6 @@ fun CountryDetailsScreen(
         }
     }
 }
-
 
 @Composable
 fun CountryDetailsLayout(
