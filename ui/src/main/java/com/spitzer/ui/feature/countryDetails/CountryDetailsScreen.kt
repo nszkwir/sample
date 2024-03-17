@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -44,10 +45,12 @@ import com.spitzer.model.testing.TestCountryModelProvider
 import com.spitzer.ui.R
 import com.spitzer.ui.components.badges.CountryBadge
 import com.spitzer.ui.components.badges.getBadgeConfiguration
+import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
 import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
 import com.spitzer.ui.theme.BlueGray50
+
 
 @Composable
 fun CountryDetailsScreen(
@@ -55,6 +58,21 @@ fun CountryDetailsScreen(
     viewModel: CountryDetailsViewModel = hiltViewModel(),
     onTopAppBarNavIconClicked: () -> Unit,
     onTopAppBarIconClicked: () -> Unit,
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    LaunchedEffect(cca3) {
+        viewModel.getCountryData(cca3)
+    }
+
+    CountryDetailsScreen(uiState, onTopAppBarNavIconClicked, onTopAppBarIconClicked)
+}
+
+
+@Composable
+fun CountryDetailsScreen(
+    uiState: CountryDetailsUiState,
+    onTopAppBarNavIconClicked: () -> Unit = {},
+    onTopAppBarIconClicked: () -> Unit = {},
 ) {
     // Windows configuration
     val systemUiController = rememberSystemUiController()
@@ -65,11 +83,6 @@ fun CountryDetailsScreen(
             color = statusBarColor,
             darkIcons = useDarkIcons
         )
-    }
-
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    LaunchedEffect(cca3) {
-        viewModel.getCountryData(cca3)
     }
 
     ScaffoldLayout(
@@ -89,15 +102,24 @@ fun CountryDetailsScreen(
                 )
             )
         },
-        isLoading = uiState.isLoading
+        isLoading = uiState.isLoading,
+        loadingContent = {
+            LoadingLayout(Modifier.padding(top = it))
+        }
     ) {
-        with(uiState.country) {
-            if (this != null)
-                CountryDetailsLayout(country = this)
+        with(uiState) {
+            if (this.isLoading) {}// TODO Loading content
+            else if (this.isError) {}// TODO Error content
+            else if (this.country != null)
+                CountryDetailsLayout(
+                    country = this.country
+                )
+            else {
+                //TODO Null Country Error content
+            }
         }
     }
 }
-
 
 @Composable
 fun CountryDetailsLayout(
@@ -117,8 +139,7 @@ fun CountryDetailsLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .defaultMinSize(minHeight = 200.dp)
-                //.height(200.dp)
+                .heightIn(min = 200.dp,max = 400.dp)
                 .clip(RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp)),
             painter = flagPainter,
             contentDescription = null,
@@ -297,5 +318,16 @@ private fun Prev1() {
             .mapToCountryDetailsModel(emptyMap()),
         flagPainter = painterResource(R.drawable.baseline_broken_image_no_padding),
         coatOfArmsPainter = painterResource(R.drawable.baseline_broken_image_no_padding),
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Prev2() {
+    CountryDetailsScreen(
+        uiState = CountryDetailsUiState(
+            country = TestCountryModelProvider.getTestCountryModel()
+                .mapToCountryDetailsModel(emptyMap()), isLoading = false
+        ),
     )
 }

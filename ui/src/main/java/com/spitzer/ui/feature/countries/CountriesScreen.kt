@@ -17,8 +17,9 @@ import com.spitzer.ui.layout.scaffold.FABConfiguration
 import com.spitzer.ui.layout.scaffold.FABLayout
 import com.spitzer.ui.layout.scaffold.LoadingLayout
 import com.spitzer.ui.layout.scaffold.ScaffoldLayout
-import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
 import com.spitzer.ui.layout.scaffold.topappbar.TopAppBar
+import com.spitzer.ui.layout.scaffold.topappbar.TopAppBarConfiguration
+
 
 @Composable
 fun CountriesScreen(
@@ -28,8 +29,6 @@ fun CountriesScreen(
     fabButtonClicked: () -> Unit,
     onCountryClicked: (String) -> Unit,
 ) {
-    val uiState by viewModel.countriesState.collectAsStateWithLifecycle()
-
     // Windows configuration
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color.Transparent
@@ -41,6 +40,27 @@ fun CountriesScreen(
         )
     }
 
+    val uiState by viewModel.countriesState.collectAsStateWithLifecycle()
+
+    CountriesScreen(
+        uiState = uiState,
+        onTopAppBarNavIconClicked = onTopAppBarNavIconClicked,
+        onTopAppBarIconClicked = onTopAppBarIconClicked,
+        fabButtonClicked = fabButtonClicked,
+        onCountryClicked = onCountryClicked,
+        refreshCountryList = viewModel::refreshCountyList
+    )
+}
+
+@Composable
+fun CountriesScreen(
+    uiState: CountriesUiState,
+    onTopAppBarNavIconClicked: () -> Unit = {},
+    onTopAppBarIconClicked: () -> Unit = {},
+    fabButtonClicked: () -> Unit = {},
+    onCountryClicked: (String) -> Unit = {},
+    refreshCountryList: () -> Unit = {}
+) {
     val countries = when (uiState) {
         is CountriesUiState.Success -> (uiState as CountriesUiState.Success).countries
         else -> emptyMap()
@@ -66,17 +86,17 @@ fun CountriesScreen(
                 )
             )
         },
+        isLoading = uiState is CountriesUiState.Loading,
         loadingContent = {
             LoadingLayout(Modifier.padding(top = it))
         }
     ) {
         CountryListLayout(
-            modifier = Modifier,
             countries = countries.values.toList(),
             onCountryClicked = {
                 onCountryClicked.invoke(it.cca3)
             },
-            refreshCountryList = viewModel::refreshCountyList
+            refreshCountryList = refreshCountryList
         )
     }
 }
