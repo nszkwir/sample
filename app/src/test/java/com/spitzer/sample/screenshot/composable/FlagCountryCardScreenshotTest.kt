@@ -1,18 +1,12 @@
 package com.spitzer.sample.screenshot.composable
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
-import com.github.takahirom.roborazzi.captureRoboImage
-import com.google.accompanist.testharness.TestHarness
 import com.spitzer.model.testing.TestCountryModelProvider
-import com.spitzer.sample.configuration.DefaultRoborazziOptions
 import com.spitzer.sample.configuration.FontScale
-import com.spitzer.sample.configuration.getScreenshotFilePath
+import com.spitzer.sample.configuration.setContentAndCapture
 import com.spitzer.ui.R
 import com.spitzer.ui.components.countryCard.FlagCountryCard
 import com.spitzer.ui.theme.SampleTheme
@@ -34,82 +28,37 @@ class FlagCountryCardScreenshotTest {
 
     @get:Rule
     val composeRule = createComposeRule()
-
     private val screenshotName = "Composable/FlagCountryCard/flagCountryCard"
 
     @Test
     fun allCards() {
-        composeRule.setContent {
-            ComposeFlagCountryCard()
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", false),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName
+        ) { ComposeFlagCountryCard() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun allCards_DarkMode() {
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(darkMode = true) {
-                    ComposeFlagCountryCard()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", true),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, darkMode = true
+        ) { ComposeFlagCountryCard() }
     }
 
 
     @Test
     fun allCards_HugeFont() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = fontScale.value) {
-                    ComposeFlagCountryCard()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", false, fontScale.description),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, fontScale = FontScale.TWO_TO_ONE
+        ) { ComposeFlagCountryCard() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun allCards_HugeFont_DarkMode() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = 2f, darkMode = true) {
-                    ComposeFlagCountryCard()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", true, fontScale.description),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, fontScale = FontScale.TWO_TO_ONE, darkMode = true
+        ) { ComposeFlagCountryCard() }
     }
 
     @Composable

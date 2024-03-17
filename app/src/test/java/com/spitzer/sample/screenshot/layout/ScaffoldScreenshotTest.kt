@@ -1,16 +1,10 @@
 package com.spitzer.sample.screenshot.layout
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
-import com.github.takahirom.roborazzi.captureRoboImage
-import com.google.accompanist.testharness.TestHarness
-import com.spitzer.sample.configuration.DefaultRoborazziOptions
 import com.spitzer.sample.configuration.FontScale
-import com.spitzer.sample.configuration.getScreenshotFilePath
+import com.spitzer.sample.configuration.setContentAndCapture
 import com.spitzer.ui.testing.screenshotPreview.layout.ScaffoldLayout_ScreenshotTest
 import com.spitzer.ui.testing.screenshotPreview.layout.ScaffoldLayout_ScreenshotTest_LargeTAB
 import org.junit.Rule
@@ -31,164 +25,70 @@ class ScaffoldScreenshotTest {
     @get:Rule
     val composeRule = createComposeRule()
     private val screenshotName = "Layout/Scaffold/scaffold"
-    private val largeTABScaffoldScreenshotName = "${screenshotName}_LargeTAB"
+    private val LTABScaffoldScreenshotName = "${screenshotName}_LargeTAB"
 
     @Test
     fun scaffold() {
-        composeRule.setContent {
-            ComposeScaffold()
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", false),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName
+        ) { ComposeScaffold() }
     }
 
     @Test
     fun scaffold_largeTAB() {
-        composeRule.setContent {
-            ComposeScaffold_LargeTAB()
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(largeTABScaffoldScreenshotName, "Pixel6", false),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = LTABScaffoldScreenshotName,
+        ) { ComposeScaffold_LargeTAB() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun scaffold_DarkMode() {
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(darkMode = true) {
-                    ComposeScaffold()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", true),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, darkMode = true
+        ) { ComposeScaffold() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun scaffold_LargeTAB_DarkMode() {
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(darkMode = true) {
-                    ComposeScaffold_LargeTAB()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(largeTABScaffoldScreenshotName, "Pixel6", true),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = LTABScaffoldScreenshotName,
+            darkMode = true
+        ) { ComposeScaffold_LargeTAB() }
     }
 
     @Test
     fun scaffold_HugeFont() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = fontScale.value) {
-                    ComposeScaffold()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", false, fontScale.description),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, fontScale = FontScale.TWO_TO_ONE
+        ) { ComposeScaffold() }
     }
 
     @Test
     fun scaffold_LargeTAB_HugeFont() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = fontScale.value) {
-                    ComposeScaffold_LargeTAB()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(
-                    largeTABScaffoldScreenshotName,
-                    "Pixel6",
-                    false,
-                    fontScale.description
-                ),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = LTABScaffoldScreenshotName,
+            fontScale = FontScale.TWO_TO_ONE,
+        ) { ComposeScaffold_LargeTAB() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun scaffold_HugeFont_DarkMode() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = 2f, darkMode = true) {
-                    ComposeScaffold()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(screenshotName, "Pixel6", true, fontScale.description),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = screenshotName, fontScale = FontScale.TWO_TO_ONE, darkMode = true
+        ) { ComposeScaffold() }
     }
 
     @Test
     @Config(qualifiers = "+night")
     fun scaffold_LargeTAB_HugeFont_DarkMode() {
-        val fontScale = FontScale.TWO_TO_ONE
-        composeRule.setContent {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-            ) {
-                TestHarness(fontScale = 2f, darkMode = true) {
-                    ComposeScaffold_LargeTAB()
-                }
-            }
-        }
-
-        composeRule.onRoot()
-            .captureRoboImage(
-                getScreenshotFilePath(
-                    largeTABScaffoldScreenshotName,
-                    "Pixel6",
-                    true,
-                    fontScale.description
-                ),
-                roborazziOptions = DefaultRoborazziOptions
-            )
+        composeRule.setContentAndCapture(
+            screenshotName = LTABScaffoldScreenshotName,
+            fontScale = FontScale.TWO_TO_ONE,
+            darkMode = true
+        ) { ComposeScaffold_LargeTAB() }
     }
 
     @Composable
@@ -200,6 +100,4 @@ class ScaffoldScreenshotTest {
     private fun ComposeScaffold_LargeTAB() {
         ScaffoldLayout_ScreenshotTest_LargeTAB()
     }
-
 }
-
