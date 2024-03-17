@@ -40,7 +40,7 @@ class DashboardScreenScreenshotTest {
     }
 
     @Test
-    fun CountryDetailsScreen_Error() {
+    fun DashboardScreen_Error() {
         // TODO Implement ErrorLayout
         composeRule.captureMultiDeviceMultiMode(screenshotName = errorScreenshotName) {
             DashboardScreen(uiState = DashboardUiState().copy(isLoading = false, isError = true))
@@ -48,14 +48,14 @@ class DashboardScreenScreenshotTest {
     }
 
     @Test
-    fun CountryDetailsScreen_SearchInactive() {
+    fun DashboardScreen_SearchInactive() {
         composeRule.captureMultiDeviceMultiMode(screenshotName = notSearchingScreenshotName) {
             DashboardScreen(uiState = DashboardUiState().copy(searchIsActive = false))
         }
     }
 
     @Test
-    fun CountryDetailsScreen_SearchError() {
+    fun DashboardScreen_SearchError() {
         composeRule.captureMultiDeviceMultiMode(screenshotName = searchErrorScreenshotName) {
             DashboardScreen(
                 uiState = DashboardUiState().copy(
@@ -67,7 +67,7 @@ class DashboardScreenScreenshotTest {
     }
 
     @Test
-    fun CountryDetailsScreen_SearchProgress() {
+    fun DashboardScreen_SearchProgress() {
         composeRule.captureMultiDeviceMultiMode(screenshotName = searchProgressScreenshotName) {
             DashboardScreen(
                 uiState = DashboardUiState().copy(
@@ -79,7 +79,7 @@ class DashboardScreenScreenshotTest {
     }
 
     @Test
-    fun CountryDetailsScreen_SearchSuccess() {
+    fun DashboardScreen_SearchSuccess() {
         val countries = listOfNotNull(
             TestCountryModelProvider.getTestCountryModel(cca3 = "ARG", name = "Argentina")
                 .asDashboardCountryModel(),
@@ -99,7 +99,7 @@ class DashboardScreenScreenshotTest {
     }
 
     @Test
-    fun CountryDetailsScreen_SearchEmpty() {
+    fun DashboardScreen_SearchEmpty() {
         composeRule.captureMultiDeviceMultiMode(screenshotName = emptyScreenshotName) {
             DashboardScreen(
                 uiState = DashboardUiState().copy(

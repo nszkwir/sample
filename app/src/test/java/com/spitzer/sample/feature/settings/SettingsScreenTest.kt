@@ -83,5 +83,4 @@ class SettingsScreenTest {
         composeRule.onNodeWithContentDescription(button_CD_Error).assertExists()
     }
 
-
 }
