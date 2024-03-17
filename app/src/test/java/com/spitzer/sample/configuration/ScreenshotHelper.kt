@@ -51,7 +51,6 @@ enum class DefaultTestDevices(val description: String, val spec: String) {
 
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiDeviceMultiMode(
     screenshotName: String,
-    darkMode: Boolean = false,
     body: @Composable () -> Unit,
 ) {
     DefaultTestDevices.entries.forEach {
@@ -59,7 +58,7 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.c
             it.description,
             it.spec,
             screenshotName,
-            darkMode = darkMode,
+            darkMode = true,
             fontScale = FontScale.ONE_TO_ONE,
             body = body
         )
@@ -67,7 +66,23 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.c
             it.description,
             it.spec,
             screenshotName,
-            darkMode = darkMode,
+            darkMode = false,
+            fontScale = FontScale.ONE_TO_ONE,
+            body = body
+        )
+        this.captureForDevice(
+            it.description,
+            it.spec,
+            screenshotName,
+            darkMode = true,
+            fontScale = FontScale.TWO_TO_ONE,
+            body = body
+        )
+        this.captureForDevice(
+            it.description,
+            it.spec,
+            screenshotName,
+            darkMode = false,
             fontScale = FontScale.TWO_TO_ONE,
             body = body
         )

@@ -69,7 +69,7 @@ class CountryBadgeScreenshotTest {
 
     @Test
     @Config(qualifiers = "+night")
-    fun allCountryBadges_HugeFontX2_DarkMode() {
+    fun allCountryBadges_HugeFontX4_DarkMode() {
         composeRule.setContentAndCapture(
             screenshotName = screenshotName, fontScale = FontScale.FOUR_TO_ONE, darkMode = true
         ) { ComposeBadges() }

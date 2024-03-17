@@ -1,11 +1,12 @@
-package com.spitzer.sample.feature.countries
+package com.spitzer.sample.feature.countryDetails
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.spitzer.model.testing.TestCountryModelProvider
 import com.spitzer.sample.configuration.captureMultiDeviceMultiMode
-import com.spitzer.ui.feature.countries.CountriesScreen
-import com.spitzer.ui.feature.countries.CountriesUiState
+import com.spitzer.ui.feature.countryDetails.CountryDetailsScreen
+import com.spitzer.ui.feature.countryDetails.CountryDetailsUiState
+import com.spitzer.ui.feature.countryDetails.mapToCountryDetailsModel
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,40 +19,45 @@ import org.robolectric.annotation.GraphicsMode
 @Config(
     sdk = [33]
 )
-class CountriesScreenScreenshotTest {
+class CountryDetailsScreenshotTest {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
-    private val screenshotName = "Feature/CountriesScreen/"
+    private val screenshotName = "Feature/CountryDetails/"
     private val loadingScreenshotName = "${screenshotName}loading"
     private val errorScreenshotName = "${screenshotName}error"
     private val successScreenshotName = "${screenshotName}success"
 
     @Test
-    fun CountriesScreen_Loading() {
+    fun CountryDetailsScreen_Loading() {
         composeRule.captureMultiDeviceMultiMode(screenshotName = loadingScreenshotName) {
-            CountriesScreen(uiState = CountriesUiState.Loading)
+            CountryDetailsScreen(uiState = CountryDetailsUiState())
         }
     }
 
     @Test
-    fun CountriesScreen_Error() {
+    fun CountryDetailsScreen_Error() {
         // TODO Implement ErrorLayout
         composeRule.captureMultiDeviceMultiMode(screenshotName = errorScreenshotName) {
-            CountriesScreen(uiState = CountriesUiState.Error)
+            CountryDetailsScreen(
+                uiState = CountryDetailsUiState(
+                    isLoading = false,
+                    isError = true
+                )
+            )
         }
     }
 
     @Test
-    fun CountriesScreen_Success() {
-        val list = listOf(
-            TestCountryModelProvider.getTestCountryModel(cca3 = "ARG", name = "Argentina"),
-            TestCountryModelProvider.getTestCountryModel(cca3 = "URY", name = "Uruguay")
-        )
+    fun CountryDetailsScreen_Success() {
+        val country = TestCountryModelProvider.getTestCountryModel()
+        val detailsCountryModel = country.mapToCountryDetailsModel(emptyMap())
         composeRule.captureMultiDeviceMultiMode(screenshotName = successScreenshotName) {
-            CountriesScreen(
-                uiState = CountriesUiState.Success(
-                    list.associateBy({ it.cca3 }, { it })
+            CountryDetailsScreen(
+                uiState = CountryDetailsUiState(
+                    isLoading = false,
+                    isError = false,
+                    country = detailsCountryModel
                 )
             )
         }
