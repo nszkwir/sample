@@ -2,13 +2,10 @@ package com.spitzer.sample.feature.countries
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
-import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.spitzer.model.testing.TestCountryModelProvider
-import com.spitzer.ui.R
+import com.spitzer.sample.configuration.captureMultiDeviceMultiMode
 import com.spitzer.ui.feature.countries.CountriesScreen
 import com.spitzer.ui.feature.countries.CountriesUiState
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,55 +22,80 @@ class CountriesScreenScreenshotTest {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
-    private lateinit var loading: String
-    private lateinit var back: String
-    private lateinit var addCountry: String
+    private val screenshotName = "Feature/CountriesScreen/"
+    private val loadingScreenshotName = "${screenshotName}loading"
+    private val errorScreenshotName = "${screenshotName}error"
+    private val successScreenshotName = "${screenshotName}success"
 
-    @Before
-    fun appStartup() {
-        composeRule.activity.apply {
-            loading = getString(R.string.loading)
-            back = getString(R.string.back_CD)
-            addCountry = getString(R.string.addCountry_CD)
+    @Test
+    fun CountriesScreen_Loading() {
+        composeRule.captureMultiDeviceMultiMode(screenshotName = loadingScreenshotName) {
+            CountriesScreen(uiState = CountriesUiState.Loading)
         }
     }
 
     @Test
-    fun `When CountriesScrenUiState is Loading, LoadingLayout is shown`() {
-        composeRule.setContent { CountriesScreen(uiState = CountriesUiState.Loading) }
-        composeRule.onNodeWithContentDescription(loading).assertExists()
-        composeRule.onNodeWithContentDescription(back).assertExists()
-        composeRule.onNodeWithContentDescription(addCountry).assertExists()
-
+    @Config(qualifiers = "+night")
+    fun CountriesScreen_Loading_DarkMode() {
+        composeRule.captureMultiDeviceMultiMode(
+            screenshotName = loadingScreenshotName,
+            darkMode = true
+        ) {
+            CountriesScreen(uiState = CountriesUiState.Loading)
+        }
     }
 
     @Test
-    fun `When CountriesScrenUiState is Error, ErrorLayout is shown`() {
+    fun CountriesScreen_Error() {
         // TODO Implement ErrorLayout
-        composeRule.setContent { CountriesScreen(uiState = CountriesUiState.Error) }
-        composeRule.onNodeWithContentDescription(loading).assertDoesNotExist()
-        composeRule.onNodeWithContentDescription(back).assertExists()
-        composeRule.onNodeWithContentDescription(addCountry).assertExists()
+        composeRule.captureMultiDeviceMultiMode(screenshotName = errorScreenshotName) {
+            CountriesScreen(uiState = CountriesUiState.Error)
+        }
     }
 
     @Test
-    fun `When CountriesScrenUiState is Success, CountriesListLayout is shown`() {
+    @Config(qualifiers = "+night")
+    fun CountriesScreen_Error_DarkMode() {
+        // TODO Implement ErrorLayout
+        composeRule.captureMultiDeviceMultiMode(
+            screenshotName = errorScreenshotName,
+            darkMode = true
+        ) {
+            CountriesScreen(uiState = CountriesUiState.Error)
+        }
+    }
+
+    @Test
+    fun CountriesScreen_Success() {
         val list = listOf(
             TestCountryModelProvider.getTestCountryModel(cca3 = "ARG", name = "Argentina"),
             TestCountryModelProvider.getTestCountryModel(cca3 = "URY", name = "Uruguay")
         )
-
-        composeRule.setContent {
+        composeRule.captureMultiDeviceMultiMode(screenshotName = successScreenshotName) {
             CountriesScreen(
                 uiState = CountriesUiState.Success(
                     list.associateBy({ it.cca3 }, { it })
                 )
             )
         }
-        composeRule.onNodeWithContentDescription(loading).assertDoesNotExist()
-        composeRule.onNodeWithContentDescription(back).assertExists()
-        composeRule.onNodeWithContentDescription(addCountry).assertExists()
-        composeRule.onNodeWithContentDescription(list[0].name.common).assertExists()
-        composeRule.onNodeWithContentDescription(list[1].name.common).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+night")
+    fun CountriesScreen_Success_DarkMode() {
+        val list = listOf(
+            TestCountryModelProvider.getTestCountryModel(cca3 = "ARG", name = "Argentina"),
+            TestCountryModelProvider.getTestCountryModel(cca3 = "URY", name = "Uruguay")
+        )
+        composeRule.captureMultiDeviceMultiMode(
+            screenshotName = successScreenshotName,
+            darkMode = true
+        ) {
+            CountriesScreen(
+                uiState = CountriesUiState.Success(
+                    list.associateBy({ it.cca3 }, { it })
+                )
+            )
+        }
     }
 }

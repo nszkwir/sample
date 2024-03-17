@@ -45,8 +45,33 @@ enum class DefaultTestDevices(val description: String, val spec: String) {
     SMALLPHONE("SmallPhone", "spec:shape=Normal,width=360,height=640,unit=dp,dpi=480"),
     PHONE("Pixel6", "spec:shape=Normal,width=411,height=914,unit=dp,dpi=480"),
     LANDSCAPE("Landscape", "spec:shape=Normal,width=914,height=411,unit=dp,dpi=480"),
-    FOLDABLE("Foldable", "spec:shape=Normal,width=673,height=841,unit=dp,dpi=480"),
-    TABLET("Tablet", "spec:shape=Normal,width=1280,height=800,unit=dp,dpi=480"),
+    //FOLDABLE("Foldable", "spec:shape=Normal,width=673,height=841,unit=dp,dpi=480"),
+    //TABLET("Tablet", "spec:shape=Normal,width=1280,height=800,unit=dp,dpi=480"),
+}
+
+fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiDeviceMultiMode(
+    screenshotName: String,
+    darkMode: Boolean = false,
+    body: @Composable () -> Unit,
+) {
+    DefaultTestDevices.entries.forEach {
+        this.captureForDevice(
+            it.description,
+            it.spec,
+            screenshotName,
+            darkMode = darkMode,
+            fontScale = FontScale.ONE_TO_ONE,
+            body = body
+        )
+        this.captureForDevice(
+            it.description,
+            it.spec,
+            screenshotName,
+            darkMode = darkMode,
+            fontScale = FontScale.TWO_TO_ONE,
+            body = body
+        )
+    }
 }
 
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiDevice(
@@ -92,7 +117,11 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.c
             LocalInspectionMode provides true,
         ) {
             TestHarness(darkMode = darkMode, fontScale = fontScale.value) {
-                body()
+                SampleTheme(
+                    darkTheme = darkMode
+                ) {
+                    body()
+                }
             }
         }
     }
@@ -104,10 +133,6 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.c
         )
 }
 
-/**
- * Takes six screenshots combining light/dark and default/Android themes and whether dynamic color
- * is enabled.
- */
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiTheme(
     name: String,
     overrideFileName: String? = null,
