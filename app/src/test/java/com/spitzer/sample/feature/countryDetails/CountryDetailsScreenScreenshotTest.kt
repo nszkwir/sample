@@ -19,7 +19,7 @@ import org.robolectric.annotation.GraphicsMode
 @Config(
     sdk = [33]
 )
-class CountryDetailsScreenshotTest {
+class CountryDetailsScreenScreenshotTest {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
