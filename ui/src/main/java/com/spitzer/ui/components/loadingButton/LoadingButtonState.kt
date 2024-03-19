@@ -30,12 +30,12 @@ fun LoadingButtonState.getDrawableId(idleDrawableId: Int?) =
     }
 
 @Composable
-fun LoadingButtonState.getContentDescription(contentDescription: String?) =
+fun LoadingButtonState.getContentDescription(contentDescription: String) =
     when (this) {
         LoadingButtonState.IN_PROGRESS -> contentDescription + " " + stringResource(id = R.string.loading_CD)
         LoadingButtonState.SUCCESS -> contentDescription + " " + stringResource(id = R.string.success_CD)
         LoadingButtonState.ERROR -> contentDescription + " " + stringResource(id = R.string.error_CD)
-        else -> contentDescription
+        LoadingButtonState.IDLE -> contentDescription
     }
 
 fun LoadingButtonState.getRotation() =

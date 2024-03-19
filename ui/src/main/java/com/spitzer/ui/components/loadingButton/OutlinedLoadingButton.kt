@@ -24,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,7 +35,7 @@ import com.spitzer.ui.testing.screenshotPreview.components.OutlinedLoadingButton
 fun OutlinedLoadingButton(
     modifier: Modifier = Modifier,
     text: String,
-    contentDescription: String? = null,
+    contentDescription: String,
     state: LoadingButtonState = LoadingButtonState.IDLE,
     @DrawableRes idleDrawable: Int? = null,
     onClick: () -> Unit = {},
@@ -58,9 +60,13 @@ fun OutlinedLoadingButton(
             animation = tween(2000, easing = LinearEasing)
         ), label = "infiniteRotation"
     )
-
+    val stateContentDescription = state.getContentDescription(contentDescription)
     OutlinedButton(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .semantics(mergeDescendants = true) {
+                this.contentDescription = stateContentDescription
+            },
         border = BorderStroke(ButtonDefaults.outlinedButtonBorder.width, colorAnimation),
         onClick = {
             if (state == LoadingButtonState.IDLE) onClick()
@@ -80,7 +86,7 @@ fun OutlinedLoadingButton(
                 modifier = Modifier.graphicsLayer(rotationZ = infiniteRotation),
                 painter = painterResource(id = drawableId),
                 colorFilter = ColorFilter.tint(color = colorAnimation),
-                contentDescription = state.getContentDescription(contentDescription),
+                contentDescription = null,
             )
         }
     }

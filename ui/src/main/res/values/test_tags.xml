@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="CountrySearchField_TT">CountrySearchField</string>
+    <string name="EmptyDashboardCard_TT">EmptyDashboardCard</string>
+    <string name="RestoreCountriesDataButton_TT">RestoreCountriesDataButton</string>
+    <string name="CountryListBoxPullToRefreshContainer_TT">CountryListBoxPullToRefreshContainer</string>
+    <string name="CountryListPullToRefreshContainer_TT">CountryListPullToRefreshContainer</string>
+    <string name="CountryListPullToRefreshIndicator_TT">CountryListPullToRefreshIndicator</string>
+    <string name="CountriesCircularLoaderIndicator_TT">CountriesCircularLoaderIndicator</string>
+    <string name="ErrorDashboardCard_TT">ErrorDashboardCard</string>
+    <string name="StatisticsDashboardCard_TT">StatisticsDashboardCard</string>
+    <string name="FullInformationDashboardCard_TT">FullInformationDashboardCard</string>
+    <string name="FlagsAndCoatOfArms_TT">FlagsAndCoatOfArms</string>
+</resources>

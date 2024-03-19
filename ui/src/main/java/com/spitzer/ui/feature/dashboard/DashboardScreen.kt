@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -114,7 +115,9 @@ fun DashboardScreen(
                     .padding(end = 20.dp, start = 10.dp)
             ) {
                 TransparentSearchField(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag(stringResource(id = R.string.CountrySearchField_TT)),
                     searchText = uiState.searchText ?: "",
                     placeholder = stringResource(id = R.string.searchCountries),
                     onSearchTextChange = onSearchTextChange,
@@ -136,7 +139,9 @@ fun DashboardScreen(
                             horizontalArrangement = Arrangement.Start
                         ) {
                             DashboardCard(
-                                modifier = Modifier.padding(end = 40.dp),
+                                modifier = Modifier
+                                    .padding(end = 40.dp)
+                                    .testTag(stringResource(id = R.string.FlagsAndCoatOfArms_TT)),
                                 title = stringResource(id = R.string.flagsAndCoatOfArms),
                                 subtitle = stringResource(id = R.string.exploreTheFlagsAndCoatOfArms),
                                 imageId = R.drawable.baseline_outlined_flag_24,
@@ -154,7 +159,9 @@ fun DashboardScreen(
                             horizontalArrangement = Arrangement.End
                         ) {
                             DashboardCard(
-                                modifier = Modifier.padding(start = 40.dp),
+                                modifier = Modifier
+                                    .padding(start = 40.dp)
+                                    .testTag(stringResource(id = R.string.FullInformationDashboardCard_TT)),
                                 title = stringResource(id = R.string.fullInformation),
                                 subtitle = stringResource(id = R.string.learnMoreAboutCountries),
                                 imageId = R.drawable.baseline_search_24,
@@ -173,7 +180,9 @@ fun DashboardScreen(
                             horizontalArrangement = Arrangement.Start
                         ) {
                             DashboardCard(
-                                modifier = Modifier.padding(end = 40.dp),
+                                modifier = Modifier
+                                    .padding(end = 40.dp)
+                                    .testTag(stringResource(id = R.string.StatisticsDashboardCard_TT)),
                                 title = stringResource(id = R.string.statistics),
                                 subtitle = stringResource(id = R.string.compareAndGetInsight),
                                 imageId = R.drawable.baseline_query_stats_24,
@@ -189,7 +198,9 @@ fun DashboardScreen(
                 if (showCountriesError) {
                     item(key = "errorDashboardCard") {
                         DashboardCard(
-                            modifier = Modifier.padding(end = 40.dp),
+                            modifier = Modifier
+                                .padding(end = 40.dp)
+                                .testTag(stringResource(id = R.string.ErrorDashboardCard_TT)),
                             title = stringResource(id = R.string.ooops),
                             subtitle = stringResource(id = R.string.errorSearchingCountries),
                             contentDescription = stringResource(id = R.string.errorSearchingCountries),
@@ -205,6 +216,7 @@ fun DashboardScreen(
                         CircularProgressIndicator(
                             modifier = Modifier
                                 .align(Alignment.CenterHorizontally)
+                                .testTag(stringResource(id = R.string.CountriesCircularLoaderIndicator_TT))
                                 .semantics {
                                     this.contentDescription = loadingCd
                                 },
@@ -217,7 +229,9 @@ fun DashboardScreen(
                         if (this.isNullOrEmpty()) {
                             item(key = "emptyDashboardCard") {
                                 DashboardCard(
-                                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                                    modifier = Modifier
+                                        .align(Alignment.CenterHorizontally)
+                                        .testTag(stringResource(id = R.string.EmptyDashboardCard_TT)),
                                     title = stringResource(id = R.string.sorry),
                                     subtitle = stringResource(id = R.string.weHaventFoundAnyCountry),
                                     imageId = R.drawable.baseline_search_off_24,
