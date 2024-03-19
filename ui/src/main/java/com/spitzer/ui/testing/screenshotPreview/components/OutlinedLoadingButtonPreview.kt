@@ -15,10 +15,25 @@ fun OutlinedLoadingButtonPreview_ScreenshotTest() {
         Column(
             modifier = Modifier.padding(20.dp)
         ) {
-            OutlinedLoadingButton(text = "Button")
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.IN_PROGRESS)
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.SUCCESS)
-            OutlinedLoadingButton(text = "Button", state = LoadingButtonState.ERROR)
+            OutlinedLoadingButton(
+                text = "Button",
+                contentDescription = "OutlinedLoadingButtonPreview"
+            )
+            OutlinedLoadingButton(
+                text = "Button",
+                contentDescription = "OutlinedLoadingButtonPreview",
+                state = LoadingButtonState.IN_PROGRESS
+            )
+            OutlinedLoadingButton(
+                text = "Button",
+                contentDescription = "OutlinedLoadingButtonPreview",
+                state = LoadingButtonState.SUCCESS
+            )
+            OutlinedLoadingButton(
+                text = "Button",
+                contentDescription = "OutlinedLoadingButtonPreview",
+                state = LoadingButtonState.ERROR
+            )
         }
     }
 }

@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -73,6 +74,7 @@ fun SettingsScreen(
         ) {
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedLoadingButton(
+                modifier = Modifier.testTag(stringResource(R.string.RestoreCountriesDataButton_TT)),
                 text = stringResource(id = R.string.restoreCountriesData),
                 contentDescription = stringResource(id = R.string.restoreCountriesData_CD),
                 state = uiState.restoreButtonState

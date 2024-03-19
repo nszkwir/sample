@@ -46,11 +46,13 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
     implementation(kotlin("test"))
+    implementation(libs.hilt.android.testing)
 
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit.ktx)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.hilt.android.testing)
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
 
